@@ -12,9 +12,7 @@ class Point2{
     public:
         Point2();
         Point2(float TempX, float TempY);
-
         float DistanceBetween(Point2 NewPtr);
-
 
     private:
         float x, y, distance;
