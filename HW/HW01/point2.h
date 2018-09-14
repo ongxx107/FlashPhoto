@@ -10,17 +10,12 @@
 
 class Point2{
     public:
-        Point2 p00();
-        Point2 p11(float, float);
-        Point2 p21(float, float);
-        Point2 p12(float, float);
-        Point2 pPI45(float, float);
-        Point2 p_a(float, float);
-        Point2 p_b(float, float);
+        Point2();
+        Point2(float TempX, float TempY);
 
-        Point2 DistanceBetween(Point2);
+        float DistanceBetween(Point2 NewPtr);
 
-    
+
     private:
         float x, y, distance;
 };
