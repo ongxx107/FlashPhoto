@@ -6,7 +6,6 @@
 #include <fstream>
 #include <string>
 #include <math.h> //FOR SQRT()
-#include <string>
 
 class Point2{
     public:
