@@ -16,7 +16,6 @@ using std::endl;
 using std::string;
 
 MallardDuck::MallardDuck() {
-
 }
 
 MallardDuck::~MallardDuck() {}
