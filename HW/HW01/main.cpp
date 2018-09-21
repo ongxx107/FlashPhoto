@@ -12,15 +12,25 @@
 #include "point2.h"
 
 int main() {
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 10680ea7b255a5f2031f28bbccb609b58e625e3f
   Point2 p00;
   Point2 p11(1.0, 1.0);
   Point2 p21(2.0, 1.0);
   Point2 p12(1.0, 2.0);
   Point2 pPI45(sqrt(2)/2, sqrt(2)/2);
+<<<<<<< HEAD
 
   Point2 p_a(3.0, 5.0), p_b(4.0, 4.0);
 
+=======
+  
+  Point2 p_a(3.0, 5.0), p_b(4.0, 4.0);
+  
+>>>>>>> 10680ea7b255a5f2031f28bbccb609b58e625e3f
   std::cout << "(1,1) to (2,1) is " << p11.DistanceBetween(p21) << std::endl;
   std::cout << "(2,1) to (1,2) is " << p21.DistanceBetween(p12) << std::endl;
   std::cout << "(0,0) to (sqrt(2)/2, sqrt(2)/2) is " << p00.DistanceBetween(pPI45) << std::endl;
@@ -28,3 +38,7 @@ int main() {
 
   return 0;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 10680ea7b255a5f2031f28bbccb609b58e625e3f
