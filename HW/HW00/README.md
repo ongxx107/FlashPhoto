@@ -12,7 +12,7 @@
 5. How to initiate and read automated testing of course assignments.
 
 _For additional information about Linux, see
-http://www-users.cs.umn.edu/~larson/csci3081-website-resources/website/examples/csresources/linux.html_
+https://www-users.cs.umn.edu/~larson/repo-website-resources/website/examples/csresources/linux.html
 
 ### Configuring GitHub
 
@@ -28,7 +28,7 @@ This will establish if it is installed.
     % git config --global user.name "Your Name"
     % git config --global user.email your_email@umn.edu
 
-In order to use git, it has to know what to call you in its history. These commands set the configuration to know what identification to use. Note that your name appears between double quotes since it has spaces in it. Your email address doesn't, so it doesn't need to be in quotes. [Note: If you use git for other accounts than your UMN account, you can remove the global tag (_--global_) to set the name and email for only this repository.]
+In order to use git, it has to know what to call you in its history. These commands set the configuration to know what identification to use. Note that your name appears between double quotes since it has spaces in it. Your email address doesn't, so it doesn't need to be in quotes. [Note: If you use git for other accounts than your UMN account, you can remove the global tag (_--global_) to set the name and email for only this repository, but you must be within a git repo to do so.]
 
 #### [OPTIONAL]
 
@@ -70,7 +70,7 @@ Take some time and poke around in this repository, especially if you have never 
 
 This can be done in two ways. If you'd like to create the repository on your own in command line, you are free to do so. The TAs may be able to help. These instructions will show the steps for the other method: creating the repository through the Github interface.
 
-Navigate to the umn-csci-3081-F18 organization page. If you are still in the csci3081-shared-upstream repository, you can click on the organization name at the top of the page, just under the black header bar. Otherwise, you'll find it in your profile (click on the icon on the top right and select _Your Profile_).
+Navigate to the umn-csci-3081-F18 (https://github.umn.edu/orgs/umn-csci-3081-F18) organization page. If you are still in the csci3081-shared-upstream repository, you can click on the organization name at the top of the page, just under the black header bar. Otherwise, you'll find it in your profile (click on the icon on the top right and select _Your Profile_).
 
 The green button on the right says 'New'. Click on it. Here you'll create a new repository with your name.
 
@@ -82,7 +82,7 @@ Select the checkbox to 'Initialize this repository with a README'. There's no ne
 
 When you select 'Create repository', your personal repository will be created on the Github.umn.edu server. Next, we'll clone this remote repository into a local repository, where you can do your work. We strongly recommend that you do **NOT** follow the instructions listed in this new repo. What we'll be doing is slightly different than how the typical repository would be built.
 
-Under 'Quick setup', ensure that HTTPS is selected and click on the copy icon on the far right. This will copy the repository reference to the clipboard. Now, we can clone this repo from our remote Github instance to your local workspace (on the CSELabs machine).
+Under 'Clone or Downlaod', ensure that HTTPS is selected and click on the copy icon on the far right. This will copy the repository reference to the clipboard. Now, we can clone this repo from our remote Github instance to your local workspace (on the CSELabs machine).
 
 ### Cloning your personal repository
 
@@ -99,7 +99,7 @@ directory. Replace (i.e. paste, typically Shift+Insert in a terminal) **_&lt;clo
 
 **_What just happened?_** You made a new directory (i.e. folder) in your account
 with `mkdir`. You changed that to your working directory with `cd`. You copied
-the shared-upstream repo locally to your machine with `clone`. You listed the contents of
+the repo locally to your machine with `clone`. You listed the contents of
 the working directory with `ls`, which should list the newly created directory
 with the name of the repository which it contains. These directories function
 exactly like all other linux directories. There are hidden files that track
@@ -114,6 +114,10 @@ remote repository is to set up an SSH key for your CSE labs account.
 
 This can be done by following the instructions listed on this page -
 https://help.github.com/enterprise/2.12/user/articles/generating-an-ssh-key/
+
+You will then need to add the key to your github profile from the documentation (https://help.github.com/enterprise/2.12/user/articles/adding-a-new-ssh-key-to-your-github-account/).  Unfortunately xclip is not installed on the lab machines, so you can copy the results from the command line after typing out the public key as follows:
+
+    % cat ~/.ssh/id_rsa.pub
 
 Now that you have an SSH key set up, you need to change the repository's remote
 URL from HTTPS to SSH. Again, replace **_&lt;student-umnid&gt;_** with your UMN id and **_&lt;clone-ref&gt;_** with the repository reference we copied earlier.
@@ -149,6 +153,11 @@ If you completed the ssh key section above:
 If you did not complete the ssh key section above and are using username/password:
 
     % git remote add upstream https://github.umn.edu/umn-csci-3081-F18/csci3081-shared-upstream.git
+
+* Note: If you get an error saying that the remote already exists, you can remove it and add again with the following command:
+
+		% git remote rm upstream
+
 
 In either case, apply this command next.
 
@@ -209,7 +218,7 @@ the contents of the file right now.
 
 **_What just happened?_** You made _HW00_ your working directory with `cd`. You
 executed the makefile (named _makefile_) with `make`, which created object files
-with the extension _.o_, and the executable _lab01.out_. These files are
+with the extension _.o_, and the executable _HW00.out_. These files are
 displayed with `ls`.
 
     % ./HW00.out
