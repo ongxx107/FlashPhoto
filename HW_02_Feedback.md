@@ -1,6 +1,6 @@
 ### Feedback for Homework 02
 
-Run on September 21, 12:53:53 PM.
+Run on September 28, 13:01:40 PM.
 
 
 #### System Files and HW Directory Structure
@@ -39,8 +39,6 @@ Run on September 21, 12:53:53 PM.
 #### Essential Files Exist
 
 + Pass: Check that file "Makefile" exists.
-
-+ Pass: Check that file "main.cpp" exists.
 
 
 #### Test that code compiles and creates the exectuable
