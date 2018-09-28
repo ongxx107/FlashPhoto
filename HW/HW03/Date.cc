@@ -172,4 +172,3 @@ Date * mkDate_ptr(int y, int m, int d) {
 
     return  date;
 }
-
