@@ -23,21 +23,30 @@ TEST_F(DateTest, Date) {
   Date epoch(1538762223);
   Date negEpoch(-100);
   Date ind_day(1776, 7, 4);
+  Date wrong(2018, 10, 0);
 
   EXPECT_EQ(currentDate.GetDate(), "2018-10-05") << "Current date of class not setup properly";
   EXPECT_EQ(epoch.GetDate(), "2018-10-05") << "Epoch of class not setup properly";
   EXPECT_EQ(negEpoch.GetDate(), "1969-12-31") << "negative Epoch of class not setup properly";
   EXPECT_EQ(ind_day.GetDate(), "1776-07-04") << "Indep. day of class not setup properly";
+
+  //EXPECT_EQ(wrong.GetDate(), "2018-10-00") << "Day of class not setup properly";
 }
 
 TEST_F(DateTest, operatorAddition) {
   Date best_holiday(2018, 01, 31);
+  Date leap(2011, 12, 31);
+
   EXPECT_EQ((best_holiday+10).GetDate(), "2018-02-10") << "Addition of class not setup properly";
+  EXPECT_EQ((leap+63).GetDate(), "2012-03-03") << "Addition of class not setup properly";
 }
 
 TEST_F(DateTest, operatorSubtract) {
   Date best_holiday(2018, 01, 31);
+  Date leap(2012, 04, 16);
+
   EXPECT_EQ((best_holiday-10).GetDate(), "2018-01-21") << "Subtraction of class not setup properly";
+  EXPECT_EQ((leap-65).GetDate(), "2012-02-11") << "Addition of class not setup properly";
 }
 
 TEST_F(DateTest, PrintDateTests) {
