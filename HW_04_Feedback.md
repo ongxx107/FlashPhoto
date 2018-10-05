@@ -1,6 +1,6 @@
 ### Feedback for Homework 04
 
-Run on October 05, 14:34:51 PM.
+Run on October 05, 14:49:26 PM.
 
 
 #### System Files and HW Directory Structure
@@ -130,8 +130,7 @@ Run on October 05, 14:34:51 PM.
 
 #### Testing Mutant 5 for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
-   - Reason - 1/1/2016 to 3/1/2016 is 60 days, but this version returns 59
++ Pass: At least one test failed for Mutant 5
 
 
 #### Testing Mutant 6 for failure
