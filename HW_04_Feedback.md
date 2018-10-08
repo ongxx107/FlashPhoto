@@ -1,15 +1,15 @@
 ### Feedback for Homework 04
 
-Run on October 05, 14:49:26 PM.
+Run on October 06, 18:28:11 PM.
 
 
 #### System Files and HW Directory Structure
 
-+ Pass: Check that directory "/lhome/gitbot/umn-csci-3081-F18/grading-scripts/_hw_materials" exists.
++ Pass: Check that directory "/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/_hw_materials" exists.
 
-+ Pass: Check that directory "/lhome/gitbot/umn-csci-3081-F18/grading-scripts/_hw_materials/googletest" exists.
++ Pass: Check that directory "/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/_hw_materials/googletest" exists.
 
-+ Pass: Check that directory "/lhome/gitbot/umn-csci-3081-F18/grading-scripts/_hw_materials/HW04" exists.
++ Pass: Check that directory "/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/_hw_materials/HW04" exists.
 
 + Pass: Check that directory "HW" exists.
 
@@ -55,8 +55,15 @@ Run on October 05, 14:49:26 PM.
 
 
 
-+ Pass: Check that a GoogleTest test passes.
-    passes the test: DateTest.Date.
++ Fail: Check that a GoogleTest test passes.
+    fails the test: DateTest.Date.
+<pre>
+[ RUN      ] DateTest.Date
+./date_unittest.cc:28: Failure
+      Expected: currentDate.GetDate()
+      Which is: "2018-10-06"
+To be equal to: "2018-10-05"
+Current date of class not setup properly</pre>
 
 
 
@@ -105,50 +112,68 @@ Run on October 05, 14:49:26 PM.
 
 
 
-+ Pass: All tests passed.
++ Fail: At least one test failed.
 
 
 #### Testing Mutant 1 for failure
 
-+ Pass: At least one test failed for Mutant 1
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 2 for failure
 
-+ Pass: At least one test failed for Mutant 2
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 3 for failure
 
-+ Pass: At least one test failed for Mutant 3
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 4 for failure
 
-+ Pass: At least one test failed for Mutant 4
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 5 for failure
 
-+ Pass: At least one test failed for Mutant 5
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 6 for failure
 
-+ Pass: At least one test failed for Mutant 6
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 7 for failure
 
-+ Pass: At least one test failed for Mutant 7
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 8 for failure
 
-+ Pass: At least one test failed for Mutant 8
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
 
 #### Testing Mutant 9 for failure
 
-+ Pass: At least one test failed for Mutant 9
++ Skip: Abstract test class.
+
+  This test was not run because of an earlier failing test.
 
