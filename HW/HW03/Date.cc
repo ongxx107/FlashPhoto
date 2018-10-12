@@ -11,7 +11,7 @@
 #include <sstream>
 #include <string>
 
-using namespace std;
+using std;
 
 bool is_valid_date(int y, int m, int d);
 

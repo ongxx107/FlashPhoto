@@ -5,18 +5,17 @@
 //  Copyright (c) 2015 Seth Johnson. All rights reserved.
 //
 
-#ifndef RUBBERDUCK_H
-#define RUBBERDUCK_H
+#ifndef HW02_RUBBERDUCK_H_
+#define HW02_RUBBERDUCK_H_
 
 #include <string>
 #include "Duck.h"
 
 class RubberDuck : public Duck {
-public:
-    RubberDuck();
-    ~RubberDuck();
-    
+ public:
+    RubberDuck()
+    ~RubberDuck()
     std::string getDescription();
 };
 
-#endif
+#endif  //  HW02_RUBBERDUCK_H_

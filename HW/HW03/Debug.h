@@ -1,5 +1,7 @@
-#ifndef DEBUG_H
-#define DEBUG_H
+//  Copyright (c) 2018 CCSI3081. All rights reserved.
+
+#ifndef HW03_DEBUG_H_
+#define HW03_DEBUG_H_
 
 #include <cstdlib>
 
@@ -9,6 +11,6 @@
      cout << "Invariant \"" << #e         \
           << "\" on line "                \
           << __LINE__ << " fails.\n"  ;   \
-     exit(1) ;} 
+     exit(1) ;}
 
-#endif /* DEBUG_H */
+#endif  // HW03_DEBUG_H_

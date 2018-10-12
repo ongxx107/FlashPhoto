@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using std;
 
 void doInterestingThing(int yr) {
   // variables used in this method
@@ -21,10 +21,10 @@ void doInterestingThing(int yr) {
 
   cout << " ... A set of Dates ... " << endl;
 
-  //d1 = Date();
+  // d1 = Date();
   d2 = Date(yr, 4, 19);
   d3 = d2.copy();
-  //int len = 4;
+  // int len = 4;
   // int* array_len = &len;
   *array_len = 4;
 

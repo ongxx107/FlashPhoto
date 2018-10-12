@@ -5,15 +5,15 @@
 //  Copyright (c) 2015 Seth Johnson. All rights reserved.
 //
 
-#ifndef QUACKBEHAVIOR_H
-#define QUACKBEHAVIOR_H
+#ifndef HW02_QUACKBEHAVIOR_H_
+#define HW02_QUACKBEHAVIOR_H_
 
 #include <stdio.h>
 
 class QuackBehavior {
-public:
-    QuackBehavior() {};
+ public:
+    QuackBehavior() {}
     virtual ~QuackBehavior() {}
     virtual void quack() = 0;
 };
-#endif /* defined(__Minimal_Duck__QuackBehavior__) */
+#endif  //  HW02_QUACKBEHAVIOR_H_

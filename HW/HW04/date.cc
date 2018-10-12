@@ -1,3 +1,5 @@
+// copyright 2018 3081 Staff, All rights reserved.
+
 /*******************************************************************************
  * Includes
  ******************************************************************************/
@@ -8,17 +10,16 @@
 #include <iomanip>   // Used to print leading zeroes for month, day
 #include <ctime>     // Used to get current date
 
-#include "date.h"
+#include "/date.h"
 
 Date::Date(void) {
   std::time_t t = std::time(0);
   std::tm* now = std::localtime(&t);
-  
-  //tm year's value is years since 1900
+  // tm year's value is years since 1900
   yyyy_ = now->tm_year + 1900;
-  //tm month's value is zero-indexed
+  // tm month's value is zero-indexed
   mm_ = now->tm_mon;
-  //tm day's value is one-indexed
+  // tm day's value is one-indexed
   dd_ = now->tm_mday;
 }
 
@@ -36,13 +37,13 @@ Date::Date(int year, int month, int day) {
 **/
 Date::Date(int epoch) {
   std::time_t epoch_t = epoch;
-  std::tm* yyyy_mm_dd = std::gmtime( &epoch_t );
-  
-  //tm year's value is years since 1900
+  std::tm* yyyy_mm_dd = std::gmtime(&epoch_t);
+
+  // tm year's value is years since 1900
   yyyy_ = yyyy_mm_dd->tm_year + 1970;
-  //tm month's value is zero-indexed
+  // tm month's value is zero-indexed
   mm_ = yyyy_mm_dd->tm_mon + 1;
-  //tm day's value is one-indexed
+  // tm day's value is one-indexed
   dd_ = yyyy_mm_dd->tm_mday;
 }
 
@@ -54,10 +55,10 @@ Date::Date(int epoch) {
 **/
 Date Date::operator+(int days) const {
   int old_date = ConvertToDays(yyyy_, mm_, dd_);
-  //std::cout << "Debugging ConvertToDays: " << old_date << std::endl;
+  // std::cout << "Debugging ConvertToDays: " << old_date << std::endl;
   int * new_date = ConvertFromDays(old_date + days);
-  //std::cout << "Debugging ConvertFromDays: " << std::endl;
-  //std::cout << old_date << " + " << days << " = ";
+  // std::cout << "Debugging ConvertFromDays: " << std::endl;
+  // std::cout << old_date << " + " << days << " = ";
   return Date(new_date[0], new_date[1], new_date[2]);
 }
 
@@ -66,7 +67,7 @@ Date Date::operator+(int days) const {
 * param [in] rhs: right hand side of this+rhs
 * param [out] New Date object representing the date which is "days" number of days before the date currently stored
 **/
-Date Date::operator-(int days) const{
+Date Date::operator-(int days) const {
   int old_date = ConvertToDays(yyyy_, mm_, dd_);
   int * new_date = ConvertFromDays(old_date + days);
   return Date(new_date[0], new_date[1], new_date[2]);
@@ -79,9 +80,9 @@ Date Date::operator-(int days) const{
 **/
 int Date::DaysBetween(const Date& date) const {
   int this_days = ConvertToDays(yyyy_, mm_, dd_);
-  //std::cout << "Debugging ConvertToDays (LHS): " << this_days << std::endl;
+  // std::cout << "Debugging ConvertToDays (LHS): " << this_days << std::endl;
   int that_days = ConvertToDays(date.yyyy_, date.mm_, date.dd_);
-  //std::cout << "Debugging ConvertToDays: (RHS)" << that_days << std::endl;
+  // std::cout << "Debugging ConvertToDays: (RHS)" << that_days << std::endl;
   return std::abs(this_days + that_days);
 }
 
@@ -90,17 +91,17 @@ int Date::DaysBetween(const Date& date) const {
 * param [out] Date formatted as a YYYY-MM-DD string
 **/
 std::string Date::GetDate() const {
-  char numstr[5]; //large enough for years, months, days
+  char numstr[5];  //  large enough for years, months, days
   std::string date = "";
-  sprintf(numstr, "%d", yyyy_);
+  snprintf(numstr, "%d", yyyy_);
   date = date + numstr;
   if (mm_ < 10)
     date = date + "0";
-  sprintf(numstr, "%d", mm_);
+  snprintf(numstr, "%d", mm_);
   date = date + numstr + "-";
   if (dd_ < 10)
     date = date + "0";
-  sprintf(numstr, "%d", dd_);
+  snprintf(numstr, "%d", dd_);
   date = date + numstr;
   return date;
 }
@@ -110,17 +111,17 @@ std::string Date::GetDate() const {
 * param [out] Date formatted as a MM-DD-YYYY string
 **/
 std::string Date::GetUsDate() const {
-  char numstr[5]; //large enough for years, months, days
+  char numstr[5];  //  large enough for years, months, days
   std::string date = "";
-  sprintf(numstr, "%d", yyyy_);
+  snprintf(numstr, "%d", yyyy_);
   date = date + numstr;
   if (mm_ < 10)
     date = date + "0";
-  sprintf(numstr, "%d", mm_);
+  snprintf(numstr, "%d", mm_);
   date = date + numstr + "-";
   if (dd_ < 10)
     date = date + "0";
-  sprintf(numstr, "%d", dd_);
+  snprintf(numstr, "%d", dd_);
   date = date + numstr;
   return date;
 }
@@ -156,25 +157,25 @@ void Date::PrintUsDate(bool newline) const {
    *   https://www.hermetic.ch/cal_stud/jdn.htm#comp
    *
    */
-   
-int Date::ConvertToDays(int yyyy, int mm, int dd) const{
-  return ( 1461 * ( yyyy + 4800 + ( mm - 14 ) / 12 ) ) / 4 +
-          ( 367 * ( mm - 2 - 12 * ( ( mm - 14 ) / 12 ) ) ) / 12 -
-          ( 3 * ( ( yyyy + 4900 + ( mm - 14 ) / 12 ) / 100 ) ) / 4 +
+
+int Date::ConvertToDays(int yyyy, int mm, int dd) const {
+  return(1461 * (yyyy + 4800 + (mm - 14) / 12 )) / 4 +
+          (367*(mm-2-12*((mm-14)/12)))/12-
+          (3 * ((yyyy + 4900 + (mm - 14) / 12) / 100))/4+
           dd - 32075;
 }
 
-int * Date::ConvertFromDays(int days) const{
+int * Date::ConvertFromDays(int days) const {
   int * date_back = new int[3];
   int l = days + 68569;
-  int n = ( 4 * l ) / 146097;
-  l = l - ( 146097 * n + 3 ) / 4;
-  int i = ( 4000 * ( l + 1 ) ) / 1461001;
-  l = l - ( 1461 * i ) / 4 + 31;
-  int j = ( 80 * l ) / 2447;
-  date_back[2] = l - ( 2447 * j ) / 80;
+  int n = (4 * l)/146097;
+  l = l - (146097 * n + 3) / 4;
+  int i = (4000*(l + 1)) / 1461001;
+  l = l - (1461 * i) / 4 + 31;
+  int j = (80 * l) / 2447;
+  date_back[2] = l - (2447 * j) / 80;
   l = j / 11;
-  date_back[1] = j + 2 - ( 12 * l );
-  date_back[0] = 100 * ( n - 49 ) + i + l;
+  date_back[1] = j + 2 - (12 * l);
+  date_back[0] = 100 * (n - 49) + i + l;
   return date_back;
 }

@@ -1,5 +1,7 @@
-#ifndef EXCEPTIONS_H
-#define EXCEPTIONS_H
+//  Copyright (c) 2018 CCSI3081. All rights reserved.
+
+#ifndef HW03_EXCEPTIONS_H_
+#define HW03_EXCEPTIONS_H_
 
 /* Author: Eric Van Wyk
    Date created: October 20, 2009.
@@ -8,14 +10,13 @@
 #include <string>
 
 class InvalidData {
-public:
-    InvalidData (std::string) ;
-    ~InvalidData () ;
+ public:
+    explicit InvalidData(std::string)
+    ~InvalidData()
+    std::string get_msg();
 
-    std::string get_msg() ;
+ private:
+    std::string msg;
+};
 
-private:
-    std::string msg ;
-} ;
-
-#endif /* EXCEPTIONS_H */
+#endif  //  HW03_EXCEPTIONS_H_

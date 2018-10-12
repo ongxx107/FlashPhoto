@@ -28,6 +28,5 @@ void Duck::performQuack() {
 void Duck::setQuackBehavior(QuackBehavior* behavior) {
     if (m_quackBehavior != NULL)
         delete m_quackBehavior;
-    
     m_quackBehavior = behavior;
 }

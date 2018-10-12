@@ -21,21 +21,20 @@ void introduceDuck(Duck* duck);
 void shushDuck(Duck* duck);
 
 int main(int argc, const char * argv[]) {
-
     // Create Ducks
     Duck * steve = new MallardDuck();
     Duck * charles = new RubberDuck();
     Duck * edmund = new DecoyDuck();
-    
+
     steve->setName("Steve");
     charles->setName("Charles");
     edmund->setName("Edmund");
-    
-    Duck ** duckArray = new Duck* [10]; // Make room for 10 ducks
-    int duckCount = 0; // This will increase by one everytime we add a
+
+    Duck ** duckArray = new Duck* [10];  //  Make room for 10 ducks
+    int duckCount = 0;  //  This will increase by one everytime we add a
     duckArray[duckCount++] = steve;
     duckArray[duckCount++] = charles;
-    //duckArray[duckCount++] = edmund;
+    // duckArray[duckCount++] = edmund;
 
 
     // Introduce all the ducks
@@ -53,14 +52,15 @@ int main(int argc, const char * argv[]) {
     cout << "\nHere we have " << duckCount << " ducks." << endl;
     for (int i = 0; i < duckCount; i++) {
         Duck* current_duck = duckArray[i];
-        introduceDuck(current_duck); 
+        introduceDuck(current_duck);
     }
 
     return 0;
 }
 
 void introduceDuck(Duck* duck) {
-    cout << duck->getName() << " is " << duck->getDescription() << " who says: ";
+    cout << duck->getName() << " is " << duck->getDescription()
+          << " who says: ";
     duck->performQuack();
 }
 

@@ -1,20 +1,23 @@
 
-#ifndef POINT2_H_
-#define POINT2_H_
+// Copyright 2018 CSCI3081W
 
+
+#ifndef HW01_POINT2_H_
+#define HW01_POINT2_H_
+
+#include <math.h>  //  FOR SQRT()
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <math.h> //FOR SQRT()
 
-class Point2{
-    public:
+class Point2 {
+ public:
         Point2();
         Point2(float TempX, float TempY);
         float DistanceBetween(Point2 NewPtr);
 
-    private:
+ private:
         float x, y, distance;
-};
+}
 
-#endif
+#endif  // HW01_POINT2_H_

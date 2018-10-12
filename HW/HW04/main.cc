@@ -10,7 +10,7 @@
 #include <iostream>
 #include <string>
 
-#include "date.h"
+#include "/date.h"
 
 int main(int, char **) {
   Date date_today;
@@ -19,8 +19,8 @@ int main(int, char **) {
   Date last_day(2018, 12, 11);         // last day of classes
   Date ind_day(1776, 7, 4);            // US Independence
   Date best_holiday(2018, 10, 31);     // Halloween
-  Date epoch(0);				 	   // epoch day (1970-01-01)
-  Date class_start_epoch(1536066000);  // 2018-09-04 13:00:00
+  Date epoch(0);     // epoch day (1970-01-01)
+  Date class_start_epoch(1536066000);  //  2018-09-04 13:00:00
 
   /**
     *

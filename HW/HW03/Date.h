@@ -1,51 +1,34 @@
-#ifndef DATE_H
-#define DATE_H
+//  Copyright (c) 2018 CSCI3081. All rights reserved.
+
+
+#ifndef HW03_DATE_H_
+#define HW03_DATE_H_
 
 #include "Exceptions.h"
 
 #include <string>
 
 class Date {
-public:
-    Date() ;
-    Date(int, int, int) ;
-    ~Date() ;
+ public:
+    Date()
+    Date(int, int, int)
+    ~Date()
 
-    std::string show() const ;
+    std::string show() const;
 
-    bool equals(const Date &) const ;
+    bool equals(const Date &) const;
 
-    bool before(const Date &) const ;
+    bool before(const Date &) const;
 
-    void day_inc(int) ;
+    void day_inc(int);
 
-    Date copy() const ;
+    Date copy() const;
 
-private:
-    int year, month, day ;
+ private:
+    int year, month, day;
 };
 
+Date mkDate(int y, int m, int d);
+Date * mkDate_ptr(int y, int m, int d);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Date mkDate(int y, int m, int d) ;
-Date * mkDate_ptr(int y, int m, int d) ;
-
-#endif
+#endif  // HW03_DATE_H_

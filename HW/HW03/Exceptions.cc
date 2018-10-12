@@ -12,7 +12,7 @@
 #include "Exceptions.h"
 #include <string>
 
-using namespace std;
+using std;
 
 InvalidData::InvalidData(string _msg) {
     msg = _msg;
