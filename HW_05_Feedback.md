@@ -1,6 +1,6 @@
 ### Feedback for Homework 05
 
-Run on October 12, 13:26:12 PM.
+Run on October 12, 13:32:49 PM.
 
 
 #### System Files and HW Directory Structure
@@ -142,12 +142,9 @@ Run on October 12, 13:26:12 PM.
 
 
 
-+ Fail: Check Style for DecoyDuck.cpp.
++ Pass: Check Style for DecoyDuck.cpp.
 
-<pre>DecoyDuck.cpp:8:  HW/HW02/DecoyDuck.cpp should include its header file HW/HW02/DecoyDuck.h  [build/include] [5]
-Done processing DecoyDuck.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
@@ -157,66 +154,45 @@ Total errors found: 1
 
 
 
-+ Fail: Check Style for MuteQuack.cpp.
++ Pass: Check Style for MuteQuack.cpp.
 
-<pre>MuteQuack.cpp:10:  HW/HW02/MuteQuack.cpp should include its header file HW/HW02/MuteQuack.h  [build/include] [5]
-Done processing MuteQuack.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for Quack.cpp.
++ Pass: Check Style for Quack.cpp.
 
-<pre>Quack.cpp:8:  HW/HW02/Quack.cpp should include its header file HW/HW02/Quack.h  [build/include] [5]
-Done processing Quack.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for Squeak.cpp.
++ Pass: Check Style for Squeak.cpp.
 
-<pre>Squeak.cpp:10:  HW/HW02/Squeak.cpp should include its header file HW/HW02/Squeak.h  [build/include] [5]
-Done processing Squeak.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for Duck.cpp.
++ Pass: Check Style for Duck.cpp.
 
-<pre>Duck.cpp:10:  HW/HW02/Duck.cpp should include its header file HW/HW02/Duck.h  [build/include] [5]
-Done processing Duck.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for MallardDuck.cpp.
++ Pass: Check Style for MallardDuck.cpp.
 
-<pre>MallardDuck.cpp:8:  HW/HW02/MallardDuck.cpp should include its header file HW/HW02/MallardDuck.h  [build/include] [5]
-Done processing MallardDuck.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for QuackBehavior.cpp.
++ Pass: Check Style for QuackBehavior.cpp.
 
-<pre>QuackBehavior.cpp:0:  HW/HW02/QuackBehavior.cpp should include its header file HW/HW02/QuackBehavior.h  [build/include] [5]
-Done processing QuackBehavior.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for RubberDuck.cpp.
++ Pass: Check Style for RubberDuck.cpp.
 
-<pre>RubberDuck.cpp:8:  HW/HW02/RubberDuck.cpp should include its header file HW/HW02/RubberDuck.h  [build/include] [5]
-Done processing RubberDuck.cpp
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
@@ -255,21 +231,15 @@ Total errors found: 1
 
 
 
-+ Fail: Check Style for Date.cc.
++ Pass: Check Style for Date.cc.
 
-<pre>Date.cc:10:  HW/HW03/Date.cc should include its header file HW/HW03/Date.h  [build/include] [5]
-Done processing Date.cc
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
-+ Fail: Check Style for Exceptions.cc.
++ Pass: Check Style for Exceptions.cc.
 
-<pre>Exceptions.cc:13:  HW/HW03/Exceptions.cc should include its header file HW/HW03/Exceptions.h  [build/include] [5]
-Done processing Exceptions.cc
-Total errors found: 1
-</pre>
+    Complete.
 
 
 
