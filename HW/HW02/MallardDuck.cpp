@@ -7,9 +7,8 @@
 
 #include <iostream>
 #include <string>
-#include "MallardDuck.h"
-
-#include "Quack.h"
+#include "/MallardDuck.h"
+#include "/Quack.h"
 
 using std::cout;
 using std::endl;

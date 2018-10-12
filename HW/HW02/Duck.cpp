@@ -5,12 +5,13 @@
 //  Copyright (c) 2015 Sarit Ghildayal. All rights reserved.
 //
 
-#include "Duck.h"
+
 
 #include <iostream>
 
-#include "QuackBehavior.h"
-#include "Quack.h"
+#include "/QuackBehavior.h"
+#include "/Duck.h"
+#include "/Quack.h"
 
 using std::cout;
 using std::endl;

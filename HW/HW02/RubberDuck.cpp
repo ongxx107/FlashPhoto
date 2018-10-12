@@ -7,8 +7,8 @@
 
 #include <iostream>
 #include <string>
-#include "RubberDuck.h"
-#include "Squeak.h"
+#include "/RubberDuck.h"
+#include "/Squeak.h"
 
 using std::cout;
 using std::endl;
@@ -24,5 +24,3 @@ string RubberDuck::getDescription() {
     string descriptionText = "a yellow rubber ducky";
     return descriptionText;
 }
-
-

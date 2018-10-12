@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Seth Johnson. All rights reserved.
 //
 
-#include "MuteQuack.h"
+#include "/MuteQuack.h"
 
 #include <iostream>
 

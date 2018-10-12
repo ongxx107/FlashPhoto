@@ -7,8 +7,8 @@
 
 #include <iostream>
 #include <string>
-#include "DecoyDuck.h"
-#include "MuteQuack.h"
+#include "/DecoyDuck.h"
+#include "/MuteQuack.h"
 
 using std::cout;
 using std::endl;
@@ -24,5 +24,3 @@ string DecoyDuck::getDescription() {
     string descriptionText = "a plastic decoy duck";
     return descriptionText;
 }
-
-

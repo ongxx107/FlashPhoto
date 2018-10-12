@@ -6,7 +6,7 @@
 //
 
 #include <iostream>
-#include "Quack.h"
+#include "/Quack.h"
 
 using std::cout;
 using std::endl;
