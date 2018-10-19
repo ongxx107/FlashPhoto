@@ -59,10 +59,10 @@ scroll back up through screenfulls of text to see where they are. For all-in-one
 do:
 
 ```
-cpplint.py --root=. *.h *.cc
+cpplint.py --root=.. *.h *.cc
 ```
 
-**_What does "--root=." mean?_** Header guards must always be in place for header 
+**_What does "--root=.." mean?_** Header guards must always be in place for header 
 files. During compilation, particularly when you have circular references in your 
 code, a header file might be included multiple times from multiple header files. 
 If you have already included the header during compilation, you don't want the 
