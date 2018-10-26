@@ -34,11 +34,17 @@ class ToolBlur : public Tool {
   static const std::string name() { return "Blur"; }
 
   FloatMatrix* CreateMask(float radius) override;
+    
+  ColorData LookupPaintColor(int x, int y) override;
+
 
  private:
   /* Copy assignment/construction is disallowed */
   ToolBlur(const ToolBlur& rhs) = delete;
   ToolBlur& operator=(const ToolBlur& rhs) = delete;
+  
+  // TODO: Students, add a member variable to create an instance of your
+  // ConvolutionBlurFilter here.
 };
 
 }  // namespace image_tools
