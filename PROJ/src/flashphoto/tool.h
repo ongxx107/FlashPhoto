@@ -106,4 +106,3 @@ class Tool {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_TOOL_H_
-

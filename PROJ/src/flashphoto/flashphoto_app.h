@@ -1,16 +1,16 @@
-/** 
+/**
 This file is part of the CSCI-3081W Project Support Code, which was developed
-at the University of Minnesota.  
+at the University of Minnesota.
 
 This code is to be used for student coursework.  It is not an open source project.
 Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University of Minnesota.
 
-Original Author(s) of this File: 
+Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
-  
+
 Author(s) of Significant Updates/Modifications to the File:
   Daniel Keefe, 2018, UMN -- ported to MinGfx
-  ... 
+  ...
 */
 
 #ifndef FLASHPHOTO_FLASHPHOTO_APP_H_
@@ -35,6 +35,8 @@ Author(s) of Significant Updates/Modifications to the File:
 #include "flashphoto/tool_pen.h"
 #include "flashphoto/tool_spray_can.h"
 
+//include filter headers
+
 namespace image_tools {
 
 /** @brief The FlashPhoto GUI. This class creates a graphics window to display
@@ -45,7 +47,7 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
   FlashPhotoApp(int width, int height, const ColorData &background_color);
   virtual ~FlashPhotoApp();
 
-  /** Called when the mouse moves but no 
+  /** Called when the mouse moves but no
    *  mouse buttons are currently pressed. */
   void OnMouseMove(const mingfx::Point2 &pos,
    const mingfx::Vector2 &delta) override;
@@ -154,18 +156,18 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
 
   /** Undo the last operation. */
   void Undo();
-  
+
   /** Redo the last "undone" operation. */
   void Redo();
-  
+
   /** True if the the log of applied commands is not empty, i.e., it is
    possible to perform an undo operation. */
   bool can_undo();
-  
+
   /** True if the log of undone commands is not empty, i.e., it is possible to
    perform a redo operation. */
   bool can_redo();
-  
+
   PixelBuffer *pixel_buffer();
 
   void set_pixel_buffer(PixelBuffer *buffer);
@@ -209,12 +211,12 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
 
 
   PixelBuffer *current_buffer_;
-  
+
   nanogui::Button *undo_btn_;
   nanogui::Button *redo_btn_;
-  
+
   void SaveStateForPossibleUndo();
-  
+
   unsigned int max_undos_;
   std::deque<PixelBuffer*> saved_states_;   // undo
   std::deque<PixelBuffer*> undone_states_;  // redo
