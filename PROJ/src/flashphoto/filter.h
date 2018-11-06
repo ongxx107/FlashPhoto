@@ -7,7 +7,7 @@
 #include "flashphoto/float_matrix.h"
 #include "flashphoto/pixel_buffer.h"
 
-namespace image_filters {
+namespace image_tools {
 
 class Filter {
  public:
@@ -17,10 +17,13 @@ class Filter {
   void ApplyToBuffer(PixelBuffer* buffer);
 
   virtual void SetupFilter();
-  virtual ColorData CalculateFilteredPixel(PixelBuffer buffer, int x, int y);
+  virtual ColorData CalculateFilteredPixel(PixelBuffer* buffer, int x, int y) = 0;
   virtual void CleanupFilter();
 
   virtual bool can_calculate_in_place();
+
+protected:
+  PixelBuffer* copyBuf_;
 
 private:
  Filter(const Filter &rhs) = delete;

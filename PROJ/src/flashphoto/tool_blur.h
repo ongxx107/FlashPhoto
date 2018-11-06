@@ -21,6 +21,9 @@ Author(s) of Significant Updates/Modifications to the File:
 #include <string>
 #include "flashphoto/tool.h"
 
+#include "flashphoto/color_data.h"
+#include "flashphoto/float_matrix.h"
+
 namespace image_tools {
 
 /** @brief This tool serves as a mobile version of the blur filter, functions
@@ -34,15 +37,20 @@ class ToolBlur : public Tool {
   static const std::string name() { return "Blur"; }
 
   FloatMatrix* CreateMask(float radius) override;
-    
+
   ColorData LookupPaintColor(int x, int y) override;
+
+  float radius(){
+    return 5.0;
+  }
 
 
  private:
   /* Copy assignment/construction is disallowed */
   ToolBlur(const ToolBlur& rhs) = delete;
   ToolBlur& operator=(const ToolBlur& rhs) = delete;
-  
+
+  FloatMatrix* blur_;
   // TODO: Students, add a member variable to create an instance of your
   // ConvolutionBlurFilter here.
 };
@@ -50,4 +58,3 @@ class ToolBlur : public Tool {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_TOOL_BLUR_H_
-

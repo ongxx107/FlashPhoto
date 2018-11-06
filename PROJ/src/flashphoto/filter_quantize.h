@@ -4,7 +4,7 @@
 #include <string>
 #include "flashphoto/filter.h"
 
-namespace image_filters {
+namespace image_tools {
 
 class FilterQuantize : public Filter {
  public:
@@ -14,10 +14,14 @@ class FilterQuantize : public Filter {
 
   static const std::string name() { return "Quantize"; }
 
-  ColorData CalculateFilteredPixel(PixelBuffer buffer, int x, int y) override;
+  ColorData CalculateFilteredPixel(PixelBuffer* buffer, int x, int y) override;
+
+  int numBin(){
+    return numBin_;
+  }
 
  private:
-   float numBin_;
+   int numBin_;
 };
 
 }  // namespace image_tools

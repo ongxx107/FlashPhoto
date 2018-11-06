@@ -16,14 +16,24 @@ Author(s) of Significant Updates/Modifications to the File:
 
 #include "flashphoto/tool_blur.h"
 #include "flashphoto/mask_factory.h"
+#include "flashphoto/image_tools_math.h"
 
 namespace image_tools {
 
 ToolBlur::ToolBlur() {
   // TODO: Students, setup your blur filter to use a radius of 5.0 here
-  
-  
-  
+  blur_ = new FloatMatrix(radius());
+  for(int i = 0; i < blur_->height(); i++){
+    for(int j = 0; j < blur_->width(); j++){
+      float dist = sqrt((radius()-i)*(radius()-i) +
+                    (radius()-j)*(radius()-j));
+      float result = ImageToolsMath::Gaussian(dist, radius());
+      blur_->set_value(j, i, result);
+    }
+  }
+  blur_->Normalize();
+
+
   // the blur operation is not fast, so space the repeated applications of the
   // stamp out as far as we can get away with while still having it look good
   // 1/3 overlap is pretty good for this.
@@ -32,12 +42,13 @@ ToolBlur::ToolBlur() {
 
 ToolBlur::~ToolBlur() {
   // TODO: Students cleanup your filter here if needed.
+  delete blur_;
 }
 
 FloatMatrix* ToolBlur::CreateMask(float radius) {
   return MaskFactory::CreateLinearFalloffMask(radius);
 }
-  
+
 ColorData ToolBlur::LookupPaintColor(int x, int y) {
   // TODO: Students, here's your hook to calculate a filtered version of the
   // pixel. Use your filter to compute the blurred version of the pixel at (x,y)
@@ -45,9 +56,32 @@ ColorData ToolBlur::LookupPaintColor(int x, int y) {
 
   // Remove this:  As a placeholder, we're just returning the original pixel
   // color for now.
-  return buffer_->pixel(x,y);
+  int mat_height_half = (blur_->height())/2;
+  int mat_width_half = (blur_->width())/2;
+
+  double red = 0.0;
+  double green = 0.0;
+  double blue = 0.0;
+
+  for (int filterY = 0; filterY < blur_->height(); filterY++){
+    for (int filterX = 0; filterX < blur_->width(); filterX++){
+
+      int imageX = (x - mat_width_half + filterX + buffer_->width()) % buffer_->width();
+      int imageY = (y - mat_height_half + filterY + buffer_->height()) % buffer_->height();
+
+      red += buffer_->pixel(imageX, imageY).red() * blur_->value(filterX, filterY);
+      green += buffer_->pixel(imageX, imageY).green() * blur_->value(filterX, filterY);
+      blue += buffer_->pixel(imageX, imageY).blue() * blur_->value(filterX, filterY);
+
+    }
+  }
+
+  red = ImageToolsMath::Clamp(0.0, red, 1.0);
+  green = ImageToolsMath::Clamp(0.0, green, 1.0);
+  blue = ImageToolsMath::Clamp(0.0, blue, 1.0);
+  return ColorData(red, green, blue);
+  //return buffer_->pixel(x,y);
 }
-  
+
 
 } /* namespace image_tools */
-

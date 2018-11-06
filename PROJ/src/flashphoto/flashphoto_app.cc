@@ -70,9 +70,9 @@ void FlashPhotoApp::InitNanoGUI() {
   nanogui::Button *b;
 
   // EDIT Section
-  
+
   new nanogui::Label(window, "Edit", "sans-bold");
-  
+
   nanogui::Widget *undo_redo = new nanogui::Widget(window);
   undo_redo->setLayout(new nanogui::BoxLayout(
                                               nanogui::Orientation::Horizontal, nanogui::Alignment::Middle, 0, 6));
@@ -96,9 +96,9 @@ void FlashPhotoApp::InitNanoGUI() {
                    pixel_buffer()->height());
     }
   });
-  
-  
-  
+
+
+
   // TOOLS Section
 
   new nanogui::Label(window, "Tools", "sans-bold");
@@ -636,47 +636,63 @@ void FlashPhotoApp::SaveToFile(const std::string &filename) {
 
 void FlashPhotoApp::ApplyBlurFilter(float radius) {
   SaveStateForPossibleUndo();
+  Filter *ConBlur = new ConvolutionFilterBlur(radius);
+  ConBlur->ApplyToBuffer(pixel_buffer());
+  delete ConBlur;
   (void)radius;
 }
 
 void FlashPhotoApp::ApplyMotionBlurFilter(
     float rad, MBlurDir dir) {
   SaveStateForPossibleUndo();
-  (void)rad;
-  (void)dir;
+  std::string DirName = MotionBlurDirectionName(dir);
+  Filter *ConMotionBlur = new ConvolutionFilterMotionBlur(rad, DirName);
+  ConMotionBlur->ApplyToBuffer(pixel_buffer());
+  delete ConMotionBlur;
 }
 
 void FlashPhotoApp::ApplySharpenFilter(float rad) {
   SaveStateForPossibleUndo();
-  (void)rad;
+  Filter *ConSharpen = new ConvolutionFilterSharpen(rad);
+  ConSharpen->ApplyToBuffer(pixel_buffer());
+  delete ConSharpen;
 }
 
 void FlashPhotoApp::ApplyEdgeDetectFilter() {
   SaveStateForPossibleUndo();
+  Filter *ConEdge = new ConvolutionFilterEdge();
+  ConEdge->ApplyToBuffer(pixel_buffer());
+  delete ConEdge;
 }
 
 void FlashPhotoApp::ApplyThresholdFilter(float value) {
   SaveStateForPossibleUndo();
-  (void)value;
+  Filter *FilterThresh = new FilterThreshold(value);
+  FilterThresh->ApplyToBuffer(pixel_buffer());
+  delete FilterThresh;
 }
 
 void FlashPhotoApp::ApplySaturateFilter(float scale) {
   SaveStateForPossibleUndo();
-  (void)scale;
+  Filter *FilterSat = new FilterSaturate(scale);
+  FilterSat->ApplyToBuffer(pixel_buffer());
+  delete FilterSat;
 }
 
 void FlashPhotoApp::ApplyChannelsFilter(float red, float green, float blue) {
   SaveStateForPossibleUndo();
-  (void)red;
-  (void)green;
-  (void)blue;
+  Filter *FilterChan = new FilterChannels(red, green, blue);
+  FilterChan->ApplyToBuffer(pixel_buffer());
+  delete FilterChan;
 }
 
 void FlashPhotoApp::ApplyQuantizeFilter(int num) {
   SaveStateForPossibleUndo();
-  (void)num;
+  Filter *FilterQuan = new FilterQuantize(num);
+  FilterQuan->ApplyToBuffer(pixel_buffer());
+  delete FilterQuan;
 }
-  
+
 bool FlashPhotoApp::can_undo() {
   return saved_states_.size();
 }
@@ -689,7 +705,7 @@ void FlashPhotoApp::Undo() {
   if (can_undo()) {
     // save state for a possilbe redo
     undone_states_.push_front(current_buffer_);
-    
+
     // make the top state on the undo stack the current one
     current_buffer_ = saved_states_.front();
     saved_states_.pop_front();
@@ -700,7 +716,7 @@ void FlashPhotoApp::Redo() {
   if (can_redo()) {
     // save state for a possible undo
     saved_states_.push_front(current_buffer_);
-    
+
     // make the top state on the redo stack the current one
     current_buffer_ = undone_states_.front();
     undone_states_.pop_front();
@@ -710,13 +726,13 @@ void FlashPhotoApp::Redo() {
 void FlashPhotoApp::SaveStateForPossibleUndo() {
   PixelBuffer *buffer_copy = new PixelBuffer(*current_buffer_);
   saved_states_.push_front(buffer_copy);
-  
+
   // remove the oldest undos if we've over our limit
   while (saved_states_.size() > max_undos_) {
     delete saved_states_.back();
     saved_states_.pop_back();
   }
-  
+
   // committing a new state invalidates the states saved in the redo stack,
   // so, we simply clear out this stack.
   while (!undone_states_.empty()) {

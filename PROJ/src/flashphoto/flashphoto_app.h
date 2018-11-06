@@ -36,6 +36,15 @@ Author(s) of Significant Updates/Modifications to the File:
 #include "flashphoto/tool_spray_can.h"
 
 //include filter headers
+#include "flashphoto/filter_threshold.h"
+#include "flashphoto/filter_quantize.h"
+#include "flashphoto/filter_saturate.h"
+#include "flashphoto/filter_channels.h"
+#include "flashphoto/convolution_filter_blur.h"
+#include "flashphoto/convolution_filter_motion_blur.h"
+#include "flashphoto/convolution_filter_edge.h"
+#include "flashphoto/convolution_filter_sharpen.h"
+
 
 namespace image_tools {
 

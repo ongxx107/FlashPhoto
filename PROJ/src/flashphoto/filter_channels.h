@@ -4,7 +4,7 @@
 #include <string>
 #include "flashphoto/filter.h"
 
-namespace image_filters {
+namespace image_tools {
 
 class FilterChannels : public Filter {
  public:
@@ -14,7 +14,19 @@ class FilterChannels : public Filter {
 
   static const std::string name() { return "Channels"; }
 
-  ColorData CalculateFilteredPixel(PixelBuffer buffer, int x, int y) override;
+  ColorData CalculateFilteredPixel(PixelBuffer* buffer, int x, int y) override;
+
+  float red(){
+    return red_;
+  }
+
+  float green(){
+    return green_;
+  }
+
+  float blue(){
+    return blue_;
+  }
 
  private:
    float red_;
