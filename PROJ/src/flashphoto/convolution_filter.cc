@@ -11,7 +11,7 @@ Original Author(s) of this File:
   Seth Johnson, 4/4/2015, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  Ren Jeik Ong
+  Ren Jeik Ong 5343975
 */
 #include <assert.h>
 #include <algorithm>
