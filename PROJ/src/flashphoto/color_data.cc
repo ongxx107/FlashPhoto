@@ -11,9 +11,8 @@ Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  ...
+  Ren Jeik Ong
 */
-
 #include "flashphoto/color_data.h"
 #include "flashphoto/image_tools_math.h"
 
@@ -57,16 +56,14 @@ bool operator==(const ColorData& a, const ColorData& b) {
   // a thresold used to account for numerical imprecision in floating point
   // comparisons
   static const float EPSILON = 0.00000001;
-  
   return (fabs(a.red_ - b.red_) < EPSILON &&
           fabs(a.green_ - b.green_) < EPSILON &&
           fabs(a.blue_ - b.blue_) < EPSILON &&
           fabs(a.alpha_ - b.alpha_) < EPSILON);
 }
-    
+
 bool operator!=(const ColorData& a, const ColorData& b) {
   return !(a == b);
 }
-    
-} /* namespace image_tools */
 
+} /* namespace image_tools */

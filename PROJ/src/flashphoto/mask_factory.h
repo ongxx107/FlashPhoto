@@ -11,7 +11,7 @@
  Daniel Keefe, 2018, University of Minnesota
 
  Author(s) of Significant Updates/Modifications to the File:
- ...
+  Ren Jeik Ong
  */
 
 #ifndef FLASHPHOTO_MASK_FACTORY_H_
@@ -31,10 +31,8 @@ class MaskFactory {
                                      float ratio);
 
   static FloatMatrix* CreateLinearFalloffMask(float radius);
-
 };
 
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_MASK_FACTORY_H_
-

@@ -11,7 +11,7 @@ Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  ...
+  Ren Jeik Ong
 */
 
 #include "flashphoto/float_matrix.h"
@@ -91,4 +91,3 @@ void FloatMatrix::Scale(const float c) {
 }
 
 } /* namespace image_tools */
-

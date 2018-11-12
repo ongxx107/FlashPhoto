@@ -11,7 +11,7 @@ Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  ...
+  Ren Jeik Ong
 */
 
 #ifndef FLASHPHOTO_COLOR_DATA_H_
@@ -57,10 +57,9 @@ class ColorData {
 
   /** Check for "equality", taking floating point imprecision into account */
   friend bool operator==(const ColorData& a, const ColorData& b);
-    
   /** Check for "inequality", taking floating point imprecision into account */
   friend bool operator!=(const ColorData& a, const ColorData& b);
-    
+
  private:
   float red_;
   float green_;
@@ -71,4 +70,3 @@ class ColorData {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_COLOR_DATA_H_
-

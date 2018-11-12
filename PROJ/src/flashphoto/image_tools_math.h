@@ -11,7 +11,7 @@ Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  ...
+  Ren Jeik Ong
 */
 
 #ifndef FLASHPHOTO_IMAGE_TOOLS_MATH_H_
@@ -49,4 +49,3 @@ class ImageToolsMath {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_IMAGE_TOOLS_MATH_H_
-

@@ -11,7 +11,7 @@ Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  ...
+  Ren Jeik Ong
 */
 
 #ifndef FLASHPHOTO_FLOAT_MATRIX_H_
@@ -79,4 +79,3 @@ class FloatMatrix {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_FLOAT_MATRIX_H_
-

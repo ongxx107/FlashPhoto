@@ -1,5 +1,18 @@
+/**
+This file is part of the CSCI-3081W Project Support Code, which was developed
+at the University of Minnesota.
 
-#include <cmath>
+This code is to be used for student coursework.  It is not an open source
+project.
+Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University of
+Minnesota.
+
+Original Author(s) of this File:
+  Seth Johnson, 2/15/15, University of Minnesota
+
+Author(s) of Significant Updates/Modifications to the File:
+  Ren Jeik Ong
+*/
 #include "flashphoto/filter_threshold.h"
 #include "flashphoto/color_data.h"
 #include "flashphoto/pixel_buffer.h"
@@ -22,13 +35,11 @@ ColorData FilterThreshold::CalculateFilteredPixel(PixelBuffer* buffer, int x,
 
   float average = (red + green + blue)/3;
 
-  if (average > value()){
+  if (average > value()) {
     return ColorData(1.0, 1.0, 1.0);
-  }
-  else{
+  } else {
     return ColorData(0.0, 0.0, 0.0);
   }
-
 }
 
 } /* namespace image_tools */

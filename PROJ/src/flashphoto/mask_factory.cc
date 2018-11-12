@@ -11,7 +11,7 @@
  Daniel Keefe, 2018, University of Minnesota
 
  Author(s) of Significant Updates/Modifications to the File:
- ...
+  Ren Jeik Ong
  */
 
 #define _USE_MATH_DEFINES
@@ -89,4 +89,3 @@ FloatMatrix* MaskFactory::CreateLinearFalloffMask(float radius) {
 
 
 }  // namespace image_tools
-

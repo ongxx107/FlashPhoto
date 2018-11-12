@@ -13,7 +13,6 @@ Original Author(s) of this File:
 Author(s) of Significant Updates/Modifications to the File:
   ...
 */
-
 #include "flashphoto/tool_eraser.h"
 
 #include "flashphoto/mask_factory.h"
@@ -37,4 +36,3 @@ void ToolEraser::StartStroke(PixelBuffer *buffer, int x, int y,
 }
 
 } /* namespace image_tools */
-

@@ -1,3 +1,18 @@
+/**
+This file is part of the CSCI-3081W Project Support Code, which was developed
+at the University of Minnesota.
+
+This code is to be used for student coursework.  It is not an open source
+project.
+Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University of
+Minnesota.
+
+Original Author(s) of this File:
+  Seth Johnson, 4/4/2015, University of Minnesota
+
+Author(s) of Significant Updates/Modifications to the File:
+  Ren Jeik Ong
+*/
 #ifndef FLASHPHOTO_FILTER_CHANNELS_H_
 #define FLASHPHOTO_FILTER_CHANNELS_H_
 
@@ -16,22 +31,22 @@ class FilterChannels : public Filter {
 
   ColorData CalculateFilteredPixel(PixelBuffer* buffer, int x, int y) override;
 
-  float red(){
+  float red() {
     return red_;
   }
 
-  float green(){
+  float green() {
     return green_;
   }
 
-  float blue(){
+  float blue() {
     return blue_;
   }
 
  private:
-   float red_;
-   float green_;
-   float blue_;
+  float red_;
+  float green_;
+  float blue_;
 };
 
 }  // namespace image_tools

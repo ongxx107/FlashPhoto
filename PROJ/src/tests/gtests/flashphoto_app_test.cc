@@ -26,6 +26,8 @@ class FlashPhotoAppTest : public ::testing::Test {
 TEST_F(FlashPhotoAppTest, GetToolTest) {
   image_tools::Tool* pen = app_->GetToolByName("Pen");
   EXPECT_TRUE(pen);
+  // image_tools::Tool* eraser = app_->GetToolByName("Eraser");
+  // EXPECT_TRUE(eraser);
   image_tools::Tool* unknownTool = app_->GetToolByName("Unknown");
   EXPECT_FALSE(unknownTool);
 }

@@ -11,7 +11,7 @@ Original Author(s) of this File:
   Seth Johnson, 4/4/2015, University of Minnesota
 
 Author(s) of Significant Updates/Modifications to the File:
-  ...
+  Ren Jeik Ong
 */
 
 #ifndef FLASHPHOTO_TOOL_BLUR_H_
@@ -23,6 +23,8 @@ Author(s) of Significant Updates/Modifications to the File:
 
 #include "flashphoto/color_data.h"
 #include "flashphoto/float_matrix.h"
+#include "flashphoto/convolution_filter_blur.h"
+#include "flashphoto/convolution_filter.h"
 
 namespace image_tools {
 
@@ -40,7 +42,7 @@ class ToolBlur : public Tool {
 
   ColorData LookupPaintColor(int x, int y) override;
 
-  float radius(){
+  float radius() {
     return 5.0;
   }
 
@@ -50,9 +52,9 @@ class ToolBlur : public Tool {
   ToolBlur(const ToolBlur& rhs) = delete;
   ToolBlur& operator=(const ToolBlur& rhs) = delete;
 
-  FloatMatrix* blur_;
-  // TODO: Students, add a member variable to create an instance of your
-  // ConvolutionBlurFilter here.
+  ConvolutionFilter* blur_;
+  // TODO(ongxx107): Students, add a member variable to create an instance of
+  // your ConvolutionBlurFilter here.
 };
 
 }  // namespace image_tools

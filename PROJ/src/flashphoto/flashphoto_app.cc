@@ -75,7 +75,7 @@ void FlashPhotoApp::InitNanoGUI() {
 
   nanogui::Widget *undo_redo = new nanogui::Widget(window);
   undo_redo->setLayout(new nanogui::BoxLayout(
-                                              nanogui::Orientation::Horizontal, nanogui::Alignment::Middle, 0, 6));
+          nanogui::Orientation::Horizontal, nanogui::Alignment::Middle, 0, 6));
   undo_btn_ = new nanogui::Button(undo_redo, "Undo");
   undo_btn_->setFixedSize({72, 20});
   undo_btn_->setIcon(ENTYPO_ICON_REPLY);

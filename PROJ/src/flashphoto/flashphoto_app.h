@@ -35,7 +35,7 @@ Author(s) of Significant Updates/Modifications to the File:
 #include "flashphoto/tool_pen.h"
 #include "flashphoto/tool_spray_can.h"
 
-//include filter headers
+// include filter headers
 #include "flashphoto/filter_threshold.h"
 #include "flashphoto/filter_quantize.h"
 #include "flashphoto/filter_saturate.h"
