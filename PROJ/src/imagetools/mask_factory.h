@@ -14,10 +14,10 @@
  ...
  */
 
-#ifndef FLASHPHOTO_MASK_FACTORY_H_
-#define FLASHPHOTO_MASK_FACTORY_H_
+#ifndef IMAGETOOLS_MASK_FACTORY_H_
+#define IMAGETOOLS_MASK_FACTORY_H_
 
-#include "flashphoto/float_matrix.h"
+#include "imagetools/float_matrix.h"
 
 namespace image_tools {
 
@@ -31,8 +31,11 @@ class MaskFactory {
                                      float ratio);
 
   static FloatMatrix* CreateLinearFalloffMask(float radius);
+
+  static FloatMatrix* CreateBullseyeMask(float radius, float linewidth);
 };
 
 }  // namespace image_tools
 
-#endif  // FLASHPHOTO_MASK_FACTORY_H_
+#endif  // IMAGETOOLS_MASK_FACTORY_H_
+

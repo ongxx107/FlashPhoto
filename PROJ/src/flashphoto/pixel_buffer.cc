@@ -14,11 +14,11 @@ Author(s) of Significant Updates/Modifications to the File:
   ...
 */
 
+#include "flashphoto/pixel_buffer.h"
 #include <mingfx.h>
+#include <algorithm>
 #include <cstring>
 #include <iostream>
-#include <algorithm>
-#include "flashphoto/pixel_buffer.h"
 #include "flashphoto/color_data.h"
 
 using std::cerr;
@@ -101,24 +101,18 @@ void PixelBuffer::Resize(int new_width, int new_height) {
   *this = tmp;
 }
 
-void PixelBuffer::SaveToFile(const std::string &filename) {
-  (void)filename;
-}
+void PixelBuffer::SaveToFile(const std::string &filename) { (void)filename; }
 
-void PixelBuffer::LoadFromFile(const std::string &filename) {
-  (void)filename;
-}
-    
-    
-bool operator==(const PixelBuffer& a, const PixelBuffer& b) {
+void PixelBuffer::LoadFromFile(const std::string &filename) { (void)filename; }
+
+bool operator==(const PixelBuffer &a, const PixelBuffer &b) {
   if ((a.width() != b.width()) || (a.height() != b.height())) {
     return false;
-  }
-  else {
+  } else {
     // check the actual pixels
     for (int y = 0; y < a.height(); y++) {
       for (int x = 0; x < a.width(); x++) {
-        if (a.pixel(x,y) != b.pixel(x,y)) {
+        if (a.pixel(x, y) != b.pixel(x, y)) {
           return false;
         }
       }
@@ -127,10 +121,8 @@ bool operator==(const PixelBuffer& a, const PixelBuffer& b) {
   }
 }
 
-bool operator!=(const PixelBuffer& a, const PixelBuffer& b) {
+bool operator!=(const PixelBuffer &a, const PixelBuffer &b) {
   return !(a == b);
 }
 
-
 } /* namespace image_tools */
-

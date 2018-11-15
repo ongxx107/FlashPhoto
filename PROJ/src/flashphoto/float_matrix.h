@@ -79,4 +79,3 @@ class FloatMatrix {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_FLOAT_MATRIX_H_
-

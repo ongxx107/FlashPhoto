@@ -14,23 +14,25 @@
  ...
  */
 
-#include "flashphoto/tool_spray_can.h"
+#include "imagetools/tool_stamp.h"
 
-#include "flashphoto/mask_factory.h"
+#include "imagetools/mask_factory.h"
 
 namespace image_tools {
 
-ToolSprayCan::ToolSprayCan() {
-  // overlap should be pretty high since the mask is so transparent
-  stamp_overlap_ = 0.75;
+ToolStamp::ToolStamp() {
+  // the Stamp is circular so the overlap might be able to be a bit smaller
+  // than 0.9, but it looks best with a high overlap like 0.9.
+  stamp_overlap_ = 0.9;
 }
 
-ToolSprayCan::~ToolSprayCan() {}
+ToolStamp::~ToolStamp() {}
 
-FloatMatrix* ToolSprayCan::CreateMask(float radius) {
-  FloatMatrix* mask = MaskFactory::CreateLinearFalloffMask(radius);
-  mask->Scale(0.1);
-  return mask;
+FloatMatrix* ToolStamp::CreateMask(float radius) {
+  return MaskFactory::CreateBullseyeMask(radius, 0.2 * radius);
 }
+
+void ToolStamp::AddToStroke(int x, int y) {}
 
 }  // namespace image_tools
+

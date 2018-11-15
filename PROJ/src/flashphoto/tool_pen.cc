@@ -33,4 +33,3 @@ FloatMatrix* ToolPen::CreateMask(float radius) {
 }
 
 }  // namespace image_tools
-

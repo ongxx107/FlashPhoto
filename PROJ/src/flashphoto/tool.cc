@@ -23,9 +23,11 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-Tool::Tool() : paint_color_(0.0, 0.0, 0.0, 1.0), mask_(NULL), buffer_(NULL),
- stamp_overlap_(0.5) {
-}
+Tool::Tool()
+    : paint_color_(0.0, 0.0, 0.0, 1.0),
+      mask_(NULL),
+      buffer_(NULL),
+      stamp_overlap_(0.5) {}
 
 Tool::~Tool() {}
 
@@ -129,4 +131,3 @@ ColorData Tool::CombinePaintAndCanvasColor(const ColorData &paint_color,
 bool Tool::applies_paint_when_stationary() { return false; }
 
 } /* namespace image_tools */
-

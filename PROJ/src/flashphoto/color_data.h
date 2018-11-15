@@ -57,10 +57,10 @@ class ColorData {
 
   /** Check for "equality", taking floating point imprecision into account */
   friend bool operator==(const ColorData& a, const ColorData& b);
-    
+
   /** Check for "inequality", taking floating point imprecision into account */
   friend bool operator!=(const ColorData& a, const ColorData& b);
-    
+
  private:
   float red_;
   float green_;
@@ -71,4 +71,3 @@ class ColorData {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_COLOR_DATA_H_
-

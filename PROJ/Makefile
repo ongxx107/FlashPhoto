@@ -17,4 +17,4 @@ clean:
 
 clobber: clean
 	cd src/external/MinGfx; make clobber
-	cs src/external/googletest; make clean
+	cd src/external/googletest; make clean

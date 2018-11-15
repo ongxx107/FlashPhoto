@@ -42,4 +42,3 @@ class ToolSprayCan : public Tool {
 } /* namespace image_tools */
 
 #endif  // FLASHPHOTO_TOOL_SPRAY_CAN_H_
-

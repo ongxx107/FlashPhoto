@@ -58,4 +58,3 @@ ColorData ToolChalk::CombinePaintAndCanvasColor(const ColorData &paint_color,
 }
 
 }  // namespace image_tools
-

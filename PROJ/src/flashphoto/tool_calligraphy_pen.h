@@ -41,4 +41,3 @@ class ToolCalligraphyPen : public Tool {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_TOOL_CALLIGRAPHY_PEN_H_
-

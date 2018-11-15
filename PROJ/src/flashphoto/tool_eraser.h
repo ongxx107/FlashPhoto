@@ -42,4 +42,3 @@ class ToolEraser : public Tool {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_TOOL_ERASER_H_
-

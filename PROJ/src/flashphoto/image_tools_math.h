@@ -49,4 +49,3 @@ class ImageToolsMath {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_IMAGE_TOOLS_MATH_H_
-

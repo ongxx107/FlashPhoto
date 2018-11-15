@@ -1,27 +1,27 @@
-/** 
+/**
 This file is part of the CSCI-3081W Project Support Code, which was developed
-at the University of Minnesota.  
+at the University of Minnesota.
 
-This code is to be used for student coursework.  It is not an open source project.
-Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University of Minnesota.
+This code is to be used for student coursework.  It is not an open source
+project. Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University
+of Minnesota.
 
-Original Author(s) of this File: 
+Original Author(s) of this File:
   Seth Johnson, 2/15/15, University of Minnesota
-  
+
 Author(s) of Significant Updates/Modifications to the File:
   Daniel Keefe, 2018, UMN -- ported to MinGfx
-  ... 
+  ...
 */
 
 #ifndef FLASHPHOTO_FLASHPHOTO_APP_H_
 #define FLASHPHOTO_FLASHPHOTO_APP_H_
 
-
 #include <mingfx.h>
 #include <deque>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 #include "flashphoto/color_data.h"
 #include "flashphoto/pixel_buffer.h"
@@ -38,24 +38,24 @@ Author(s) of Significant Updates/Modifications to the File:
 namespace image_tools {
 
 /** @brief The FlashPhoto GUI. This class creates a graphics window to display
- the current PixelBuffer and a graphical user interface to interact with it using
- Tools and Filters. */
+ the current PixelBuffer and a graphical user interface to interact with it
+ using Tools and Filters. */
 class FlashPhotoApp : public mingfx::GraphicsApp {
  public:
   FlashPhotoApp(int width, int height, const ColorData &background_color);
   virtual ~FlashPhotoApp();
 
-  /** Called when the mouse moves but no 
+  /** Called when the mouse moves but no
    *  mouse buttons are currently pressed. */
   void OnMouseMove(const mingfx::Point2 &pos,
-   const mingfx::Vector2 &delta) override;
+                   const mingfx::Vector2 &delta) override;
 
   /** Called when the user pushes the mouse left button. */
   void OnLeftMouseDown(const mingfx::Point2 &pos) override;
 
   /** Called when the user moves the mouse with the left button depressed. */
   void OnLeftMouseDrag(const mingfx::Point2 &pos,
-   const mingfx::Vector2 &delta) override;
+                       const mingfx::Vector2 &delta) override;
 
   /** Called when the user releases the left mouse button. */
   void OnLeftMouseUp(const mingfx::Point2 &pos) override;
@@ -112,10 +112,15 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
   // FILTERS
 
   /// Four possible motion blur directions are supported
-  enum MBlurDir { MBLUR_DIR_N_S, MBLUR_DIR_E_W, MBLUR_DIR_NE_SW,
-      MBLUR_DIR_NW_SE };
+  enum MBlurDir {
+    MBLUR_DIR_N_S,
+    MBLUR_DIR_E_W,
+    MBLUR_DIR_NE_SW,
+    MBLUR_DIR_NW_SE
+  };
   static std::string MotionBlurDirectionName(MBlurDir dir) {
-      return mblur_dir_names_.find(dir)->second; }
+    return mblur_dir_names_.find(dir)->second;
+  }
 
   /** Call this from the controller to apply the blur filter to the current
    pixel buffer using the current blur filter state. */
@@ -123,8 +128,7 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
 
   /** Call this from the controller to apply the filter to the current
    pixel buffer using the current motion blur filter state. */
-  void ApplyMotionBlurFilter(float radius,
-                             MBlurDir dir);
+  void ApplyMotionBlurFilter(float radius, MBlurDir dir);
 
   /** Call this from the controller to apply the sharpen filter to the current
    pixel buffer using the current sharpen filter state. */
@@ -154,18 +158,18 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
 
   /** Undo the last operation. */
   void Undo();
-  
+
   /** Redo the last "undone" operation. */
   void Redo();
-  
+
   /** True if the the log of applied commands is not empty, i.e., it is
    possible to perform an undo operation. */
   bool can_undo();
-  
+
   /** True if the log of undone commands is not empty, i.e., it is possible to
    perform a redo operation. */
   bool can_redo();
-  
+
   PixelBuffer *pixel_buffer();
 
   void set_pixel_buffer(PixelBuffer *buffer);
@@ -173,7 +177,7 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
  private:
   void InitializeBuffers(ColorData initial_color, int width, int height);
 
-  mingfx::Texture2D   display_texture_;
+  mingfx::Texture2D display_texture_;
   mingfx::QuickShapes quick_shapes_;
 
   // Current state of the active tool as determined via user interaction
@@ -207,25 +211,24 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
   ToolPen t_pen_;
   ToolSprayCan t_spray_can_;
 
-
   PixelBuffer *current_buffer_;
-  
+
   nanogui::Button *undo_btn_;
   nanogui::Button *redo_btn_;
-  
+
   void SaveStateForPossibleUndo();
-  
+
   unsigned int max_undos_;
-  std::deque<PixelBuffer*> saved_states_;   // undo
-  std::deque<PixelBuffer*> undone_states_;  // redo
+  std::deque<PixelBuffer *> saved_states_;   // undo
+  std::deque<PixelBuffer *> undone_states_;  // redo
 
   /* Copy/move assignment/construction disallowed */
   FlashPhotoApp(const FlashPhotoApp &rhs) = delete;
-  FlashPhotoApp& operator=(const FlashPhotoApp &rhs) = delete;
+  FlashPhotoApp &operator=(const FlashPhotoApp &rhs) = delete;
 
   static const std::map<MBlurDir, std::string> mblur_dir_names_;
 };
 
-}  /* namespace image_tools */
+} /* namespace image_tools */
 
 #endif  // FLASHPHOTO_FLASHPHOTO_APP_H_

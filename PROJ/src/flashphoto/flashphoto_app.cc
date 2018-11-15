@@ -21,8 +21,8 @@ Author(s) of Significant Updates/Modifications to the File:
 #include <cmath>
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 #include <map>
+#include <sstream>
 #include <utility>
 #include "flashphoto/color_data.h"
 #include "flashphoto/pixel_buffer.h"
@@ -30,12 +30,11 @@ Author(s) of Significant Updates/Modifications to the File:
 namespace image_tools {
 
 const std::map<FlashPhotoApp::MBlurDir, std::string>
-  FlashPhotoApp::mblur_dir_names_ = {
-    {MBLUR_DIR_N_S,   "North/South"},
-    {MBLUR_DIR_E_W,   "East/West"},
-    {MBLUR_DIR_NE_SW, "Northeast/Southwest"},
-    {MBLUR_DIR_NW_SE, "Northwest/Southeast"}
-};
+    FlashPhotoApp::mblur_dir_names_ = {
+        {MBLUR_DIR_N_S, "North/South"},
+        {MBLUR_DIR_E_W, "East/West"},
+        {MBLUR_DIR_NE_SW, "Northeast/Southwest"},
+        {MBLUR_DIR_NW_SE, "Northwest/Southeast"}};
 
 FlashPhotoApp::FlashPhotoApp(int width, int height,
                              const ColorData &background_color)
@@ -57,8 +56,7 @@ FlashPhotoApp::FlashPhotoApp(int width, int height,
   current_buffer_ = new PixelBuffer(width, height, background_color);
 }
 
-FlashPhotoApp::~FlashPhotoApp() {
-}
+FlashPhotoApp::~FlashPhotoApp() {}
 
 void FlashPhotoApp::InitNanoGUI() {
   // Setup the GUI window
@@ -69,21 +67,49 @@ void FlashPhotoApp::InitNanoGUI() {
 
   nanogui::Button *b;
 
+  // FILE Section
+
+  new nanogui::Label(window, "File", "sans-bold");
+
+  nanogui::Widget *file_io = new nanogui::Widget(window);
+  file_io->setLayout(new nanogui::BoxLayout(nanogui::Orientation::Horizontal,
+                                            nanogui::Alignment::Middle, 0, 6));
+  b = new nanogui::Button(file_io, "Open");
+  b->setFixedSize({72, 20});
+  b->setCallback([this] {
+    std::string fname =
+        nanogui::file_dialog({{"png", "Portable Network Graphics"}}, false);
+    if (fname != "") {
+      LoadFromFile(fname);
+      ResizeWindow(pixel_buffer()->width(),
+                   pixel_buffer()->height());
+    }
+  });
+  b = new nanogui::Button(file_io, "Save");
+  b->setFixedSize({72, 20});
+  b->setCallback([this] {
+    std::string fname =
+        nanogui::file_dialog({{"png", "Portable Network Graphics"}}, true);
+    if (fname != "") {
+      //image_editor_.SaveToFile(fname);
+    }
+  });
+
+
   // EDIT Section
-  
+
   new nanogui::Label(window, "Edit", "sans-bold");
-  
+
   nanogui::Widget *undo_redo = new nanogui::Widget(window);
   undo_redo->setLayout(new nanogui::BoxLayout(
-                                              nanogui::Orientation::Horizontal, nanogui::Alignment::Middle, 0, 6));
+      nanogui::Orientation::Horizontal, nanogui::Alignment::Middle, 0, 6));
   undo_btn_ = new nanogui::Button(undo_redo, "Undo");
   undo_btn_->setFixedSize({72, 20});
   undo_btn_->setIcon(ENTYPO_ICON_REPLY);
   undo_btn_->setCallback([this]() {
     if (can_undo()) {
       Undo();
-      ResizeWindow(pixel_buffer()->width(),
-                   pixel_buffer()->height());
+      ResizeWindow(pixel_buffer()->width(), pixel_buffer()->height());
     }
   });
   redo_btn_ = new nanogui::Button(undo_redo, "Redo");
@@ -92,13 +118,10 @@ void FlashPhotoApp::InitNanoGUI() {
   redo_btn_->setCallback([this]() {
     if (can_redo()) {
       Redo();
-      ResizeWindow(pixel_buffer()->width(),
-                   pixel_buffer()->height());
+      ResizeWindow(pixel_buffer()->width(), pixel_buffer()->height());
     }
   });
-  
-  
-  
+
   // TOOLS Section
 
   new nanogui::Label(window, "Tools", "sans-bold");
@@ -248,25 +271,22 @@ void FlashPhotoApp::InitNanoGUI() {
   });
 
   new nanogui::Label(m_blur_params, "Direction:", "sans-bold");
-  nanogui::ComboBox *mbr_cb =
-      new nanogui::ComboBox(m_blur_params, {
-                            MotionBlurDirectionName(MBLUR_DIR_N_S),
-                            MotionBlurDirectionName(MBLUR_DIR_E_W),
-                            MotionBlurDirectionName(MBLUR_DIR_NE_SW),
-                            MotionBlurDirectionName(MBLUR_DIR_NW_SE)});
+  nanogui::ComboBox *mbr_cb = new nanogui::ComboBox(
+      m_blur_params, {MotionBlurDirectionName(MBLUR_DIR_N_S),
+                      MotionBlurDirectionName(MBLUR_DIR_E_W),
+                      MotionBlurDirectionName(MBLUR_DIR_NE_SW),
+                      MotionBlurDirectionName(MBLUR_DIR_NW_SE)});
   mbr_cb->setFixedSize({216, 20});
   mbr_cb->setSelectedIndex(static_cast<int>(mblur_dir_));
   mbr_cb->setCallback([this](float value) {
     (void)value;
-  int intValue = static_cast<int>(value);
+    int intValue = static_cast<int>(value);
     mblur_dir_ = static_cast<MBlurDir>(intValue);
   });
 
   b = new nanogui::Button(m_blur_win, "Apply");
   b->setFixedSize({150, 30});
-  b->setCallback([this] {
-    ApplyMotionBlurFilter(mblur_radius_, mblur_dir_);
-  });
+  b->setCallback([this] { ApplyMotionBlurFilter(mblur_radius_, mblur_dir_); });
 
   // SHARPEN
   nanogui::PopupButton *sharp = new nanogui::PopupButton(filters, "Sharpen");
@@ -344,8 +364,7 @@ void FlashPhotoApp::InitNanoGUI() {
 
   b = new nanogui::Button(thresh_win, "Apply");
   b->setFixedSize({150, 30});
-  b->setCallback(
-      [this] { ApplyThresholdFilter(thresh_cutoff_); });
+  b->setCallback([this] { ApplyThresholdFilter(thresh_cutoff_); });
 
   // SATURATE
   nanogui::PopupButton *sat = new nanogui::PopupButton(filters, "Saturate");
@@ -462,8 +481,7 @@ void FlashPhotoApp::InitNanoGUI() {
 
   b = new nanogui::Button(chan_win, "Apply");
   b->setFixedSize({150, 30});
-  b->setCallback(
-      [this] { ApplyChannelsFilter(chan_r_, chan_g_, chan_b_); });
+  b->setCallback([this] { ApplyChannelsFilter(chan_r_, chan_g_, chan_b_); });
 
   // QUANTIZE
   nanogui::PopupButton *quant_pb =
@@ -496,10 +514,8 @@ void FlashPhotoApp::InitNanoGUI() {
 
   b = new nanogui::Button(quant_win, "Apply");
   b->setFixedSize({150, 30});
-  b->setCallback([this] {
-    ApplyQuantizeFilter(static_cast<int>(quant_bins_));
-  });
-
+  b->setCallback(
+      [this] { ApplyQuantizeFilter(static_cast<int>(quant_bins_)); });
 
   screen()->performLayout();
 }
@@ -539,8 +555,7 @@ void FlashPhotoApp::OnMouseMove(const mingfx::Point2 &pos,
 void FlashPhotoApp::OnLeftMouseDown(const mingfx::Point2 &pos) {
   tool_x_ = pos[0];
   tool_y_ = pos[1];
-  StartStroke(tool_name_, tool_color_, tool_radius_, tool_x_,
-                            tool_y_);
+  StartStroke(tool_name_, tool_color_, tool_radius_, tool_x_, tool_y_);
   painting_ = true;
 }
 
@@ -597,8 +612,8 @@ Tool *FlashPhotoApp::GetToolByName(const std::string &name) {
 }
 
 void FlashPhotoApp::StartStroke(const std::string &tool_name,
-                              const ColorData &color, float radius, int x,
-                              int y) {
+                                const ColorData &color, float radius, int x,
+                                int y) {
   current_tool_ = GetToolByName(tool_name);
   tool_color_ = color;
   tool_radius_ = radius;
@@ -639,8 +654,7 @@ void FlashPhotoApp::ApplyBlurFilter(float radius) {
   (void)radius;
 }
 
-void FlashPhotoApp::ApplyMotionBlurFilter(
-    float rad, MBlurDir dir) {
+void FlashPhotoApp::ApplyMotionBlurFilter(float rad, MBlurDir dir) {
   SaveStateForPossibleUndo();
   (void)rad;
   (void)dir;
@@ -651,9 +665,7 @@ void FlashPhotoApp::ApplySharpenFilter(float rad) {
   (void)rad;
 }
 
-void FlashPhotoApp::ApplyEdgeDetectFilter() {
-  SaveStateForPossibleUndo();
-}
+void FlashPhotoApp::ApplyEdgeDetectFilter() { SaveStateForPossibleUndo(); }
 
 void FlashPhotoApp::ApplyThresholdFilter(float value) {
   SaveStateForPossibleUndo();
@@ -676,20 +688,16 @@ void FlashPhotoApp::ApplyQuantizeFilter(int num) {
   SaveStateForPossibleUndo();
   (void)num;
 }
-  
-bool FlashPhotoApp::can_undo() {
-  return saved_states_.size();
-}
 
-bool FlashPhotoApp::can_redo() {
-  return undone_states_.size();
-}
+bool FlashPhotoApp::can_undo() { return saved_states_.size(); }
+
+bool FlashPhotoApp::can_redo() { return undone_states_.size(); }
 
 void FlashPhotoApp::Undo() {
   if (can_undo()) {
     // save state for a possilbe redo
     undone_states_.push_front(current_buffer_);
-    
+
     // make the top state on the undo stack the current one
     current_buffer_ = saved_states_.front();
     saved_states_.pop_front();
@@ -700,7 +708,7 @@ void FlashPhotoApp::Redo() {
   if (can_redo()) {
     // save state for a possible undo
     saved_states_.push_front(current_buffer_);
-    
+
     // make the top state on the redo stack the current one
     current_buffer_ = undone_states_.front();
     undone_states_.pop_front();
@@ -710,13 +718,13 @@ void FlashPhotoApp::Redo() {
 void FlashPhotoApp::SaveStateForPossibleUndo() {
   PixelBuffer *buffer_copy = new PixelBuffer(*current_buffer_);
   saved_states_.push_front(buffer_copy);
-  
+
   // remove the oldest undos if we've over our limit
   while (saved_states_.size() > max_undos_) {
     delete saved_states_.back();
     saved_states_.pop_back();
   }
-  
+
   // committing a new state invalidates the states saved in the redo stack,
   // so, we simply clear out this stack.
   while (!undone_states_.empty()) {
@@ -724,7 +732,6 @@ void FlashPhotoApp::SaveStateForPossibleUndo() {
     undone_states_.pop_back();
   }
 }
-
 
 PixelBuffer *FlashPhotoApp::pixel_buffer() { return current_buffer_; }
 

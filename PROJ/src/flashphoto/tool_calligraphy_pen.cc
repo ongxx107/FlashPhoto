@@ -32,4 +32,3 @@ FloatMatrix* ToolCalligraphyPen::CreateMask(float radius) {
 }
 
 }  // namespace image_tools
-

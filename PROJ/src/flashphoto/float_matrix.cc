@@ -91,4 +91,3 @@ void FloatMatrix::Scale(const float c) {
 }
 
 } /* namespace image_tools */
-

@@ -47,4 +47,3 @@ class ToolHighlighter : public Tool {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_TOOL_HIGHLIGHTER_H_
-

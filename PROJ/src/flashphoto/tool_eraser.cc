@@ -37,4 +37,3 @@ void ToolEraser::StartStroke(PixelBuffer *buffer, int x, int y,
 }
 
 } /* namespace image_tools */
-

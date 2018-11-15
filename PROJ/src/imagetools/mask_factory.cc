@@ -14,8 +14,7 @@
  ...
  */
 
-#define _USE_MATH_DEFINES
-#include "flashphoto/mask_factory.h"
+#include "imagetools/mask_factory.h"
 
 #include <cmath>
 #include <cstdlib>
@@ -87,4 +86,26 @@ FloatMatrix* MaskFactory::CreateLinearFalloffMask(float radius) {
   return mask;
 }
 
+FloatMatrix* MaskFactory::CreateBullseyeMask(float radius, float linewidth) {
+  int ctr = ceil(radius);  // center of the mask is at coordinates (ctr,ctr)
+  int size = 2 * ctr + 1;  // mask has height=size and width=size
+  FloatMatrix* mask = new FloatMatrix(size, size);
+
+  for (int y = 0; y < size; y++) {
+    for (int x = 0; x < size; x++) {
+      float hyp = sqrt((x - ctr) * (x - ctr) + (y - ctr) * (y - ctr));
+
+      // ((w/in inner circle) || (inside outer ring))
+      if ((hyp <= linewidth) ||
+          ((hyp <= radius) && (radius - hyp <= linewidth))) {
+        mask->set_value(x, y, 1.0);
+      } else {
+        mask->set_value(x, y, 0.0);
+      }
+    }
+  }
+  return mask;
+}
+
 }  // namespace image_tools
+

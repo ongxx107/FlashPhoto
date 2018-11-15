@@ -81,10 +81,10 @@ class PixelBuffer {
   void LoadFromFile(const std::string &filename);
 
   /** Check for "equality", taking floating point imprecision into account */
-  friend bool operator==(const PixelBuffer& a, const PixelBuffer& b);
+  friend bool operator==(const PixelBuffer &a, const PixelBuffer &b);
 
   /** Check for "inequality", taking floating point imprecision into account */
-  friend bool operator!=(const PixelBuffer& a, const PixelBuffer& b);
+  friend bool operator!=(const PixelBuffer &a, const PixelBuffer &b);
 
  private:
   int width_;
@@ -97,4 +97,3 @@ class PixelBuffer {
 }  // namespace image_tools
 
 #endif  // FLASHPHOTO_PIXEL_BUFFER_H_
-

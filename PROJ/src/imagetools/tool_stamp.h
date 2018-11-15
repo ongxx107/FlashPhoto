@@ -14,26 +14,31 @@ Author(s) of Significant Updates/Modifications to the File:
   ...
 */
 
-#ifndef FLASHPHOTO_TOOL_PEN_H_
-#define FLASHPHOTO_TOOL_PEN_H_
+#ifndef IMAGETOOLS_TOOL_STAMP_H_
+#define IMAGETOOLS_TOOL_STAMP_H_
 
 #include <string>
-#include "flashphoto/tool.h"
+#include "imagetools/tool.h"
 
 namespace image_tools {
 
-/** @brief The simplest of tools, this has a mask that is a completely opaque
- circle. */
-class ToolPen : public Tool {
+/** @brief Stamps a single X marks the spot. */
+class ToolStamp : public Tool {
  public:
-  ToolPen();
-  virtual ~ToolPen();
+  ToolStamp();
+  virtual ~ToolStamp();
 
-  static const std::string name() { return "Pen"; }
+  static const std::string name() { return "Stamp"; }
+
+  /** The stamp tool overrides AddToStroke to make it do nothing.  This way,
+   each time the stamp tool is used it produces just a single mark on the
+   canvas at the first location where it is applied. */
+  void AddToStroke(int x, int y) override;
 
   FloatMatrix* CreateMask(float radius) override;
 };
 
 }  // namespace image_tools
 
-#endif  // FLASHPHOTO_TOOL_PEN_H_
+#endif  // IMAGETOOLS_TOOL_STAMP_H_
+

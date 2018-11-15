@@ -43,4 +43,3 @@ ColorData ToolHighlighter::CombinePaintAndCanvasColor(
 }
 
 } /* namespace image_tools */
-
