@@ -14,14 +14,15 @@ Author(s) of Significant Updates/Modifications to the File:
         ...
 */
 
-#include "mia/command_line_processor.h"
+// #include "mia/command_line_processor.h"
 #include "mia/mia_app.h"
 
 int main(int argc, char* argv[]) {
   if (argc > 1) {
     // command line mode
-    image_tools::CommandLineProcessor cmd_processor;
-    cmd_processor.ProcessCommandLine(argc, argv);
+    //image_tools::CommandLineProcessor cmd_processor;
+    //cmd_processor.ProcessCommandLine(argc, argv);
+    (void) argv;
   } else {
     // gui mode
     image_tools::MiaApp gui(1280, 720, image_tools::ColorData(1, 1, 1));

@@ -41,13 +41,13 @@ OBJFILES = $(notdir $(patsubst %.cc,%.o,$(SRCFILES)))
 
 
 # Add -Idirname to add directories to the compiler search path for finding .h files
-INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(SRCDIR)/.. -isystem$(MINGFX_DIR)/include -isystem$(MINGFX_DIR)/include/nanovg -isystem$(MINGFX_DIR)/include/MinGfx-1.0
+INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(PROJ_DIR)/src/imagetools -I$(SRCDIR)/.. -isystem$(MINGFX_DIR)/include -isystem$(MINGFX_DIR)/include/nanovg -isystem$(MINGFX_DIR)/include/MinGfx-1.0
 
 # Add -Ldirname to add directories to the linker search path for finding libraries
 LIBDIRS = -L$(LIBDIR) -L$(MINGFX_DIR)/lib -L$(MINGFX_DIR)/lib/MinGfx-1.0
 
 # Add -llibname to link with external libraries
-LIBS =  -lMinGfxd -lnanogui -Wl,-rpath,$(MINGFX_DIR)/lib
+LIBS =  -lMinGfxd -lnanogui -limagetools -Wl,-rpath,$(MINGFX_DIR)/lib
 #-lGL -lGLU
 
 UNAME = $(shell uname)

@@ -1407,42 +1407,67 @@ void FlashPhotoApp::SaveToFile(const std::string &filename) {
 
 void FlashPhotoApp::ApplyBlurFilter(float radius) {
   SaveStateForPossibleUndo();
-  (void)radius;
+  Filter *ConBlur = new ConvolutionFilterBlur(radius);
+  ConBlur->ApplyToBuffer(pixel_buffer());
+  delete ConBlur;
+  ConBlur = NULL;
 }
 
 void FlashPhotoApp::ApplyMotionBlurFilter(float rad, MBlurDir dir) {
   SaveStateForPossibleUndo();
-  (void)rad;
-  (void)dir;
+  std::string DirName = MotionBlurDirectionName(dir);
+  Filter *ConMotionBlur = new ConvolutionFilterMotionBlur(rad, DirName);
+  ConMotionBlur->ApplyToBuffer(pixel_buffer());
+  delete ConMotionBlur;
+  ConMotionBlur = NULL;
 }
 
 void FlashPhotoApp::ApplySharpenFilter(float rad) {
   SaveStateForPossibleUndo();
-  (void)rad;
+  Filter *ConSharpen = new ConvolutionFilterSharpen(rad);
+  ConSharpen->ApplyToBuffer(pixel_buffer());
+  delete ConSharpen;
+  ConSharpen = NULL;
 }
 
-void FlashPhotoApp::ApplyEdgeDetectFilter() { SaveStateForPossibleUndo(); }
+void FlashPhotoApp::ApplyEdgeDetectFilter() {
+  SaveStateForPossibleUndo();
+  Filter *ConEdge = new ConvolutionFilterEdge();
+  ConEdge->ApplyToBuffer(pixel_buffer());
+  delete ConEdge;
+  ConEdge = NULL;
+}
 
 void FlashPhotoApp::ApplyThresholdFilter(float value) {
   SaveStateForPossibleUndo();
-  (void)value;
+  Filter *FilterThresh = new FilterThreshold(value);
+  FilterThresh->ApplyToBuffer(pixel_buffer());
+  delete FilterThresh;
+  FilterThresh = NULL;
 }
 
 void FlashPhotoApp::ApplySaturateFilter(float scale) {
   SaveStateForPossibleUndo();
-  (void)scale;
+  Filter *FilterSat = new FilterSaturate(scale);
+  FilterSat->ApplyToBuffer(pixel_buffer());
+  delete FilterSat;
+  FilterSat = NULL;
 }
 
 void FlashPhotoApp::ApplyChannelsFilter(float red, float green, float blue) {
   SaveStateForPossibleUndo();
-  (void)red;
-  (void)green;
-  (void)blue;
+  Filter *FilterChan = new FilterChannels(red, green, blue);
+  FilterChan->ApplyToBuffer(pixel_buffer());
+  delete FilterChan;
+  FilterChan = NULL;
 }
 
 void FlashPhotoApp::ApplyQuantizeFilter(int num) {
   SaveStateForPossibleUndo();
-  (void)num;
+  Filter *FilterQuan = new FilterQuantize(num);
+  FilterQuan->ApplyToBuffer(pixel_buffer());
+  delete FilterQuan;
+  FilterQuan = NULL;
 }
 
 bool FlashPhotoApp::can_undo() { return saved_states_.size(); }

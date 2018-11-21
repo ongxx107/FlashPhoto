@@ -259,9 +259,10 @@ void MiaApp::InitNanoGUI() {
   stream << std::fixed << std::setprecision(2) << thresh_cutoff_;
   th_text->setValue(stream.str());
   th_slider->setCallback([this, th_text](float value) {
-    // std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << value;
-    th_text->setValue(stream.str());
+    std::stringstream innerStream;
+    // stream.str("");
+    innerStream << std::fixed << std::setprecision(2) << value;
+    th_text->setValue(innerStream.str());
     thresh_cutoff_ = value;
   });
 

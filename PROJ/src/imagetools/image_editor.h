@@ -17,6 +17,7 @@ Author(s) of Significant Updates/Modifications to the File:
 #ifndef IMAGETOOLS_IMAGE_EDITOR_H_
 #define IMAGETOOLS_IMAGE_EDITOR_H_
 
+#include <map>
 #include <deque>
 #include <string>
 
@@ -99,8 +100,18 @@ class ImageEditor {
 
   /** Call this from the controller to apply the filter to the current
    pixel buffer using the current motion blur filter state. */
-  void ApplyMotionBlurFilter(float radius,
-                             ConvolutionFilterMotionBlur::BlurDir dir);
+   enum MBlurDir {
+     MBLUR_DIR_N_S,
+     MBLUR_DIR_E_W,
+     MBLUR_DIR_NE_SW,
+     MBLUR_DIR_NW_SE
+   };
+
+   static std::string MotionBlurDirectionName(MBlurDir dir) {
+     return mblur_dir_names_.find(dir)->second;
+   }
+
+  void ApplyMotionBlurFilter(float radius, MBlurDir dir);
 
   /** Call this from the controller to apply the sharpen filter to the current
    pixel buffer using the current sharpen filter state. */
@@ -147,14 +158,14 @@ class ImageEditor {
   void set_pixel_buffer(PixelBuffer *buffer);
 
  private:
-  ConvolutionFilterBlur f_blur_;
-  ConvolutionFilterEdge f_edge_;
-  ConvolutionFilterMotionBlur f_motion_blur_;
-  ConvolutionFilterSharpen f_sharpen_;
-  FilterChannels f_channels_;
-  FilterQuantize f_quantize_;
-  FilterSaturate f_saturate_;
-  FilterThreshold f_threshold_;
+  ConvolutionFilterBlur* f_blur_;
+  ConvolutionFilterEdge* f_edge_;
+  ConvolutionFilterMotionBlur* f_motion_blur_;
+  ConvolutionFilterSharpen* f_sharpen_;
+  FilterChannels* f_channels_;
+  FilterQuantize* f_quantize_;
+  FilterSaturate* f_saturate_;
+  FilterThreshold* f_threshold_;
 
   ToolBlur t_blur_;
   ToolCalligraphyPen t_calligraphy_pen_;
@@ -177,6 +188,8 @@ class ImageEditor {
   unsigned int max_undos_;
   std::deque<PixelBuffer *> saved_states_;   // undo
   std::deque<PixelBuffer *> undone_states_;  // redo
+
+  static const std::map<MBlurDir, std::string> mblur_dir_names_;
 };
 
 }  // namespace image_tools
