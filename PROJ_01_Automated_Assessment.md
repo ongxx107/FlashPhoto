@@ -1,8 +1,8 @@
-### Assessment for Project Iteration 01 - BasicFilters (Graded By: Shruti Verma)
+### Assessment for Project Iteration 01 - Automated (Graded By: Dan Orban)
 
-#### Total score: _15_ / _15_
+#### Total score: _25_ / _25_
 
-Run on November 17, 14:35:40 PM.
+Run on November 23, 11:02:35 AM.
 
 + Pass: Switch to correct commit.
 
@@ -11,7 +11,7 @@ Run on November 17, 14:35:40 PM.
 
 #### System Files and PROJ Directory Structure
 
-+ Pass: Check that directory "/classes/grades/Fall-2018/csci3081/verma125/csci3081-test-env/grading-scripts/_proj_materials" exists.
++ Pass: Check that directory "/home/dan/TA/csci3081/3081_F18/grading-scripts/_proj_materials" exists.
 
 + Pass: Check that directory "PROJ" exists.
 
@@ -57,39 +57,25 @@ Run on November 17, 14:35:40 PM.
 
 
 
-+ Pass: Check that make compiles.
++  _20_ / _20_ : Pass: Check that make compiles.
 
 
 
 
 #### Run Student Tests
 
-+  ignore : Pass: Running Student Tests.
++  _1_ / _1_ : Pass: Running Student Tests.
 
 
 
-
-#### Test Basic Filter Functionality
-
-+  _3_ / _3_ : Pass: Tools
++  _3_ / _3_ : Pass: Ensuring code follows style guide.
 
 
 
-+  _3_ / _3_ : Pass: Threshold Filter
++  _1_ / _1_ : Pass: Check that a GoogleTest test passes.
+    passes the test: InstructorToolChalkTest.HasCorrectName.
 
 
 
-+  _3_ / _3_ : Pass: Saturation Filter
-
-
-
-+  _3_ / _3_ : Pass: Channels Filter
-
-
-
-+  _3_ / _3_ : Pass: Quantize Filter
-
-
-
-#### Total score: _15_ / _15_
+#### Total score: _25_ / _25_
 

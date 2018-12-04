@@ -1,8 +1,8 @@
-### Assessment for Project Iteration 01 - BasicFilters (Graded By: Shruti Verma)
+### Assessment for Project Iteration 01 - ConvFilters (Graded By: Nikki Kyllonen)
 
 #### Total score: _15_ / _15_
 
-Run on November 17, 14:35:40 PM.
+Run on November 24, 22:27:00 PM.
 
 + Pass: Switch to correct commit.
 
@@ -11,7 +11,7 @@ Run on November 17, 14:35:40 PM.
 
 #### System Files and PROJ Directory Structure
 
-+ Pass: Check that directory "/classes/grades/Fall-2018/csci3081/verma125/csci3081-test-env/grading-scripts/_proj_materials" exists.
++ Pass: Check that directory "/home/nkyllonen/Documents/TA/3081-F18/csci3081-test-env/grading-scripts/_proj_materials" exists.
 
 + Pass: Check that directory "PROJ" exists.
 
@@ -62,32 +62,25 @@ Run on November 17, 14:35:40 PM.
 
 
 
-#### Run Student Tests
+#### Test Convolution Filter Functionality
 
-+  ignore : Pass: Running Student Tests.
-
-
-
-
-#### Test Basic Filter Functionality
-
-+  _3_ / _3_ : Pass: Tools
++  _3_ / _3_ : Pass: Blur Filter
 
 
 
-+  _3_ / _3_ : Pass: Threshold Filter
++  _4_ / _4_ : Pass: Motion Blur Filter
 
 
 
-+  _3_ / _3_ : Pass: Saturation Filter
++  _2_ / _2_ : Pass: Sharpen Filter
 
 
 
-+  _3_ / _3_ : Pass: Channels Filter
++  _3_ / _3_ : Pass: Edge Detection Filter
 
 
 
-+  _3_ / _3_ : Pass: Quantize Filter
++  _3_ / _3_ : Pass: Blur Tool
 
 
 
