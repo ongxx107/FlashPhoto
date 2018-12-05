@@ -139,14 +139,14 @@ class ThresholdFilterCommand : public ImageEditorCommand {
 class MotionBlurFilterCommand : public ImageEditorCommand {
  public:
   MotionBlurFilterCommand(ImageEditor *image_editor, float radius,
-                          ConvolutionFilterMotionBlur::MBlurDir dir);
+                          std::string dir);
   virtual ~MotionBlurFilterCommand();
 
   void Execute() override;
 
  private:
   float radius_;
-  ConvolutionFilterMotionBlur::MBlurDir dir_;
+  std::string dir_;
 };
 
 /** Specific command for executing an undo. */

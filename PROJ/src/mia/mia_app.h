@@ -24,6 +24,8 @@ Author(s) of Significant Updates/Modifications to the File:
 #include "imagetools/color_data.h"
 #include "imagetools/image_editor.h"
 #include "imagetools/pixel_buffer.h"
+#include "/classes/csel-f18c3081/include/imageio/image_manager.h"
+#include "/classes/csel-f18c3081/include/imageio/image.h"
 
 namespace image_tools {
 

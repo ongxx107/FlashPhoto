@@ -4,9 +4,13 @@
 #include <cstring>
 #include <iostream>
 #include "imagetools/color_data.h"
+// #include "csel-f18c3081/include/imageio"
+#include "/classes/csel-f18c3081/include/imageio/image.h"
+#include "/classes/csel-f18c3081/include/imageio/image_manager.h"
 
 using std::cerr;
 using std::endl;
+
 namespace image_tools {
 
 PixelBuffer::PixelBuffer(int w, int h, ColorData background_color)
@@ -22,7 +26,7 @@ PixelBuffer::PixelBuffer(int w, int h, ColorData background_color)
 }
 
 PixelBuffer::PixelBuffer(const std::string &filename)
-    : background_color_(ColorData(1, 1, 1)) {
+    : width_(0), height_(0), background_color_(ColorData(1, 1, 1)) {
   LoadFromFile(filename);
 }
 
@@ -85,9 +89,51 @@ void PixelBuffer::Resize(int new_width, int new_height) {
   *this = tmp;
 }
 
-void PixelBuffer::SaveToFile(const std::string &filename) { (void)filename; }
+void PixelBuffer::SaveToFile(const std::string &filename) {
 
-void PixelBuffer::LoadFromFile(const std::string &filename) { (void)filename; }
+  //imageio::Image* image = imageio::ImageManager::instance().LoadFromFile(filename);
+
+  // PixelBuffer* loadedImage = PixelBuffer(image->Width(), image->Height(), ColorData(0.0, 0.0, 0.0));
+
+  imageio::Image* img = new imageio::Image(width_, height_, 4);
+  // Resize(image->Width(), image->Height());
+
+  for (int y = 0; y < img->Height(); y++) {
+    for (int x = 0; x < img->Width(); x++) {
+      ColorData curr = pixel(x, y);
+      img->SetFloatValue(x, y, 0, curr.red());
+      img->SetFloatValue(x, y, 1, curr.green());
+      img->SetFloatValue(x, y, 2, curr.blue());
+      img->SetFloatValue(x, y, 3, curr.alpha());
+    }
+  }
+  imageio::ImageManager::instance().SaveToFile(filename, *img);
+
+  delete img;
+  // (void)filename;
+}
+
+void PixelBuffer::LoadFromFile(const std::string &filename) {
+
+  imageio::Image* image = imageio::ImageManager::instance().LoadFromFile(filename);
+
+  // PixelBuffer* loadedImage = PixelBuffer(image->Width(), image->Height(), ColorData(0.0, 0.0, 0.0));
+  Resize(image->Width(), image->Height());
+
+  for (int y = 0; y < image->Height(); y++) {
+    for (int x = 0; x < image->Width(); x++) {
+      float r, g, b, a = 0;
+      r = image->FloatValue(x, y, 0);
+      g = image->FloatValue(x, y, 1);
+      b = image->FloatValue(x, y, 2);
+      a = image->FloatValue(x, y, 3);
+      this->set_pixel(x, y, ColorData(r, g, b, a));
+
+    }
+  }
+  (void)image;
+  //*this = loadedImage;
+}
 
 bool operator==(const PixelBuffer &a, const PixelBuffer &b) {
   if ((a.width() != b.width()) || (a.height() != b.height())) {

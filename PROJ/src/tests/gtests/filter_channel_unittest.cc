@@ -4,10 +4,10 @@
 #include <math.h>
 #include <iostream>
 #include "gtest/gtest.h"
-#include "flashphoto/filter.h"
-#include "flashphoto/filter_channels.h"
-#include "flashphoto/pixel_buffer.h"
-#include "flashphoto/color_data.h"
+#include "imagetools/filter.h"
+#include "imagetools/filter_channels.h"
+#include "imagetools/pixel_buffer.h"
+#include "imagetools/color_data.h"
 
 using image_tools::FilterChannels;
 using image_tools::PixelBuffer;

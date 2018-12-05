@@ -41,13 +41,13 @@ OBJFILES = $(notdir $(patsubst %.cc,%.o,$(SRCFILES)))
 
 
 # Add -Idirname to add directories to the compiler search path for finding .h files // -I$(SRCDIR)/imagetools
-INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(PROJ_DIR)/src/imagetools -I$(SRCDIR)/.. -isystem$(MINGFX_DIR)/include -isystem$(MINGFX_DIR)/include/nanovg -isystem$(MINGFX_DIR)/include/MinGfx-1.0 #-I$(DIR)/include/imageio
+INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(PROJ_DIR)/src/imagetools -I/classes/csel-f18c3081/include -I$(SRCDIR)/.. -isystem$(MINGFX_DIR)/include -isystem$(MINGFX_DIR)/include/nanovg -isystem$(MINGFX_DIR)/include/MinGfx-1.0 #-I$(DIR)/include/imageio
 
 # Add -Ldirname to add directories to the linker search path for finding libraries
-LIBDIRS = -L$(LIBDIR) -L$(MINGFX_DIR)/lib -L$(MINGFX_DIR)/lib/MinGfx-1.0
+LIBDIRS = -L$(LIBDIR) -L/classes/csel-f18c3081/lib -L$(MINGFX_DIR)/lib -L$(MINGFX_DIR)/lib/MinGfx-1.0
 
 # Add -llibname to link with external libraries
-LIBS =  -lMinGfxd -lnanogui -limagetools -Wl,-rpath,$(MINGFX_DIR)/lib
+LIBS = -limagetools -limageio -lMinGfxd -lnanogui -Wl,-rpath,$(MINGFX_DIR)/lib
 #-lGL -lGLU
 
 UNAME = $(shell uname)
@@ -151,6 +151,9 @@ make-depend-cxx=$(CXX) -MM -MF $3 -MP -MT $2 $(CXXFLAGS) $1
 $(EXEFILE): $(addprefix $(OBJDIR)/, $(OBJFILES)) | $(BINDIR)
 	@echo "==== Linking $@. ===="
 	$(CXX) $(OMP) $(LDFLAGS) $(addprefix $(OBJDIR)/, $(OBJFILES)) -o $@ $(LDLIBS)
+
+imagetools:
+	$(PROJ_DIR)/src/imagetools; make
 
 check-style:
 	@echo "==== Checking style is correct ===="

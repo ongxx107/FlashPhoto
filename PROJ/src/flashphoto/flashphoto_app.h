@@ -18,6 +18,7 @@ Author(s) of Significant Updates/Modifications to the File:
 #define FLASHPHOTO_FLASHPHOTO_APP_H_
 
 #include <mingfx.h>
+#include <imagetools/image_editor.h>
 #include <deque>
 #include <map>
 #include <string>
@@ -25,26 +26,6 @@ Author(s) of Significant Updates/Modifications to the File:
 
 #include "imagetools/color_data.h"
 #include "imagetools/pixel_buffer.h"
-
-// tools
-#include "imagetools/tool_blur.h"
-#include "imagetools/tool_calligraphy_pen.h"
-#include "imagetools/tool_chalk.h"
-#include "imagetools/tool_eraser.h"
-#include "imagetools/tool_highlighter.h"
-#include "imagetools/tool_pen.h"
-#include "imagetools/tool_spray_can.h"
-
-// include filter headers
-#include "imagetools/filter_threshold.h"
-#include "imagetools/filter_quantize.h"
-#include "imagetools/filter_saturate.h"
-#include "imagetools/filter_channels.h"
-#include "imagetools/convolution_filter_blur.h"
-#include "imagetools/convolution_filter_motion_blur.h"
-#include "imagetools/convolution_filter_edge.h"
-#include "imagetools/convolution_filter_sharpen.h"
-
 
 namespace image_tools {
 
@@ -214,13 +195,7 @@ class FlashPhotoApp : public mingfx::GraphicsApp {
   float chan_b_;
   int quant_bins_;
 
-  ToolBlur t_blur_;
-  ToolCalligraphyPen t_calligraphy_pen_;
-  ToolChalk t_chalk_;
-  ToolEraser t_eraser_;
-  ToolHighlighter t_highlighter_;
-  ToolPen t_pen_;
-  ToolSprayCan t_spray_can_;
+  ImageEditor *image_editor_;
 
   PixelBuffer *current_buffer_;
 

@@ -16,9 +16,23 @@ Author(s) of Significant Updates/Modifications to the File:
 */
 
 #include "imagetools/image_editor.h"
-#include "imagetools/pixel_buffer.h"
+#include </classes/csel-f18c3081/include/imageio/image.h>
+#include </classes/csel-f18c3081/include/imageio/image_manager.h>
 
 namespace image_tools {
+
+ImageEditor::ImageEditor(PixelBuffer *buffer){
+  current_buffer_ = buffer;
+  //max_undos_ = 50;
+}
+
+/** Creates an editor with a NULL pixel buffer.  You will need to set the
+ pixel buffer before performing any editing operations. */
+ImageEditor::ImageEditor(){
+  current_buffer_ = NULL;
+}
+
+ImageEditor::~ImageEditor(){}
 
 Tool *ImageEditor::GetToolByName(const std::string &name) {
   if (name == t_blur_.name()) {
@@ -35,6 +49,8 @@ Tool *ImageEditor::GetToolByName(const std::string &name) {
     return &t_pen_;
   } else if (name == t_spray_can_.name()) {
     return &t_spray_can_;
+  } else if (name == t_stamp_.name()) {
+    return &t_stamp_;
   } else {
     return NULL;
   }
@@ -82,16 +98,18 @@ void ImageEditor::ApplyBlurFilter(float radius) {
   SaveStateForPossibleUndo();
   f_blur_ = new ConvolutionFilterBlur(radius);
   f_blur_->ApplyToBuffer(pixel_buffer());
-  f_blur_->CleanupFilter();
+  delete f_blur_;
+  // f_blur_->CleanupFilter();
   f_blur_ = NULL;
 }
 
-void ImageEditor::ApplyMotionBlurFilter(float rad, MBlurDir dir) {
+void ImageEditor::ApplyMotionBlurFilter(float rad, std::string dirName) {
   SaveStateForPossibleUndo();
-  std::string DirName = MotionBlurDirectionName(dir);
-  f_motion_blur_ = new ConvolutionFilterMotionBlur(rad, DirName);
+  // std::string DirName = MotionBlurDirectionName(dir);
+  f_motion_blur_ = new ConvolutionFilterMotionBlur(rad, dirName);
   f_motion_blur_->ApplyToBuffer(pixel_buffer());
-  f_motion_blur_->CleanupFilter();
+  delete f_motion_blur_;
+  //f_motion_blur_->CleanupFilter();
   f_motion_blur_ = NULL;
 }
 
@@ -99,7 +117,8 @@ void ImageEditor::ApplySharpenFilter(float rad) {
   SaveStateForPossibleUndo();
   f_sharpen_ = new ConvolutionFilterSharpen(rad);
   f_sharpen_->ApplyToBuffer(pixel_buffer());
-  f_sharpen_->CleanupFilter();
+  delete f_sharpen_;
+  //f_sharpen_->CleanupFilter();
   f_sharpen_ = NULL;
 }
 
@@ -107,7 +126,8 @@ void ImageEditor::ApplyEdgeDetectFilter() {
   SaveStateForPossibleUndo();
   f_edge_ = new ConvolutionFilterEdge();
   f_edge_->ApplyToBuffer(pixel_buffer());
-  f_edge_->CleanupFilter();
+  delete f_edge_;
+  //f_edge_->CleanupFilter();
   f_edge_ = NULL;
 }
 
@@ -115,7 +135,8 @@ void ImageEditor::ApplyThresholdFilter(float value) {
   SaveStateForPossibleUndo();
   f_threshold_ = new FilterThreshold(value);
   f_threshold_->ApplyToBuffer(pixel_buffer());
-  f_threshold_->CleanupFilter();
+  delete f_threshold_;
+  //f_threshold_->CleanupFilter();
   f_threshold_ = NULL;
 }
 
@@ -123,7 +144,8 @@ void ImageEditor::ApplySaturateFilter(float scale) {
   SaveStateForPossibleUndo();
   f_saturate_ = new FilterSaturate(scale);
   f_saturate_->ApplyToBuffer(pixel_buffer());
-  f_saturate_->CleanupFilter();
+  delete f_saturate_;
+  //f_saturate_->CleanupFilter();
   f_saturate_ = NULL;
 }
 
@@ -131,7 +153,8 @@ void ImageEditor::ApplyChannelsFilter(float red, float green, float blue) {
   SaveStateForPossibleUndo();
   f_channels_ = new FilterChannels(red, green, blue);
   f_channels_->ApplyToBuffer(pixel_buffer());
-  f_channels_->CleanupFilter();
+  delete f_channels_;
+  //f_channels_->CleanupFilter();
   f_channels_ = NULL;
 }
 
@@ -139,7 +162,8 @@ void ImageEditor::ApplyQuantizeFilter(int num) {
   SaveStateForPossibleUndo();
   f_quantize_ = new FilterQuantize(num);
   f_quantize_->ApplyToBuffer(pixel_buffer());
-  f_quantize_->CleanupFilter();
+  delete f_quantize_;
+  //f_quantize_->CleanupFilter();
   f_quantize_ = NULL;
 }
 

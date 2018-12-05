@@ -75,6 +75,11 @@ namespace image_tools {
     return false;
   }
 
+  // int imageX = (x - filterWidth / 2 + filterX + w) % w;
+  // int imageY = (y - filterHeight / 2 + filterY + h) % h;
+  // red += image[imageY * w + imageX].r * filter[filterY][filterX];
+  // green += image[imageY * w + imageX].g * filter[filterY][filterX];
+  // blue += image[imageY * w + imageX].b * filter[filterY][filterX];
 
 
 }  //  namespace image_tools

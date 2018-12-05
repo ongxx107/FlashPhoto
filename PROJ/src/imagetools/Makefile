@@ -26,6 +26,7 @@ OBJDIR = $(BUILDDIR)/obj/$(PROJECT_NAME)
 LIBDIR = $(BUILDDIR)/lib
 EXTERNAL_DIR = $(PROJ_DIR)/src/external
 MINGFX_DIR = $(EXTERNAL_DIR)/MinGfx/build/install
+IMAGE_IO_LIB = /classes/csel-f18c3081/lib
 
 # The name of the executable to create
 #EXEFILE = $(BINDIR)/$(PROJECT_NAME)
@@ -41,14 +42,14 @@ SRCFILES = $(wildcard $(SRCDIR)/*.cc)
 OBJFILES = $(notdir $(patsubst %.cc,%.o,$(SRCFILES)))
 
 
-# Add -Idirname to add directories to the compiler search path for finding .h files
-INCLUDEDIRS = -I.. -I$(SRCDIR) -I$(SRCDIR)/.. -isystem$(MINGFX_DIR)/include -isystem$(MINGFX_DIR)/include/nanovg -isystem$(MINGFX_DIR)/include/MinGfx-1.0
+# Add -Idirname to add directories to the compiler search path for finding .h files -I$(IMAGE_IO_LIB)
+INCLUDEDIRS = -I.. -I$(SRCDIR) -I/classes/csel-f18c3081/include -I$(SRCDIR)/.. -isystem$(MINGFX_DIR)/include -isystem$(MINGFX_DIR)/include/nanovg -isystem$(MINGFX_DIR)/include/MinGfx-1.0
 
 # Add -Ldirname to add directories to the linker search path for finding libraries
-LIBDIRS = -L$(LIBDIR) -L$(MINGFX_DIR)/lib -L$(MINGFX_DIR)/lib/MinGfx-1.0
+LIBDIRS = -L$(LIBDIR) -L/classes/csel-f18c3081/lib -L$(MINGFX_DIR)/lib -L$(MINGFX_DIR)/lib/MinGfx-1.0
 
 # Add -llibname to link with external libraries
-LIBS =  -lMinGfxd -lnanogui -Wl,-rpath,$(MINGFX_DIR)/lib
+LIBS =  -lMinGfxd -lnanogui -limageio -Wl,-rpath,$(MINGFX_DIR)/lib
 #-lGL -lGLU
 
 UNAME = $(shell uname)
@@ -106,7 +107,7 @@ $(OBJDIR) $(LIBDIR):
 # $(SRCDIR)/filename.cpp can be turned into $(OBJDIR)/filename.o.
 
 # The same thing will also work for files with a .cc extension
-$(OBJDIR)/%.o: $(SRCDIR)/%.cc $(MINGFX_DIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cc $(IMAGE_IO_LIB) $(MINGFX_DIR)
 	@echo "==== Auto-Generating Dependencies for $<. ===="
 	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
 	@echo "==== Compiling $< into $@. ===="

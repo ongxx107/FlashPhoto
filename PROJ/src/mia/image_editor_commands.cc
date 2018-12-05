@@ -95,7 +95,7 @@ void ThresholdFilterCommand::Execute() {
 
 MotionBlurFilterCommand::MotionBlurFilterCommand(
     ImageEditor *image_editor, float radius,
-    ConvolutionFilterMotionBlur::MBlurDir dir)
+    std::string dir)
     : ImageEditorCommand(image_editor), radius_(radius), dir_(dir) {}
 
 MotionBlurFilterCommand::~MotionBlurFilterCommand() {}
