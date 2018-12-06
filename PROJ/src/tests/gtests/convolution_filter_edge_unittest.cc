@@ -4,9 +4,9 @@
 #include <math.h>
 #include <iostream>
 #include "gtest/gtest.h"
-#include "flashphoto/filter.h"
-#include "flashphoto/convolution_filter_edge.h"
-#include "flashphoto/float_matrix.h"
+#include "imagetools/filter.h"
+#include "imagetools/convolution_filter_edge.h"
+#include "imagetools/float_matrix.h"
 
 using image_tools::ConvolutionFilterEdge;
 using image_tools::FloatMatrix;
@@ -22,7 +22,6 @@ class ConvolutionFilterEdgeTest : public ::testing::Test {
  protected:
   ConvolutionFilterEdge* edge_ = new ConvolutionFilterEdge();
   FloatMatrix* mat = edge_->CreateKernel();
-
 };
 
 TEST_F(ConvolutionFilterEdgeTest, HasCorrectName) {

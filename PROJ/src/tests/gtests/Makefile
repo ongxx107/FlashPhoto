@@ -129,10 +129,10 @@ $(OBJDIR)/%.o: $(FLASHPHOTO_DIR)/%.cc $(GTEST_HEADER)
 	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
 
 $(OBJDIR)/%.o: $(MIA_DIR)/%.cc $(GTEST_HEADER)
-    @echo "==== Auto-Generating Dependencies for $<. ===="
-    $(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
-    @echo "==== Compiling $< into $@. ===="
-    $(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
+	@echo "==== Auto-Generating Dependencies for $<. ===="
+	$(call make-depend-cxx,$<,$@,$(subst .o,.d,$@))
+	@echo "==== Compiling $< into $@. ===="
+	$(CXX) $(OMP) $(CXXFLAGS) $(CXXLIBDIRS) -c -fPIC -o  $@ $<
 
 # WITH AUTO-GENERATED DEPENDENCIES:
 # Note that there are actually two steps to the compiling recipe above.  The second

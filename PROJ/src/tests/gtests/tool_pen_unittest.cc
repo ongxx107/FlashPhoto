@@ -4,8 +4,8 @@
 #include <math.h>
 #include <iostream>
 #include "gtest/gtest.h"
-#include "flashphoto/tool_pen.h"
-#include "flashphoto/float_matrix.h"
+#include "imagetools/tool_pen.h"
+#include "imagetools/float_matrix.h"
 
 using image_tools::ToolPen;
 using image_tools::FloatMatrix;

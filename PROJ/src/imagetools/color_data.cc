@@ -1,3 +1,19 @@
+/**
+This file is part of the CSCI-3081W Project Support Code, which was developed
+at the University of Minnesota.
+
+This code is to be used for student coursework.  It is not an open source
+project.
+Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University of
+Minnesota.
+
+Original Author(s) of this File:
+  Seth Johnson, 2/15/15, University of Minnesota
+
+Author(s) of Significant Updates/Modifications to the File:
+  Daniel Keefe, 2018, UMN -- ported to MinGfx
+  ...
+*/
 #include "imagetools/color_data.h"
 #include "imagetools/image_tools_math.h"
 
@@ -40,8 +56,7 @@ ColorData operator-(const ColorData& a, const ColorData& b) {
 bool operator==(const ColorData& a, const ColorData& b) {
   // a thresold used to account for numerical imprecision in floating point
   // comparisons
-  // EPSILON = 1.0/256.0 to account for 8 bit values (unsigned char) that are saved to files
-  static const float EPSILON = 0.004; 
+  static const float EPSILON = 0.004;
 
   return (
       fabs(a.red_ - b.red_) < EPSILON && fabs(a.green_ - b.green_) < EPSILON &&

@@ -32,12 +32,16 @@ BlurFilterCommand::~BlurFilterCommand() {}
 
 void BlurFilterCommand::Execute() { image_editor_->ApplyBlurFilter(radius_); }
 
+std::string BlurFilterCommand::name() { return "Blur"; }
+
 EdgeFilterCommand::EdgeFilterCommand(ImageEditor *image_editor)
     : ImageEditorCommand(image_editor) {}
 
 EdgeFilterCommand::~EdgeFilterCommand() {}
 
 void EdgeFilterCommand::Execute() { image_editor_->ApplyEdgeDetectFilter(); }
+
+std::string EdgeFilterCommand::name() { return "Edge"; }
 
 SharpenFilterCommand::SharpenFilterCommand(ImageEditor *image_editor,
                                            float radius)
@@ -48,6 +52,8 @@ SharpenFilterCommand::~SharpenFilterCommand() {}
 void SharpenFilterCommand::Execute() {
   image_editor_->ApplySharpenFilter(radius_);
 }
+
+std::string SharpenFilterCommand::name() { return "Sharpen"; }
 
 ChannelsFilterCommand::ChannelsFilterCommand(ImageEditor *image_editor,
                                              float red_scale, float green_scale,
@@ -63,6 +69,8 @@ void ChannelsFilterCommand::Execute() {
   image_editor_->ApplyChannelsFilter(r_, g_, b_);
 }
 
+std::string ChannelsFilterCommand::name() { return "Channels"; }
+
 QuantizeFilterCommand::QuantizeFilterCommand(ImageEditor *image_editor,
                                              int bins)
     : ImageEditorCommand(image_editor), bins_(bins) {}
@@ -72,6 +80,8 @@ QuantizeFilterCommand::~QuantizeFilterCommand() {}
 void QuantizeFilterCommand::Execute() {
   image_editor_->ApplyQuantizeFilter(bins_);
 }
+
+std::string QuantizeFilterCommand::name() { return "Quantize"; }
 
 SaturateFilterCommand::SaturateFilterCommand(ImageEditor *image_editor,
                                              float scale)
@@ -83,6 +93,8 @@ void SaturateFilterCommand::Execute() {
   image_editor_->ApplySaturateFilter(scale_);
 }
 
+std::string SaturateFilterCommand::name() { return "Saturate"; }
+
 ThresholdFilterCommand::ThresholdFilterCommand(ImageEditor *image_editor,
                                                float cutoff)
     : ImageEditorCommand(image_editor), cutoff_(cutoff) {}
@@ -92,6 +104,8 @@ ThresholdFilterCommand::~ThresholdFilterCommand() {}
 void ThresholdFilterCommand::Execute() {
   image_editor_->ApplyThresholdFilter(cutoff_);
 }
+
+std::string ThresholdFilterCommand::name() { return "Threshold"; }
 
 MotionBlurFilterCommand::MotionBlurFilterCommand(
     ImageEditor *image_editor, float radius,
@@ -104,6 +118,8 @@ void MotionBlurFilterCommand::Execute() {
   image_editor_->ApplyMotionBlurFilter(radius_, dir_);
 }
 
+std::string MotionBlurFilterCommand::name() { return "MotionBlur"; }
+
 UndoCommand::UndoCommand(ImageEditor *image_editor)
     : ImageEditorCommand(image_editor) {}
 
@@ -111,12 +127,16 @@ UndoCommand::~UndoCommand() {}
 
 void UndoCommand::Execute() { image_editor_->Undo(); }
 
+std::string UndoCommand::name() { return "Undo"; }
+
 RedoCommand::RedoCommand(ImageEditor *image_editor)
     : ImageEditorCommand(image_editor) {}
 
 RedoCommand::~RedoCommand() {}
 
 void RedoCommand::Execute() { image_editor_->Redo(); }
+
+std::string RedoCommand::name() { return "Redo"; }
 
 StartStrokeCommand::StartStrokeCommand(ImageEditor *image_editor,
                                        const std::string &tool_name,
@@ -135,12 +155,16 @@ void StartStrokeCommand::Execute() {
   image_editor_->StartStroke(tool_name_, color_, radius_, x_, y_);
 }
 
+std::string StartStrokeCommand::name() { return "StartStroke"; }
+
 AddToStrokeCommand::AddToStrokeCommand(ImageEditor *image_editor, int x, int y)
     : ImageEditorCommand(image_editor), x_(x), y_(y) {}
 
 AddToStrokeCommand::~AddToStrokeCommand() {}
 
 void AddToStrokeCommand::Execute() { image_editor_->AddToStroke(x_, y_); }
+
+std::string AddToStrokeCommand::name() { return "AddToStroke"; }
 
 EndStrokeCommand::EndStrokeCommand(ImageEditor *image_editor, int x, int y)
     : ImageEditorCommand(image_editor), x_(x), y_(y) {}
@@ -149,6 +173,8 @@ EndStrokeCommand::~EndStrokeCommand() {}
 
 void EndStrokeCommand::Execute() { image_editor_->EndStroke(x_, y_); }
 
+std::string EndStrokeCommand::name() { return "EndStroke"; }
+
 LoadCommand::LoadCommand(ImageEditor *image_editor, const std::string &filename)
     : ImageEditorCommand(image_editor), filename_(filename) {}
 
@@ -156,11 +182,15 @@ LoadCommand::~LoadCommand() {}
 
 void LoadCommand::Execute() { image_editor_->LoadFromFile(filename_); }
 
+std::string LoadCommand::name() { return "Load"; }
+
 SaveCommand::SaveCommand(ImageEditor *image_editor, const std::string &filename)
     : ImageEditorCommand(image_editor), filename_(filename) {}
 
 SaveCommand::~SaveCommand() {}
 
 void SaveCommand::Execute() { image_editor_->SaveToFile(filename_); }
+
+std::string SaveCommand::name() { return "Save"; }
 
 }  // namespace image_tools

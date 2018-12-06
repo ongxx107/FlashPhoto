@@ -177,14 +177,9 @@ class ImageEditor {
 
   PixelBuffer *current_buffer_;
 
-  // void SaveStateForPossibleUndo();
-
   unsigned int max_undos_;
   std::deque<PixelBuffer *> saved_states_;   // undo
   std::deque<PixelBuffer *> undone_states_;  // redo
-
-  // static const std::map<MBlurDir, std::string> mblur_dir_names_;
-
 };
 
 }  // namespace image_tools

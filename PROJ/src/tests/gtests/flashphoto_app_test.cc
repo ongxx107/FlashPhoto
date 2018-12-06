@@ -31,12 +31,3 @@ TEST_F(FlashPhotoAppTest, GetToolTest) {
   image_tools::Tool* unknownTool = app_->GetToolByName("Unknown");
   EXPECT_FALSE(unknownTool);
 }
-
-TEST_F(FlashPhotoAppTest, CanApplyFilters) {
-  // For each filter {
-  //   Copy pixel buffer from app_
-  //   Apply filter
-  //   Get new pixel buffer
-  //   ComparePixelBuffers() to see if there was a change
-  // }
-}

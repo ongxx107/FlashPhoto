@@ -1,10 +1,24 @@
+/**
+This file is part of the CSCI-3081W Project Support Code, which was developed
+at the University of Minnesota.
+
+This code is to be used for student coursework.  It is not an open source
+project.
+Copyright (c) 2015-2018 Daniel Keefe, TAs, & Regents of the University of
+Minnesota.
+
+Original Author(s) of this File:
+  Seth Johnson, 4/4/2015, University of Minnesota
+
+Author(s) of Significant Updates/Modifications to the File:
+  Ren Jeik Ong
+*/
 #include "imagetools/pixel_buffer.h"
 #include <mingfx.h>
 #include <algorithm>
 #include <cstring>
 #include <iostream>
 #include "imagetools/color_data.h"
-// #include "csel-f18c3081/include/imageio"
 #include "/classes/csel-f18c3081/include/imageio/image.h"
 #include "/classes/csel-f18c3081/include/imageio/image_manager.h"
 
@@ -90,13 +104,7 @@ void PixelBuffer::Resize(int new_width, int new_height) {
 }
 
 void PixelBuffer::SaveToFile(const std::string &filename) {
-
-  //imageio::Image* image = imageio::ImageManager::instance().LoadFromFile(filename);
-
-  // PixelBuffer* loadedImage = PixelBuffer(image->Width(), image->Height(), ColorData(0.0, 0.0, 0.0));
-
   imageio::Image* img = new imageio::Image(width_, height_, 4);
-  // Resize(image->Width(), image->Height());
 
   for (int y = 0; y < img->Height(); y++) {
     for (int x = 0; x < img->Width(); x++) {
@@ -110,14 +118,11 @@ void PixelBuffer::SaveToFile(const std::string &filename) {
   imageio::ImageManager::instance().SaveToFile(filename, *img);
 
   delete img;
-  // (void)filename;
 }
 
 void PixelBuffer::LoadFromFile(const std::string &filename) {
-
-  imageio::Image* image = imageio::ImageManager::instance().LoadFromFile(filename);
-
-  // PixelBuffer* loadedImage = PixelBuffer(image->Width(), image->Height(), ColorData(0.0, 0.0, 0.0));
+  imageio::Image* image =
+                      imageio::ImageManager::instance().LoadFromFile(filename);
   Resize(image->Width(), image->Height());
 
   for (int y = 0; y < image->Height(); y++) {
@@ -128,11 +133,8 @@ void PixelBuffer::LoadFromFile(const std::string &filename) {
       b = image->FloatValue(x, y, 2);
       a = image->FloatValue(x, y, 3);
       this->set_pixel(x, y, ColorData(r, g, b, a));
-
     }
   }
-  (void)image;
-  //*this = loadedImage;
 }
 
 bool operator==(const PixelBuffer &a, const PixelBuffer &b) {

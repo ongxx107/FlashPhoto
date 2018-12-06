@@ -23,7 +23,8 @@ int main(int argc, char* argv[]) {
   if (argc > 1) {
     // command line mode
     image_tools::CommandLineProcessor cmd_processor;
-    cmd_processor.ProcessCommandLine(argc, argv);
+    std::vector<std::string> argumentv(argv, argv+argc);
+    cmd_processor.ProcessCommandLine(argc, argumentv);
   } else {
     // gui mode
     image_tools::MiaApp gui(1280, 720, image_tools::ColorData(1, 1, 1));

@@ -21,18 +21,17 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-ImageEditor::ImageEditor(PixelBuffer *buffer){
+ImageEditor::ImageEditor(PixelBuffer *buffer) {
   current_buffer_ = buffer;
-  //max_undos_ = 50;
 }
 
 /** Creates an editor with a NULL pixel buffer.  You will need to set the
  pixel buffer before performing any editing operations. */
-ImageEditor::ImageEditor(){
+ImageEditor::ImageEditor() {
   current_buffer_ = NULL;
 }
 
-ImageEditor::~ImageEditor(){}
+ImageEditor::~ImageEditor() {}
 
 Tool *ImageEditor::GetToolByName(const std::string &name) {
   if (name == t_blur_.name()) {
@@ -99,7 +98,6 @@ void ImageEditor::ApplyBlurFilter(float radius) {
   f_blur_ = new ConvolutionFilterBlur(radius);
   f_blur_->ApplyToBuffer(pixel_buffer());
   delete f_blur_;
-  // f_blur_->CleanupFilter();
   f_blur_ = NULL;
 }
 
@@ -109,7 +107,6 @@ void ImageEditor::ApplyMotionBlurFilter(float rad, std::string dirName) {
   f_motion_blur_ = new ConvolutionFilterMotionBlur(rad, dirName);
   f_motion_blur_->ApplyToBuffer(pixel_buffer());
   delete f_motion_blur_;
-  //f_motion_blur_->CleanupFilter();
   f_motion_blur_ = NULL;
 }
 
@@ -118,7 +115,6 @@ void ImageEditor::ApplySharpenFilter(float rad) {
   f_sharpen_ = new ConvolutionFilterSharpen(rad);
   f_sharpen_->ApplyToBuffer(pixel_buffer());
   delete f_sharpen_;
-  //f_sharpen_->CleanupFilter();
   f_sharpen_ = NULL;
 }
 
@@ -127,7 +123,6 @@ void ImageEditor::ApplyEdgeDetectFilter() {
   f_edge_ = new ConvolutionFilterEdge();
   f_edge_->ApplyToBuffer(pixel_buffer());
   delete f_edge_;
-  //f_edge_->CleanupFilter();
   f_edge_ = NULL;
 }
 
@@ -136,7 +131,6 @@ void ImageEditor::ApplyThresholdFilter(float value) {
   f_threshold_ = new FilterThreshold(value);
   f_threshold_->ApplyToBuffer(pixel_buffer());
   delete f_threshold_;
-  //f_threshold_->CleanupFilter();
   f_threshold_ = NULL;
 }
 
@@ -145,7 +139,6 @@ void ImageEditor::ApplySaturateFilter(float scale) {
   f_saturate_ = new FilterSaturate(scale);
   f_saturate_->ApplyToBuffer(pixel_buffer());
   delete f_saturate_;
-  //f_saturate_->CleanupFilter();
   f_saturate_ = NULL;
 }
 
@@ -154,7 +147,6 @@ void ImageEditor::ApplyChannelsFilter(float red, float green, float blue) {
   f_channels_ = new FilterChannels(red, green, blue);
   f_channels_->ApplyToBuffer(pixel_buffer());
   delete f_channels_;
-  //f_channels_->CleanupFilter();
   f_channels_ = NULL;
 }
 
@@ -163,7 +155,6 @@ void ImageEditor::ApplyQuantizeFilter(int num) {
   f_quantize_ = new FilterQuantize(num);
   f_quantize_->ApplyToBuffer(pixel_buffer());
   delete f_quantize_;
-  //f_quantize_->CleanupFilter();
   f_quantize_ = NULL;
 }
 

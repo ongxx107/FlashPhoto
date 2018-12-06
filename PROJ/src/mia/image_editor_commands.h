@@ -49,6 +49,8 @@ class ImageEditorCommand {
 
   virtual void Execute() = 0;
 
+  virtual std::string name() = 0;
+
  protected:
   ImageEditor *image_editor_;
 };
@@ -61,6 +63,8 @@ class BlurFilterCommand : public ImageEditorCommand {
 
   void Execute() override;
 
+  std::string name() override;
+
  private:
   float radius_;
 };
@@ -72,6 +76,8 @@ class EdgeFilterCommand : public ImageEditorCommand {
   virtual ~EdgeFilterCommand();
 
   void Execute() override;
+
+  std::string name() override;
 };
 
 /** Specific command for executing a sharpen filter. */
@@ -81,6 +87,8 @@ class SharpenFilterCommand : public ImageEditorCommand {
   virtual ~SharpenFilterCommand();
 
   void Execute() override;
+
+  std::string name() override;
 
  private:
   float radius_;
@@ -95,6 +103,8 @@ class ChannelsFilterCommand : public ImageEditorCommand {
 
   void Execute() override;
 
+  std::string name() override;
+
  private:
   float r_, g_, b_;
 };
@@ -106,6 +116,8 @@ class QuantizeFilterCommand : public ImageEditorCommand {
   virtual ~QuantizeFilterCommand();
 
   void Execute() override;
+
+  std::string name() override;
 
  private:
   int bins_;
@@ -119,6 +131,8 @@ class SaturateFilterCommand : public ImageEditorCommand {
 
   void Execute() override;
 
+  std::string name() override;
+
  private:
   float scale_;
 };
@@ -130,6 +144,8 @@ class ThresholdFilterCommand : public ImageEditorCommand {
   virtual ~ThresholdFilterCommand();
 
   void Execute() override;
+
+  std::string name() override;
 
  private:
   float cutoff_;
@@ -144,6 +160,8 @@ class MotionBlurFilterCommand : public ImageEditorCommand {
 
   void Execute() override;
 
+  std::string name() override;
+
  private:
   float radius_;
   std::string dir_;
@@ -156,6 +174,8 @@ class UndoCommand : public ImageEditorCommand {
   virtual ~UndoCommand();
 
   void Execute() override;
+
+  std::string name() override;
 };
 
 /** Specific command for executing a redo. */
@@ -165,6 +185,8 @@ class RedoCommand : public ImageEditorCommand {
   virtual ~RedoCommand();
 
   void Execute() override;
+
+  std::string name() override;
 };
 
 /** Specific command for starting a stroke. */
@@ -175,6 +197,8 @@ class StartStrokeCommand : public ImageEditorCommand {
   virtual ~StartStrokeCommand();
 
   void Execute() override;
+
+  std::string name() override;
 
  private:
   std::string tool_name_;
@@ -191,6 +215,8 @@ class AddToStrokeCommand : public ImageEditorCommand {
 
   void Execute() override;
 
+  std::string name() override;
+
  private:
   int x_, y_;
 };
@@ -202,6 +228,8 @@ class EndStrokeCommand : public ImageEditorCommand {
   virtual ~EndStrokeCommand();
 
   void Execute() override;
+
+  std::string name() override;
 
  private:
   int x_, y_;
@@ -215,6 +243,8 @@ class LoadCommand : public ImageEditorCommand {
 
   void Execute() override;
 
+  std::string name() override;
+
  private:
   std::string filename_;
 };
@@ -226,6 +256,8 @@ class SaveCommand : public ImageEditorCommand {
   virtual ~SaveCommand();
 
   void Execute() override;
+
+  std::string name() override;
 
  private:
   std::string filename_;

@@ -29,7 +29,6 @@ class FilterChannelsTest : public ::testing::Test {
 
   FilterChannels* chan2_ = new FilterChannels(1.0, 2.0, 0.0);
   PixelBuffer* buf2_ = new PixelBuffer(11, 11, ColorData(1, 2, 1));
-
 };
 
 TEST_F(FilterChannelsTest, HasCorrectNames) {
