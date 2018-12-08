@@ -38,7 +38,7 @@ PixelBuffer::PixelBuffer(int w, int h, ColorData background_color)
 }
 
 PixelBuffer::PixelBuffer(const std::string &filename)
-    : background_color_(ColorData(1, 1, 1)) {
+    : width_(0), height_(0), background_color_(ColorData(1, 1, 1)) {
   LoadFromFile(filename);
 }
 

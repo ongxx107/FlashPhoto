@@ -6,9 +6,9 @@ John Harwell, a veteran 3081W TA, has put together an informative guide on the u
 
 ### Git Branching and Merging (and other things!) Practice
 
-First, to give you good practice with the technical aspects of merging, branching, and other Git tasks, the website below is a nice, interactive practice application. It will walk you through a variety of tasks, giving you some experience with the actions you'll be required to make in the project work to come.
+First, to give you good practice with the technical aspects of merging, branching, and other Git tasks, the website below is a nice, interactive practice application. It will walk you through a variety of tasks, giving you some experience with the actions you'll be required to make in the project work to come. Consider completing the Introduction Sequence.
 
-[https://learngitbranching.js.org/]
+https://learngitbranching.js.org/
 
 ### Branching Model
 
@@ -28,7 +28,7 @@ As you develop your code, you will encounter a range of modifications that need 
 | Doc | Adding/updating documentation for the code.
 | Chore | Doing miscellaneous grunt work, such as file moving, renaming, etc.
 
-Github provides a convenient and integrated method for keeping track of the needed modifications using _Issues_. As part of the development requirements of iteration 2, we expect that you will be using these Github issues, especially to track bugs in your code.
+Github provides a convenient and integrated method for keeping track of the needed modifications using _Issues_. As part of the development requirements of iteration 3, we expect that you will be using these Github issues, especially to track bugs in your code.
 
 Below is an example of a list of bugs in a project:
 
@@ -94,7 +94,7 @@ In general when you create an issue for a bug for this iteration, you need to pr
 
 **Confirm you are on the devel branch.**
 
-Make a new branch with the name as specified below (if the bug issue is \#1, otherwise use its issue number). The entire string "fix/01-<short description of bug>" is the name of the branch.
+Make a new branch with the name as specified below (if the bug issue is \#1, otherwise use its issue number). The entire string `fix/01-short description of bug>` is the name of the branch.
 
 ```
 git checkout -b fix/01-<short description of bug>
