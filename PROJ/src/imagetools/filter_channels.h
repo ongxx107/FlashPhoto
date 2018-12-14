@@ -21,6 +21,11 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+@brief This basic filter takes some input scale factors (one float each for
+red, green, and blue), simply multiply the R, G, and B component for each pixel
+in the image by the scale factor.
+*/
 class FilterChannels : public Filter {
  public:
   FilterChannels(float r, float g, float b);

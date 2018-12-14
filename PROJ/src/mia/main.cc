@@ -16,8 +16,6 @@ Author(s) of Significant Updates/Modifications to the File:
 
 #include "mia/command_line_processor.h"
 #include "mia/mia_app.h"
-// #include "/classes/csel-f18c3081/include/imageio/image_manager.h"
-// #include "/classes/csel-f18c3081/include/imageio/image.h"
 
 int main(int argc, char* argv[]) {
   if (argc > 1) {

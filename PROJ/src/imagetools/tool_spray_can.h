@@ -22,11 +22,10 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/** This tool has a linear falloff so that it looks like the paint has been
- sprayed onto the canvas.  It also has the interesting property that it
- continues
- to paint even when held stationary so paint continues to accumulate on the
- canvas the longer you hold it still. */
+/** @brief This tool has a linear falloff so that it looks like the paint has
+ been sprayed onto the canvas.  It also has the interesting property that it
+ continues to paint even when held stationary so paint continues to accumulate
+ on the canvas the longer you hold it still. */
 class ToolSprayCan : public Tool {
  public:
   ToolSprayCan();

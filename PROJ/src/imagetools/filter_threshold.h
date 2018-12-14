@@ -21,6 +21,11 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+    @brief This basic filter takes the cutoff value and compares the average
+    color value in each pixel. The pixel value is set to black if the average
+    value is larger than average color value. Otherwise, it turns white.
+*/
 class FilterThreshold : public Filter {
  public:
   explicit FilterThreshold(float value);

@@ -1,5 +1,8 @@
 all: imagetools flashphoto mia tests
 
+doc:
+	doxygen docs/Doxyfile
+
 check-style:
 	cd src/flashphoto; make check-style
 	cd src/imagetools; make check-style

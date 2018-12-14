@@ -30,6 +30,11 @@ namespace image_tools {
 
   void Filter::ApplyToBuffer(PixelBuffer *buffer) {
     if (!can_calculate_in_place()) {
+      /*
+      For convolution filter buffer iteration, it makes a fresh copy of buffer
+      and uses it to calculate each pixel for specific filters. Once we
+      calculated the pixel, we set the pixel in the original buffer.
+      */
       PixelBuffer *dest = new PixelBuffer(*buffer);
       SetupFilter();
       for (int i = 0; i < buffer->height(); i++) {
@@ -41,6 +46,11 @@ namespace image_tools {
       delete dest;
       CleanupFilter();
     } else {
+      /*
+      For basic filter buffer iteration, it calculates each pixel for specific
+      filters. Once we calculated the pixel, we set the pixel in the original
+      buffer.
+      */
       SetupFilter();
       for (int i = 0; i < buffer->height(); i++) {
         for (int j = 0; j < buffer->width(); j++) {

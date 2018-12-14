@@ -31,8 +31,7 @@ namespace image_tools {
 
 /** @brief The Mia GUI. This class creates a graphics window to display
  the current PixelBuffer and a graphical user interface to interact with it
- using
- Tools and Filters. */
+ using Tools and Filters. */
 class MiaApp : public mingfx::GraphicsApp {
  public:
   MiaApp(int width, int height, const ColorData &background_color);

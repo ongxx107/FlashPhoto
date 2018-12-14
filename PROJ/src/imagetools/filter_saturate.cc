@@ -19,7 +19,6 @@ Author(s) of Significant Updates/Modifications to the File:
 #include "imagetools/image_tools_math.h"
 
 namespace image_tools {
-
 FilterSaturate::FilterSaturate(float value) {
   value_ = value;
 }
@@ -30,11 +29,11 @@ FilterSaturate::~FilterSaturate() {
 ColorData FilterSaturate::CalculateFilteredPixel(PixelBuffer* buffer, int x,
   int y) {
   ColorData color = buffer->pixel(x, y);
-
+  // Luminance calculate the grayscale value of the color
   float grayscaleValue = color.Luminance();
   ColorData grayscaleColor = ColorData(grayscaleValue, grayscaleValue,
-    grayscaleValue);  //  grayscale version of color
-
+    grayscaleValue);
+  // Lerp linearly interpolates between the grayscaled color and input value
   return (ColorData)ImageToolsMath::Lerp(grayscaleColor, color, value());
 }
 

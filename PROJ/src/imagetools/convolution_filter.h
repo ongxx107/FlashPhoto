@@ -24,14 +24,22 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+@brief The parent class of convolution_filters and child class of filter. It
+creates a kernel matrix pointer from SetupFilter() and eventually delete the
+kernel after all of the pixel are calculated.
+*/
 class ConvolutionFilter : public Filter{
  public:
   ConvolutionFilter();
   virtual ~ConvolutionFilter();
 
   virtual FloatMatrix* CreateKernel() = 0;
+
   void SetupFilter() override;
+
   ColorData CalculateFilteredPixel(PixelBuffer* buffer, int x, int y) override;
+
   void CleanupFilter() override;
 
   bool can_calculate_in_place() override;

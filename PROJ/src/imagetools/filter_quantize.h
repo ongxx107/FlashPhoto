@@ -21,6 +21,10 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+@brief This basic filter takes preset input bin and reduces the number of unique
+colors in the image by binning similar colors.
+*/
 class FilterQuantize : public Filter {
  public:
   explicit FilterQuantize(int numBin);

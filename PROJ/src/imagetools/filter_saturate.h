@@ -21,6 +21,11 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+@brief This basic filter linearly interpolates between the calculated grayscale
+value and the input argument value. Eventually, it uses the input value as a
+scale.
+*/
 class FilterSaturate : public Filter {
  public:
   explicit FilterSaturate(float value);

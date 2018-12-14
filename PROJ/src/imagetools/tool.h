@@ -79,9 +79,9 @@ class Tool {
 
   /** Most tools only apply "paint" when they are moved on the canvas, but
    some, like a spray can continue applying more paint over time even if
-   they are held in the same place.  Subclasses should override this function
+   they are held in the same place. Subclasses should override this function
    and return true if the tool allows paint to accumulate even when held
-   stationary.  The default implmentation returns false. */
+   stationary. The default implmentation returns false. */
   virtual bool applies_paint_when_stationary();
 
  protected:

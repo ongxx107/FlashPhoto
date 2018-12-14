@@ -27,10 +27,11 @@
 
 namespace image_tools {
 
-/** @brief The Mia GUI. This class creates a graphics window to display
- the current PixelBuffer and a graphical user interface to interact with it
- using
- Tools and Filters. */
+/** @brief The MIA CommandLineProcessor. This class takes the arguments from
+    terminal and runs the functions from image_editor_commands class. Then,
+    the functions from the image_editor_commands call the functions from
+    image_editor class.
+*/
 class CommandLineProcessor {
  public:
   CommandLineProcessor();

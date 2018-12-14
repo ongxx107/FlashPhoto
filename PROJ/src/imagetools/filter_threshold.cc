@@ -33,8 +33,10 @@ ColorData FilterThreshold::CalculateFilteredPixel(PixelBuffer* buffer, int x,
   float green = color.green();
   float blue = color.blue();
 
+  // Get the average intensity of the pixel
   float average = (red + green + blue)/3;
 
+  // Turn the pixel into black if average intensity is larger than cutoff value
   if (average > value()) {
     return ColorData(1.0, 1.0, 1.0);
   } else {

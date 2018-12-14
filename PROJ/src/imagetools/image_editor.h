@@ -46,9 +46,8 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/** This is the major class of the FlashPhoto application.  In the
- model-view-controller paradigm, we can think of this class as implementing
- the model for an ImageEditor that could be controlled by various controllers
+/** @brief This is the major class of the ImageEditor application.  In the
+ model-view-controller paradigm, that could be controlled by various controllers
  (e.g., interactive mouse and keyboard, command line) and viewed different
  ways (e.g., interactively with a GUI, with files written to disk). */
 class ImageEditor {
@@ -158,8 +157,6 @@ class ImageEditor {
   FilterQuantize* f_quantize_;
   FilterSaturate* f_saturate_;
   FilterThreshold* f_threshold_;
-
-  // MBlurDir mblur_dir_;
 
   ToolBlur t_blur_;
   ToolCalligraphyPen t_calligraphy_pen_;
