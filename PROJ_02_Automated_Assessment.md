@@ -1,6 +1,8 @@
-### Feedback for Project Iteration 02
+### Assessment for Project Iteration 02 - Automated (Graded By: Dan Orban)
 
-Run on December 12, 14:18:28 PM.
+#### Total score: _67.47_ / _85_
+
+Run on December 13, 08:20:03 AM.
 
 
 #### System Files and PROJ Directory Structure
@@ -11,13 +13,13 @@ Run on December 12, 14:18:28 PM.
 
 
 
-+ Pass: Check that directory "PROJ" exists.
++  _3_ / _3_ : Pass: Check that directory "PROJ" exists.
 
-+ Pass: Check that directory "PROJ/src/imagetools" exists.
++  _2_ / _2_ : Pass: Check that directory "PROJ/src/imagetools" exists.
 
-+ Pass: Check that file "PROJ/src/imagetools/color_data.h" exists.
++  _2_ / _2_ : Pass: Check that file "PROJ/src/imagetools/color_data.h" exists.
 
-+ Pass: Check that file "PROJ/src/imagetools/Makefile" exists.
++  _2_ / _2_ : Pass: Check that file "PROJ/src/imagetools/Makefile" exists.
 
 
 #### Set up cpplint
@@ -37,21 +39,21 @@ Run on December 12, 14:18:28 PM.
 
 
 
-+ Pass: Ensuring code follows style guide.
++  _1_ / _1_ : Pass: Ensuring code follows style guide.
 
 
 
-+ Pass: Check that make compiles.
++  _25_ / _25_ : Pass: Check that make compiles.
 
 
 
-+ Pass: Check that file "./build/lib/libimagetools.a" exists.
++  _3_ / _3_ : Pass: Check that file "./build/lib/libimagetools.a" exists.
 
-+ Pass: Check that file "./build/bin/flashphoto" exists.
++  _3_ / _3_ : Pass: Check that file "./build/bin/flashphoto" exists.
 
-+ Pass: Check that file "./build/bin/mia" exists.
++  _3_ / _3_ : Pass: Check that file "./build/bin/mia" exists.
 
-+ Pass: Check that file "./build/test/gtests" exists.
++  _3_ / _3_ : Pass: Check that file "./build/test/gtests" exists.
 
 
 ### Instructor Tests
@@ -69,7 +71,7 @@ Run on December 12, 14:18:28 PM.
 
 #### Testing ImageIO Implementation
 
-+ Pass: Check that a GoogleTest test passes.
++  _2_ / _2_ : Pass: Check that a GoogleTest test passes.
     passes the test: Iteration2Test.ImageLoadingAndSaving.
 
 
@@ -77,32 +79,32 @@ Run on December 12, 14:18:28 PM.
 
 #### Testing MIA Application
 
-+ Pass: Check that a GoogleTest test passes.
++  _1_ / _1_ : Pass: Check that a GoogleTest test passes.
     passes the test: Iteration2Test.StampToolAdded.
 
 
 
-+ Pass: Check that a GoogleTest test passes.
++  _1_ / _1_ : Pass: Check that a GoogleTest test passes.
     passes the test: Iteration2Test.DisplayHelpMessage.
 
 
 
-+ Pass: Check that a GoogleTest test passes.
++  _2_ / _2_ : Pass: Check that a GoogleTest test passes.
     passes the test: Iteration2Test.MiaCommandLineCorrect.
 
 
 
-+ Fail: Check that a GoogleTest test passes.
++  _0_ / _2_ : Fail: Check that a GoogleTest test passes.
     fails the test: Iteration2Test.MiaCommandLineBadInput.
 <pre>
 [ RUN      ] Iteration2Test.MiaCommandLineBadInput
-iter2_test.cc:83: Failure
-Value of: hasHelpMessage(testing::internal::GetCapturedStdout())
+iter2_test.cc:95: Failure
+Value of: hasHelpMessage(getStdOutOrErr())
   Actual: false
 Expected: true
 ./build/bin/mia src/tests/inst_tests/input.png edgedetect output.png should return the help message.
-iter2_test.cc:83: Failure
-Value of: hasHelpMessage(testing::internal::GetCapturedStdout())
+iter2_test.cc:95: Failure
+Value of: hasHelpMessage(getStdOutOrErr())
   Actual: false
 Expected: true
 ./build/bin/mia src/tests/inst_tests/input.png -edgedetect 5 output.png should return the help message.</pre>
@@ -257,8 +259,15 @@ Note: Google Test filter = FiltersRegressionTest.test3
 
 
 
-+ Pass: Check that a GoogleTest test passes.
-    passes the test: FiltersRegressionTest.test8.
++ Fail: Check that a GoogleTest test passes.
+    timeout occured: FiltersRegressionTest.test8.
+Running main() from gtest_main.cc
+Note: Google Test filter = FiltersRegressionTest.test8
+[==========] Running 1 test from 1 test case.
+[----------] Global test environment set-up.
+[----------] 1 test from FiltersRegressionTest
+[ RUN      ] FiltersRegressionTest.test8
+
 
 
 
@@ -390,5 +399,50 @@ Note: Google Test filter = FiltersRegressionTest.test13
 
 
 
-+ Fail: 78.05% of the tests passed, but the target is 100%.
++  _11.34_ / _15_ : Fail: 75.61% of the tests passed, but the target is 100%.
+
+
+### Testing Mutants
+
+
+#### Testing Pen Tool for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - There is no regression test.
+
+
+#### Testing Eraser Tool for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - There is no regression test.
+
+
+#### Testing Stamp Tool for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - The stamp tool does not stamp, it slides.
+
+
+#### Testing Blur Filter for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - In Mutant: The radius is 2 less than it is supposed to be.
+
+
+#### Testing Edge Detector Filter for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - In Mutant: Edge detect is not implemented.
+
+
+#### Testing Image IO Implementaiton for failure
+
++ Pass: At least one test failed for Image IO Implementaiton
+
+
+#### Results
+
++  _3.13_ / _15_ : Fail: 16.67% of the tests passed, but the target is 80.0%.
+
+#### Total score: _67.47_ / _85_
 
