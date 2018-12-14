@@ -1,8 +1,8 @@
 ### Assessment for Project Iteration 02 - Automated (Graded By: Dan Orban)
 
-#### Total score: _67.47_ / _85_
+#### Total score: _74.09_ / _85_
 
-Run on December 13, 08:20:03 AM.
+Run on December 14, 09:30:26 AM.
 
 
 #### System Files and PROJ Directory Structure
@@ -146,13 +146,13 @@ Expected: true
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: CommandLineProcessorTest.test2.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = CommandLineProcessorTest.test2
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from CommandLineProcessorTest
 [ RUN      ] CommandLineProcessorTest.test2
-
+</pre>
 
 
 
@@ -183,13 +183,13 @@ Note: Google Test filter = CommandLineProcessorTest.test2
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: CommandLineProcessorTest.test8.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = CommandLineProcessorTest.test8
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from CommandLineProcessorTest
 [ RUN      ] CommandLineProcessorTest.test8
-
+</pre>
 
 
 
@@ -205,37 +205,37 @@ Note: Google Test filter = CommandLineProcessorTest.test8
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test1.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test1
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test1
-
+</pre>
 
 
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test2.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test2
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test2
-
+</pre>
 
 
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test3.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test3
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test3
-
+</pre>
 
 
 
@@ -259,15 +259,8 @@ Note: Google Test filter = FiltersRegressionTest.test3
 
 
 
-+ Fail: Check that a GoogleTest test passes.
-    timeout occured: FiltersRegressionTest.test8.
-Running main() from gtest_main.cc
-Note: Google Test filter = FiltersRegressionTest.test8
-[==========] Running 1 test from 1 test case.
-[----------] Global test environment set-up.
-[----------] 1 test from FiltersRegressionTest
-[ RUN      ] FiltersRegressionTest.test8
-
++ Pass: Check that a GoogleTest test passes.
+    passes the test: FiltersRegressionTest.test8.
 
 
 
@@ -278,49 +271,49 @@ Note: Google Test filter = FiltersRegressionTest.test8
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test10.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test10
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test10
-
+</pre>
 
 
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test11.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test11
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test11
-
+</pre>
 
 
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test12.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test12
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test12
-
+</pre>
 
 
 
 + Fail: Check that a GoogleTest test passes.
     timeout occured: FiltersRegressionTest.test13.
-Running main() from gtest_main.cc
+<pre>Running main() from gtest_main.cc
 Note: Google Test filter = FiltersRegressionTest.test13
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
 [----------] 1 test from FiltersRegressionTest
 [ RUN      ] FiltersRegressionTest.test13
-
+</pre>
 
 
 
@@ -399,7 +392,7 @@ Note: Google Test filter = FiltersRegressionTest.test13
 
 
 
-+  _11.34_ / _15_ : Fail: 75.61% of the tests passed, but the target is 100%.
++  _11.71_ / _15_ : Fail: 78.05% of the tests passed, but the target is 100%.
 
 
 ### Testing Mutants
@@ -407,8 +400,7 @@ Note: Google Test filter = FiltersRegressionTest.test13
 
 #### Testing Pen Tool for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
-   - Reason - There is no regression test.
++ Pass: At least one test failed for Pen Tool
 
 
 #### Testing Eraser Tool for failure
@@ -419,8 +411,7 @@ Note: Google Test filter = FiltersRegressionTest.test13
 
 #### Testing Stamp Tool for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
-   - Reason - The stamp tool does not stamp, it slides.
++ Pass: At least one test failed for Stamp Tool
 
 
 #### Testing Blur Filter for failure
@@ -442,7 +433,7 @@ Note: Google Test filter = FiltersRegressionTest.test13
 
 #### Results
 
-+  _3.13_ / _15_ : Fail: 16.67% of the tests passed, but the target is 80.0%.
++  _9.38_ / _15_ : Fail: 50.0% of the tests passed, but the target is 80.0%.
 
-#### Total score: _67.47_ / _85_
+#### Total score: _74.09_ / _85_
 
