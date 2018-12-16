@@ -22,9 +22,10 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/** This class holds a 2D array of floats that can be accessed by (row,column).
- It also includes a number of utility functions for working with the array,
- such as normalizing it or multiplying every element by some scale factor. */
+/**@brief This class holds a 2D array of floats that can be accessed by (row,
+  column). It also includes a number of utility functions for working with the
+  array,such as normalizing it or multiplying every element by some scale
+  factor. */
 class FloatMatrix {
  public:
   /// Creates a 1 by 1 matrix that stores a 1.0

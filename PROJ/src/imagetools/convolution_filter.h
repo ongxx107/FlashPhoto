@@ -27,21 +27,40 @@ namespace image_tools {
 /**
 @brief The parent class of convolution_filters and child class of filter. It
 creates a kernel matrix pointer from SetupFilter() and eventually delete the
-kernel after all of the pixel are calculated.
+kernel after all of the pixel are calculated. CreateKernel() as factory method
+is used for specific convolution filter.
 */
 class ConvolutionFilter : public Filter{
  public:
   ConvolutionFilter();
   virtual ~ConvolutionFilter();
 
+  /*
+  This factory method makes a kernel matrix which is setup by specific
+  convolution filter.
+  */
   virtual FloatMatrix* CreateKernel() = 0;
 
+  /*
+  Mmeory allocate a local variable pointer for CreateKernel();
+  */
   void SetupFilter() override;
 
+  /*
+  This pure virtual method iterates the kernel matrix and does the
+  multiplication between kernel pixel value and neighboring pixel value.
+  Eventually, the multiplication value is set into buffer .
+  */
   ColorData CalculateFilteredPixel(PixelBuffer* buffer, int x, int y) override;
 
+  /*
+  Delete the allocated pointer from CreateKernel()
+  */
   void CleanupFilter() override;
 
+  /*
+  Changes the boolean to flase that implies it's convolution filter
+  */
   bool can_calculate_in_place() override;
 
  protected:

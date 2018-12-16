@@ -18,8 +18,8 @@
 
 namespace image_tools {
 
-/** This factory is used to create masks used by image editing tools.  Some of
- the masks are used by more than one tool. */
+/**@brief This factory is used to create masks used by image editing tools.
+ Some of the masks are used by more than one tool. */
 class MaskFactory {
  public:
   static FloatMatrix* CreateConstantMask(float radius);

@@ -31,6 +31,11 @@ FloatMatrix* ConvolutionFilterSharpen::CreateKernel() {
   FloatMatrix* matt = new FloatMatrix(radius());
   for (int i = 0; i < matt->height(); i++) {
     for (int j = 0; j < matt->width(); j++) {
+      /*
+      In this iteration, kernel value is setup by computing standard
+      deviation of (distance between currrent kernel value and center value)
+      and the radius.
+      */
       float dist = sqrt((radius()-i)*(radius()-i) +
                     (radius()-j)*(radius()-j));
       float result = ImageToolsMath::Gaussian(dist, radius());

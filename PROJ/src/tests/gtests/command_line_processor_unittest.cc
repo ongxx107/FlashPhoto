@@ -24,13 +24,13 @@ class CommandLineProcessorTest : public ::testing::Test {
 
 TEST_F(CommandLineProcessorTest, test1) {
   std::vector<std::string> input = {"", "resources/flower.png",
-                  "-edgedetect", "resources/outputUnitTest1.png"};
+                  "edgedetect", "resources/outputUnitTest1.png"};
   cmdLine.ProcessCommandLine(input.size(), input);
   std::vector<ImageEditorCommand*> cmdList = cmdLine.CommandList();
 
   EXPECT_EQ(cmdList[0]->name(), "Load");
-  EXPECT_EQ(cmdList[1]->name(), "Edge");
-  EXPECT_EQ(cmdList[2]->name(), "Save");
+  EXPECT_TRUE(cmdList[1]->name() != "Edge");
+  //EXPECT_EQ(cmdList[2]->name(), "Save");
 }
 
 TEST_F(CommandLineProcessorTest, test2) {
@@ -123,4 +123,15 @@ TEST_F(CommandLineProcessorTest, test10) {
   std::vector<ImageEditorCommand*> cmdList = cmdLine.CommandList();
 
   EXPECT_EQ(cmdLine.isSucess(), 1);
+}
+
+TEST_F(CommandLineProcessorTest, test11) {
+  std::vector<std::string> input = {"", "resources/flower.png",
+        "-edgedetect", "5", "resources/outputUnitTest11.png"};
+  cmdLine.ProcessCommandLine(input.size(), input);
+  std::vector<ImageEditorCommand*> cmdList = cmdLine.CommandList();
+
+  EXPECT_EQ(cmdList[0]->name(), "Load");
+  EXPECT_TRUE(cmdList[1]->name() == "Edge");
+  EXPECT_EQ(cmdList[2]->name(), "Save");
 }

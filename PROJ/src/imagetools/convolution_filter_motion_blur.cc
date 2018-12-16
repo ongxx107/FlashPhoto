@@ -29,14 +29,30 @@ ConvolutionFilterMotionBlur::~ConvolutionFilterMotionBlur() {
 
 FloatMatrix* ConvolutionFilterMotionBlur::CreateKernel() {
   FloatMatrix* matt = new FloatMatrix(radius());
+
+  /*
+  Initializes the value for kernel matrix
+  */
   float factor = 1.0/matt->height();
 
+  /*
+  Initializes all the kernel value with 0
+  */
   for (int x = 0; x < matt->width(); x++) {
     for (int y = 0; y < matt->height(); y++) {
       matt->set_value(x, y, 0);
     }
   }
 
+  /*
+  Using a condition to check if the direction is moving horizontally,
+  vertically, or diagonally. If the direction is moving from North to South,
+  set the value vertically in x-coordinate/2. If the direction is
+  from East to West, set the value horizontally in y-coordinate/2. If the
+  direction is from Northeast to Southwest, set the value in terms of
+  reflection of diagonal matrix. If the direction is from Northwest to
+  Southeast, set the value in terms of diagonal matrix. 
+  */
   if (dir() == "North/South") {
     for (int y = 0; y < matt->height(); y++) {
       matt->set_value(radius(), y, factor);

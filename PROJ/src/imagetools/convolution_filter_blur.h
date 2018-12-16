@@ -22,13 +22,9 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/**
-    This Filter BLur class takes radius as an argument and creates a
-    kernel matrix based on radius. The height and width were setup with
-    2 * (round off of radius) + 1. In the iteration of kernel matrix,
-    it calculates the distance between each pixel and center point which is
-    coordinated at (radius, radius). Then, the distance is used for Gaussian
-    Blur formula.
+/** @brief
+    This subclass creates a gaussian kernel using Gaussian exponential
+    equation.
 */
 class ConvolutionFilterBlur : public ConvolutionFilter {
  public:

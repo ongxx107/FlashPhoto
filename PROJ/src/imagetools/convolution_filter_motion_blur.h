@@ -22,6 +22,10 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+This subclass makes a kernel that blurs the image in one direction only. It
+either moves in vertical, horizontal, or diagonal direction.
+*/
 class ConvolutionFilterMotionBlur : public ConvolutionFilter {
  public:
   ConvolutionFilterMotionBlur(float radius, std::string dir);

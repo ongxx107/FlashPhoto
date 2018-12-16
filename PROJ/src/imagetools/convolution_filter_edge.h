@@ -22,6 +22,9 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/**
+@brief This subclass creates a kernel that detect edges in all directions.
+*/
 class ConvolutionFilterEdge : public ConvolutionFilter {
  public:
   ConvolutionFilterEdge();

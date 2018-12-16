@@ -15,6 +15,8 @@
  */
 #include <sys/stat.h>
 #include <assert.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <mingfx.h>
 #include <stdio.h>
 #include <iostream>
@@ -123,7 +125,8 @@ void CommandLineProcessor::ProcessCommandLine(int argc,
         return;
       }
     } else if (str[i] == "-edgedetect") {
-      cmd.push_back(new EdgeFilterCommand(image_editor_));
+        DefaultMsg();
+        cmd.push_back(new EdgeFilterCommand(image_editor_));
     } else if (str[i] == "-sharpen") {
       float radius = 0.0;
       try {

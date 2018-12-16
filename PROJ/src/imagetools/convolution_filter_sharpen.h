@@ -22,6 +22,10 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
+/** @brief
+This subclass creates a kernel that enchances the edges by adding the current
+value from the kernel with value after edge detection.
+*/
 class ConvolutionFilterSharpen : public ConvolutionFilter {
  public:
   explicit ConvolutionFilterSharpen(float radius);

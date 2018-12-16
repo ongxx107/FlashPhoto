@@ -25,23 +25,24 @@
 
 namespace image_tools {
 
-/** Base class for all image editor commands. Each command knows how to execute
- itself, including sending and required parameters to the image editor. This
- structure follows the Command Design Pattern.  The command pattern is also
- often used to implement undo.  However, we don't do that here because all of
- the commands get "undone" in exactly the same way -- we simply restore the
- pixel buffer that was in place before the command was executed.  So, it's
- quite clean to implement the undo feature directly within the ImageEditor
- class, which simply maintains a list of previous pixel buffers.  The main
- reason for implementing these command wrappers around the image editor
- functionality is to be able to easily create a list of commands to run later
- while parsing command line arguments.  If instead we just processed each
- command as it appears on the command line (e.g., blur then threshold then ...)
- the process can potentially run for quite a long time before discovering that
- there is an error in the syntax at the end of the command line.  So, it is nice
- to be able to parse the whole command line first building up a list of commands
- to send to the image editor and then, if the whole command line looks good, run
- the whole list of commands. */
+/**@brief Base class for all image editor commands. */
+/** Each command knows how to execute itself, including sending and required
+ parameters to the image editor. This structure follows the Command Design
+ Pattern.  The command pattern is also often used to implement undo.  However,
+ we don't do that here because all of the commands get "undone" in exactly the
+ same way -- we simply restore the pixel buffer that was in place before the
+ command was executed.  So, it's quite clean to implement the undo feature
+ directly within the ImageEditor class, which simply maintains a list of
+ previous pixel buffers.  The main reason for implementing these command
+ wrappers around the image editor functionality is to be able to easily create
+ a list of commands to run later while parsing command line arguments.  If
+ instead we just processed each command as it appears on the command line
+ (e.g., blur then threshold then ...) the process can potentially run for quite
+ a long time before discovering that there is an error in the syntax at the end
+ of the command line.  So, it is nice to be able to parse the whole command
+ line first building up a list of commands to send to the image editor and
+ then, if the whole command line looks good, run the whole list of commands.
+*/
 class ImageEditorCommand {
  public:
   explicit ImageEditorCommand(ImageEditor *image_editor);
@@ -55,7 +56,7 @@ class ImageEditorCommand {
   ImageEditor *image_editor_;
 };
 
-/** Specific command for executing a blur filter. */
+/**@brief Specific command for executing a blur filter. */
 class BlurFilterCommand : public ImageEditorCommand {
  public:
   BlurFilterCommand(ImageEditor *image_editor, float radius);
@@ -69,7 +70,7 @@ class BlurFilterCommand : public ImageEditorCommand {
   float radius_;
 };
 
-/** Specific command for executing an edge detection filter. */
+/**@brief Specific command for executing an edge detection filter. */
 class EdgeFilterCommand : public ImageEditorCommand {
  public:
   explicit EdgeFilterCommand(ImageEditor *image_editor);
@@ -80,7 +81,7 @@ class EdgeFilterCommand : public ImageEditorCommand {
   std::string name() override;
 };
 
-/** Specific command for executing a sharpen filter. */
+/**@brief Specific command for executing a sharpen filter. */
 class SharpenFilterCommand : public ImageEditorCommand {
  public:
   SharpenFilterCommand(ImageEditor *image_editor, float radius);
@@ -94,7 +95,7 @@ class SharpenFilterCommand : public ImageEditorCommand {
   float radius_;
 };
 
-/** Specific command for executing the channels filter. */
+/**@brief Specific command for executing the channels filter. */
 class ChannelsFilterCommand : public ImageEditorCommand {
  public:
   ChannelsFilterCommand(ImageEditor *image_editor, float red_scale,
@@ -109,7 +110,7 @@ class ChannelsFilterCommand : public ImageEditorCommand {
   float r_, g_, b_;
 };
 
-/** Specific command for executing a quantize filter. */
+/**@brief Specific command for executing a quantize filter. */
 class QuantizeFilterCommand : public ImageEditorCommand {
  public:
   QuantizeFilterCommand(ImageEditor *image_editor, int bins);
@@ -123,7 +124,7 @@ class QuantizeFilterCommand : public ImageEditorCommand {
   int bins_;
 };
 
-/** Specific command for executing a saturate filter. */
+/**@brief Specific command for executing a saturate filter. */
 class SaturateFilterCommand : public ImageEditorCommand {
  public:
   SaturateFilterCommand(ImageEditor *image_editor, float scale);
@@ -137,7 +138,7 @@ class SaturateFilterCommand : public ImageEditorCommand {
   float scale_;
 };
 
-/** Specific command for executing a threshold filter. */
+/**@brief Specific command for executing a threshold filter. */
 class ThresholdFilterCommand : public ImageEditorCommand {
  public:
   ThresholdFilterCommand(ImageEditor *image_editor, float cutoff);
@@ -151,7 +152,7 @@ class ThresholdFilterCommand : public ImageEditorCommand {
   float cutoff_;
 };
 
-/** Specific command for executing a motion blur filter. */
+/**@brief Specific command for executing a motion blur filter. */
 class MotionBlurFilterCommand : public ImageEditorCommand {
  public:
   MotionBlurFilterCommand(ImageEditor *image_editor, float radius,
@@ -167,7 +168,7 @@ class MotionBlurFilterCommand : public ImageEditorCommand {
   std::string dir_;
 };
 
-/** Specific command for executing an undo. */
+/**@brief Specific command for executing an undo. */
 class UndoCommand : public ImageEditorCommand {
  public:
   explicit UndoCommand(ImageEditor *image_editor);
@@ -178,7 +179,7 @@ class UndoCommand : public ImageEditorCommand {
   std::string name() override;
 };
 
-/** Specific command for executing a redo. */
+/**@brief Specific command for executing a redo. */
 class RedoCommand : public ImageEditorCommand {
  public:
   explicit RedoCommand(ImageEditor *image_editor);
@@ -189,7 +190,7 @@ class RedoCommand : public ImageEditorCommand {
   std::string name() override;
 };
 
-/** Specific command for starting a stroke. */
+/**@brief Specific command for starting a stroke. */
 class StartStrokeCommand : public ImageEditorCommand {
  public:
   StartStrokeCommand(ImageEditor *image_editor, const std::string &tool_name,
@@ -207,7 +208,7 @@ class StartStrokeCommand : public ImageEditorCommand {
   int x_, y_;
 };
 
-/** Specific command for adding to the most recently started stroke. */
+/**@brief Specific command for adding to the most recently started stroke. */
 class AddToStrokeCommand : public ImageEditorCommand {
  public:
   AddToStrokeCommand(ImageEditor *image_editor, int x, int y);
@@ -221,7 +222,7 @@ class AddToStrokeCommand : public ImageEditorCommand {
   int x_, y_;
 };
 
-/** Specific command for ending the stroke. */
+/**@brief Specific command for ending the stroke. */
 class EndStrokeCommand : public ImageEditorCommand {
  public:
   EndStrokeCommand(ImageEditor *image_editor, int x, int y);
@@ -235,7 +236,7 @@ class EndStrokeCommand : public ImageEditorCommand {
   int x_, y_;
 };
 
-/** Specific command for loading a file. */
+/**@brief Specific command for loading a file. */
 class LoadCommand : public ImageEditorCommand {
  public:
   LoadCommand(ImageEditor *image_editor, const std::string &filename);
@@ -249,7 +250,7 @@ class LoadCommand : public ImageEditorCommand {
   std::string filename_;
 };
 
-/** Specific command for saving a file. */
+/**@brief Specific command for saving a file. */
 class SaveCommand : public ImageEditorCommand {
  public:
   SaveCommand(ImageEditor *image_editor, const std::string &filename);

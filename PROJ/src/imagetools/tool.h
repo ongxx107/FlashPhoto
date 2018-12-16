@@ -24,7 +24,7 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/** The base class for an image editing tool.  Every tool "has a" mask.
+/**@brief The base class for an image editing tool.  Every tool "has a" mask.
  Subclasses must define this mask by filling in the CreateMask factory method.
  This base class will then be able to apply the mask to a pixel buffer as the
  tool is dragged around interactively. */

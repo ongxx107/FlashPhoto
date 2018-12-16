@@ -28,7 +28,7 @@ ConvolutionFilterEdge::~ConvolutionFilterEdge() {
 FloatMatrix* ConvolutionFilterEdge::CreateKernel() {
   /*
   Since we were informed that the kernel for filter edge is 3 by 3 matrix,
-  we set all 9 entries with -1 first, and set the center point to 8.
+  we set all 9 entries with -1 first, and set the center value to 8.
   */
   FloatMatrix* matt = new FloatMatrix(3, 3);
 

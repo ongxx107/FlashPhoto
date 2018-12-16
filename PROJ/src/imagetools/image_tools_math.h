@@ -23,8 +23,8 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/** A static class that holds several small math-related functions that are
- useful for manipulating images. */
+/** @brief A static class that holds several small math-related functions that
+  are useful for manipulating images. */
 class ImageToolsMath {
  public:
   /** @brief Linear interpolation between 2 two elements by a factor r. */

@@ -28,6 +28,11 @@ ConvolutionFilterBlur::~ConvolutionFilterBlur() {
 }
 
 FloatMatrix* ConvolutionFilterBlur::CreateKernel() {
+  /*
+  In the iteration of kernel matrix, the value is set to designated pixel by
+  calculating standard deviation of distance between each pixel and center
+  point, and radius in gaussian distribution.
+  */
   FloatMatrix* matt = new FloatMatrix(radius());
   for (int i = 0; i < matt->height(); i++) {
     for (int j = 0; j < matt->width(); j++) {

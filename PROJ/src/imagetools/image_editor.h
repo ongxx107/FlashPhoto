@@ -46,10 +46,12 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/** @brief This is the major class of the ImageEditor application.  In the
- model-view-controller paradigm, that could be controlled by various controllers
- (e.g., interactive mouse and keyboard, command line) and viewed different
- ways (e.g., interactively with a GUI, with files written to disk). */
+/**
+  @brief This is the major class of the FlashPhoto and MIA applications. 
+  In the model-view-controller paradigm, that could be controlled by various
+  controllers (e.g., interactive mouse and keyboard, command line) and viewed
+  different ways (e.g., interactively with a GUI, with files written to disk).
+*/
 class ImageEditor {
  public:
   /** The ImageEditor requires a current pixel buffer, so this is the preferred

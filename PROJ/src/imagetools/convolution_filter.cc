@@ -50,6 +50,14 @@ namespace image_tools {
 
     for (int filterY = 0; filterY < mat->height(); filterY++) {
       for (int filterX = 0; filterX < mat->width(); filterX++) {
+        /*
+        The location imageX and imageY is calculated so that for the center
+        element of the filter it'll be x, y, but for the other elements it'll be
+        a pixel from the image to the left, right, top or bottom of x, y. Its
+        modulo divided through the width (w) or height (h) of the image so that
+        pixels outside the image will be wrapped around.
+        sourced from https://lodev.org/cgtutor/filtering.html
+        */
         int imageX = (x - mat_width_half + filterX + buffer->width())
                       % buffer->width();
         int imageY = (y - mat_height_half + filterY + buffer->height())
