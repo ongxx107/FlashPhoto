@@ -93,47 +93,77 @@ In this section, there are some keypoints that make applications beneficial.
     - In applications, it represents mouse that drags and click around the interface.
     - In MIA command line, it represents keyboard which inputs all the keywords.
 
-
-
-
-
-
-
-
-
-
-
-
-
 \page page5 Coding Style
-
+##Note: All styles checking are based on Google style guide
 ##Naming conventions
 
-Member variables - In this project, we use Google style naming conventions. One of the exmaple would be initializing a member variable and ends with "_". One of my examples is "mat_" in convolution_filter.cc.
+Member variables - In this project, we use Google style naming conventions. One of the example would be initializing a member variable and ends with "_". One of my examples is "mat_" in convolution_filter.cc.
 
     void ConvolutionFilter::SetupFilter() {
         mat_ = CreateKernel();
     }
 
-Routine name - In this project, I named my function with routine name style. For example, in command_line_processor.cc, one of the function I named is:
+Routine(Function) name - In this project, I named my function with routine name style. For example, in command_line_processor.cc, one of the function I named is:
 
     void CommandLineProcessor::DefaultMsg() {
         ...
     }
 
+Pascal type - Every name that starts with first capital letter is followed with pascal naming convention. In other word, within the name, if there exists another word, that word must start with a new first capital letter. For example, in command_line_processor.cc,
 
+    CommandLineProcessor::CommandLineProcessor() {
+        ...
+    }
 
-##File names and content 
-
-
+##File names 
+- All C++ and header files are ended with .cc or .h type.
+- The name of the files is set in lowercase form and separated with underscore '_'. 
+- Names are clear and easy to understand with specific description to the given files. Most of the files are named with classes.
+- Example from [ConvolutionFilter](classimage__tools_1_1ConvolutionFilter.html), its name "convolution_filter.cc" is pretty straight forward and its .cc file is named with lowercase and separated with underscore.
 
 ##Directory layout
+- The directory layout is designed for better reconnectivity between 2 applications and the imagetools library.
+- In general, PROJ is the main directory of this project.
+- Handouts directory contains all the descriptive files for all projects throughout this semester.
+- cmake directory contains the necessaity of maintaining the build structure of applications for this project.
+- resources directory has all the .png files for testing purposes.
+- docs and web directories have the documentations that runs on web browser.
 
-##Layout of declarations and implementations
+##Use of whitespace, indentation and placement of braces
+- All open braces must have a whitespace before them, then the content is put after them. For example, in command_line_processor.cc,
 
-##Indentation and placement of braces
+        CommandLineProcessor::CommandLineProcessor() {
+            ...
+        }
 
-##Use of whitespace
+- 1 space is being used before the start of "public, protected, or private" and 2 spaces are added for each following member variable instead of using tabs. For example, in tool.h, 
+
+        namespace image_tools {
+
+        class Tool {
+         ...
+         protected:
+          ColorData paint_color_;
+         ...
+        };
+        } // namespace image_tools
+
+- Indentation or \t is used to show nested conditions so that user has better readibility. No space is added in the beginning or the end of the condition statements. 1 space is added after the semicolon within the for loop. For example, in filter.cc,
+
+        namespace image_tools {
+            ...
+            for (int i = 0; i < buffer->height(); i++) {
+                for (int j = 0; j < buffer->width(); j++) {
+                    ...
+                }
+            }
+            ...
+        }
+
+- Blank new line is minimized unless it is used to separate between the functions.
+
+##Line length
+- In this project, the maximum number of characters for each line is 80.
 
 \page page6 Common Tasks
 
@@ -244,4 +274,77 @@ Routine name - In this project, I named my function with routine name style. For
             } /* namespace image_tools */
 \n
 \n
-4. Congratulations! You made a new filter! \n
+4. Finally, you have to add your new filter into your mia application command. In order to do that, you must add the some functions in ImageEditorCommands and CommandLineProcessor classes.
+
+    - PROJ/src/mia/command_line_processor.cc
+
+            namespace image_tools {
+                ...
+                void CommandLineProcessor::ProcessCommandLine(int argc, std::vector<std::string> argumentv) {
+
+                ...
+                // for loop to iterate command list
+                    ...
+                    else if (str[i] == "-threshold") {
+                        float value = 0.0;
+                        try {
+                            // parse the argument to float
+                        }
+                        catch (const std::invalid_argument& ia) {
+                            // print invalid argument and print help message
+                            return;
+                        }
+
+                        if (value >= 0.0 && value <= 1.0) {
+                            // add the command to the vector list
+                        } else {
+                            // print out error
+                        }
+                    }
+                    ...
+                }
+            }  // namespace image_tools
+
+    - PROJ/src/mia/image_editor_commands.cc
+
+            namespace image_tools {
+                ...  
+                // Constructor to set the cutoff value
+
+                ThresholdFilterCommand::~ThresholdFilterCommand() {}
+
+                void ThresholdFilterCommand::Execute() {
+                    // Implements applyThresholdFilter from ImageEditor
+                }
+
+                std::string ThresholdFilterCommand::name() { return "Threshold"; }
+                ...
+            }  // namespace image_tools
+    
+    - PROJ/src/mia/image_editor_commands.h
+
+            namespace image_tools {
+                ...
+                class ThresholdFilterCommand : public ImageEditorCommand {
+                public:
+                ThresholdFilterCommand(ImageEditor *image_editor, float cutoff);
+                virtual ~ThresholdFilterCommand();
+
+                void Execute() override;
+
+                std::string name() override;
+
+                private:
+                float cutoff_;
+                };
+                ...
+            }  // namespace image_tools
+\n
+\n
+5. Run 'make clean' and 'make' again to check any errors from compiling.
+\n
+\n
+6. Last, make sure to check the format with Google style guide using 'make check-style'
+\n
+\n
+7. Congratulations! You made a new filter! \n

@@ -22,7 +22,7 @@ Author(s) of Significant Updates/Modifications to the File:
 
 namespace image_tools {
 
-/**
+/** @brief
 This subclass makes a kernel that blurs the image in one direction only. It
 either moves in vertical, horizontal, or diagonal direction.
 */
