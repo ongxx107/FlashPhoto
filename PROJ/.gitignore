@@ -1,4 +1,4 @@
 build
 *.local
 #ignore these folders
-web
+web/doxygen-html
