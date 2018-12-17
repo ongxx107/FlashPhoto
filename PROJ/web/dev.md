@@ -17,7 +17,7 @@
 In this section, there are some keypoints that make applications beneficial.
 
 ## Libraries
-![Diagram above shows the relationship between 2 applications and 3 libraries.](./library.pdf)
+![Diagram above shows the relationship between 2 applications and 3 libraries.](./library.png)
 \n
 - We use 3 libraries to run the applications. **The reason why we cluster them into libraries rather than making them altogether into one is we could fix the bug error easily and also it has better optimization due to reusability by other application.** Thus, the other application could reuse the library. There are 1 internal library, libimagetools, and 2 external libraries which are MinGfx and imageio made by UMN CSE faculties. 
 - Internal library:
