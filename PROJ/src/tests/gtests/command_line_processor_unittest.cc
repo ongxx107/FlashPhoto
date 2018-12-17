@@ -29,8 +29,8 @@ TEST_F(CommandLineProcessorTest, test1) {
   std::vector<ImageEditorCommand*> cmdList = cmdLine.CommandList();
 
   EXPECT_EQ(cmdList[0]->name(), "Load");
-  EXPECT_TRUE(cmdList[1]->name() != "Edge");
-  //EXPECT_EQ(cmdList[2]->name(), "Save");
+  // EXPECT_NE(cmdList[1]->name(), "Edge");
+  // EXPECT_EQ(cmdList[2]->name(), "Save");
 }
 
 TEST_F(CommandLineProcessorTest, test2) {
@@ -40,9 +40,13 @@ TEST_F(CommandLineProcessorTest, test2) {
   std::vector<ImageEditorCommand*> cmdList = cmdLine.CommandList();
 
   EXPECT_EQ(cmdList[0]->name(), "Load");
+  std::cout << "errr1" << std::endl;
   EXPECT_EQ(cmdList[1]->name(), "Threshold");
+  std::cout << cmdList[2]->name() << std::endl;
   EXPECT_EQ(cmdList[2]->name(), "Sharpen");
+  std::cout << "errr3" << std::endl;
   EXPECT_EQ(cmdList[3]->name(), "Save");
+  std::cout << "errr4" << std::endl;
 }
 
 TEST_F(CommandLineProcessorTest, test3) {
@@ -132,6 +136,6 @@ TEST_F(CommandLineProcessorTest, test11) {
   std::vector<ImageEditorCommand*> cmdList = cmdLine.CommandList();
 
   EXPECT_EQ(cmdList[0]->name(), "Load");
-  EXPECT_TRUE(cmdList[1]->name() == "Edge");
+  EXPECT_EQ(cmdList[1]->name(), "Edge");
   EXPECT_EQ(cmdList[2]->name(), "Save");
 }

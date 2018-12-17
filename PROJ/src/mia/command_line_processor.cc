@@ -103,257 +103,266 @@ void CommandLineProcessor::ProcessCommandLine(int argc,
     return;
   }
 
-  for (unsigned i = 1; i < str.size(); i++) {
-    if (str[i] == "-blur") {
-      float radius = 0.0;
-      try {
-        radius = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
+  for (unsigned i = 1; i < str.size()-1; i++) {
+    try {
+      if (str[i] == "-blur") {
+        float radius = 0.0;
+        try {
+          radius = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (radius >= 1.0 && radius <= 10.0) {
+          cmd.push_back(new BlurFilterCommand(image_editor_, radius));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
           DefaultMsg();
           success_ = 1;
           return;
-      }
+        }
+      } else if (str[i] == "-edgedetect") {
+          DefaultMsg();
+          cmd.push_back(new EdgeFilterCommand(image_editor_));
+      } else if (str[i] == "-sharpen") {
+        float radius = 0.0;
+        try {
+          radius = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
 
-      if (radius >= 1.0 && radius <= 10.0) {
-        cmd.push_back(new BlurFilterCommand(image_editor_, radius));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
+        if (radius >= 1.0 && radius <= 10.0) {
+          cmd.push_back(new SharpenFilterCommand(image_editor_, radius));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-red") {
+        float red = 0.0;
+        try {
+          red = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (red > 0.0 && red <= 10.0) {
+          cmd.push_back(new ChannelsFilterCommand(image_editor_, red, 1.0,
+                                                  1.0));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-green") {
+        float green = 0.0;
+        try {
+          green = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (green > 0.0 && green <= 10.0) {
+          cmd.push_back(new ChannelsFilterCommand(image_editor_, 1.0, green,
+                                                  1.0));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-blue") {
+        float blue = 0.0;
+        // blue = strtof(argumentv[i+1], 0);
+        try {
+          blue = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (blue > 0.0 && blue <= 10.0) {
+          cmd.push_back(new ChannelsFilterCommand(image_editor_, 1.0, 1.0,
+                                                  blue));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-quantize") {
+        int bin = 0;
+        try {
+          bin = stoi(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (bin > 0 && bin <= 256) {
+          cmd.push_back(new QuantizeFilterCommand(image_editor_, bin));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-saturate") {
+        float scale = 0.0;
+        try {
+          scale = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (scale > 0.0 && scale <= 10.0) {
+          cmd.push_back(new SaturateFilterCommand(image_editor_, scale));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-threshold") {
+        float value = 0.0;
+        try {
+          value = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (value >= 0.0 && value <= 1.0) {
+          cmd.push_back(new ThresholdFilterCommand(image_editor_, value));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-motionblur-n-s") {
+        float radius = 0.0;
+        try {
+          radius = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (radius >= 1.0 && radius <= 10.0) {
+          cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
+                                                    "North/South"));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-motionblur-e-w") {
+        float radius = 0.0;
+        try {
+          radius = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (radius >= 1.0 && radius <= 10.0) {
+          cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
+                                                    "East/West"));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-motionblur-ne-sw") {
+        float radius = 0.0;
+        try {
+          radius = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (radius >= 1.0 && radius <= 10.0) {
+          cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
+                                                    "Northeast/Southwest"));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-motionblur-nw-se") {
+        float radius = 0.0;
+        try {
+          radius = stof(str[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+            std::cerr << "Invalid argument: " << ia.what() << '\n';
+            DefaultMsg();
+            success_ = 1;
+            return;
+        }
+
+        if (radius >= 1.0 && radius <= 10.0) {
+          cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
+                                                    "Northwest/Southeast"));
+        } else {
+          std::cerr << "Out of Parameter Bound" << '\n';
+          DefaultMsg();
+          success_ = 1;
+          return;
+        }
+      } else if (str[i] == "-h") {
         DefaultMsg();
         success_ = 1;
         return;
       }
-    } else if (str[i] == "-edgedetect") {
-        DefaultMsg();
-        cmd.push_back(new EdgeFilterCommand(image_editor_));
-    } else if (str[i] == "-sharpen") {
-      float radius = 0.0;
-      try {
-        radius = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (radius >= 1.0 && radius <= 10.0) {
-        cmd.push_back(new SharpenFilterCommand(image_editor_, radius));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-red") {
-      float red = 0.0;
-      try {
-        red = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (red > 0.0 && red <= 10.0) {
-        cmd.push_back(new ChannelsFilterCommand(image_editor_, red, 1.0, 1.0));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-green") {
-      float green = 0.0;
-      try {
-        green = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (green > 0.0 && green <= 10.0) {
-        cmd.push_back(new ChannelsFilterCommand(image_editor_, 1.0, green,
-                                                1.0));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-blue") {
-      float blue = 0.0;
-      // blue = strtof(argumentv[i+1], 0);
-      try {
-        blue = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (blue > 0.0 && blue <= 10.0) {
-        cmd.push_back(new ChannelsFilterCommand(image_editor_, 1.0, 1.0, blue));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-quantize") {
-      int bin = 0;
-      try {
-        bin = stoi(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (bin > 0 && bin <= 256) {
-        cmd.push_back(new QuantizeFilterCommand(image_editor_, bin));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-saturate") {
-      float scale = 0.0;
-      try {
-        scale = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (scale > 0.0 && scale <= 10.0) {
-        cmd.push_back(new SaturateFilterCommand(image_editor_, scale));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-threshold") {
-      float value = 0.0;
-      try {
-        value = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (value >= 0.0 && value <= 1.0) {
-        cmd.push_back(new ThresholdFilterCommand(image_editor_, value));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-motionblur-n-s") {
-      float radius = 0.0;
-      try {
-        radius = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (radius >= 1.0 && radius <= 10.0) {
-        cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
-                                                  "North/South"));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-motionblur-e-w") {
-      float radius = 0.0;
-      try {
-        radius = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (radius >= 1.0 && radius <= 10.0) {
-        cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
-                                                  "East/West"));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-motionblur-ne-sw") {
-      float radius = 0.0;
-      try {
-        radius = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (radius >= 1.0 && radius <= 10.0) {
-        cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
-                                                  "Northeast/Southwest"));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-motionblur-nw-se") {
-      float radius = 0.0;
-      try {
-        radius = stof(str[i+1]);
-      }
-      catch (const std::invalid_argument& ia) {
-          std::cerr << "Invalid argument: " << ia.what() << '\n';
-          DefaultMsg();
-          success_ = 1;
-          return;
-      }
-
-      if (radius >= 1.0 && radius <= 10.0) {
-        cmd.push_back(new MotionBlurFilterCommand(image_editor_, radius,
-                                                  "Northwest/Southeast"));
-      } else {
-        std::cerr << "Out of Parameter Bound" << '\n';
-        DefaultMsg();
-        success_ = 1;
-        return;
-      }
-    } else if (str[i] == "-h") {
+    }
+    catch(...) {
       DefaultMsg();
       success_ = 1;
       return;
