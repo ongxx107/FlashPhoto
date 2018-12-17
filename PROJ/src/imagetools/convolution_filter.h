@@ -64,7 +64,7 @@ class ConvolutionFilter : public Filter{
   bool can_calculate_in_place() override;
 
  protected:
-  FloatMatrix* mat;
+  FloatMatrix* mat_;
 
  private:
   ConvolutionFilter(const ConvolutionFilter &rhs) = delete;

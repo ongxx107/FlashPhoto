@@ -28,28 +28,28 @@ namespace image_tools {
     /*
     setup the kernel matrix
     */
-    mat = CreateKernel();
+    mat_ = CreateKernel();
   }
 
   void ConvolutionFilter::CleanupFilter() {
     /*
     clean up the matrix pointer/ free the memory allocated in CPU
     */
-    delete mat;
+    delete mat_;
   }
 
   ColorData ConvolutionFilter::CalculateFilteredPixel(PixelBuffer* buffer,
     int x, int y) {
 
-    int mat_height_half = (mat->height())/2;
-    int mat_width_half = (mat->width())/2;
+    int mat_height_half = (mat_->height())/2;
+    int mat_width_half = (mat_->width())/2;
 
     double red = 0.0;
     double green = 0.0;
     double blue = 0.0;
 
-    for (int filterY = 0; filterY < mat->height(); filterY++) {
-      for (int filterX = 0; filterX < mat->width(); filterX++) {
+    for (int filterY = 0; filterY < mat_->height(); filterY++) {
+      for (int filterX = 0; filterX < mat_->width(); filterX++) {
         /*
         The location imageX and imageY is calculated so that for the center
         element of the filter it'll be x, y, but for the other elements it'll be
@@ -66,7 +66,7 @@ namespace image_tools {
         /*
         add on the value of multiplication of buffer value and kernel value
         */
-        double matValue = mat->value(filterX, filterY);
+        double matValue = mat_->value(filterX, filterY);
         red += buffer->pixel(imageX, imageY).red() * matValue;
         green += buffer->pixel(imageX, imageY).green() * matValue;
         blue += buffer->pixel(imageX, imageY).blue() * matValue;
