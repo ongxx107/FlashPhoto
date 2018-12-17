@@ -1,8 +1,8 @@
 ### Assessment for Project Iteration 02 - Automated (Graded By: Dan Orban)
 
-#### Total score: _71.13_ / _85_
+#### Total score: _70.13_ / _85_
 
-Run on December 15, 19:36:23 PM.
+Run on December 16, 23:53:42 PM.
 
 
 #### System Files and PROJ Directory Structure
@@ -39,7 +39,112 @@ Run on December 15, 19:36:23 PM.
 
 
 
-+  _1_ / _1_ : Pass: Ensuring code follows style guide.
++  _0_ / _1_ : Fail: Ensuring code follows style guide.
+
+<pre>cd src/flashphoto; make check-style
+make[1]: Entering directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/flashphoto'
+==== Checking style is correct ====
+/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/cpplint/cpplint.py --root=.. *.cc *.h
+Done processing flashphoto_app.cc
+Done processing main.cc
+Done processing flashphoto_app.h
+Total errors found: 0
+make[1]: Leaving directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/flashphoto'
+cd src/imagetools; make check-style
+make[1]: Entering directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/imagetools'
+==== Checking style is correct ====
+/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/cpplint/cpplint.py --root=.. *.cc *.h
+Done processing color_data.cc
+Done processing convolution_filter_blur.cc
+Done processing convolution_filter.cc
+Done processing convolution_filter_edge.cc
+Done processing convolution_filter_motion_blur.cc
+Done processing convolution_filter_sharpen.cc
+Done processing filter.cc
+Done processing filter_channels.cc
+Done processing filter_quantize.cc
+Done processing filter_saturate.cc
+Done processing filter_threshold.cc
+Done processing float_matrix.cc
+Done processing image_editor.cc
+Done processing mask_factory.cc
+Done processing pixel_buffer.cc
+Done processing tool_blur.cc
+Done processing tool_calligraphy_pen.cc
+Done processing tool.cc
+Done processing tool_chalk.cc
+Done processing tool_eraser.cc
+Done processing tool_highlighter.cc
+Done processing tool_pen.cc
+Done processing tool_spray_can.cc
+Done processing tool_stamp.cc
+Done processing color_data.h
+Done processing convolution_filter_blur.h
+Done processing convolution_filter_edge.h
+Done processing convolution_filter.h
+Done processing convolution_filter_motion_blur.h
+Done processing convolution_filter_sharpen.h
+Done processing filter_channels.h
+Done processing filter.h
+Done processing filter_quantize.h
+Done processing filter_saturate.h
+Done processing filter_threshold.h
+Done processing float_matrix.h
+Done processing image_editor.h
+Done processing image_tools_math.h
+Done processing mask_factory.h
+Done processing pixel_buffer.h
+Done processing tool_blur.h
+Done processing tool_calligraphy_pen.h
+Done processing tool_chalk.h
+Done processing tool_eraser.h
+Done processing tool.h
+Done processing tool_highlighter.h
+Done processing tool_pen.h
+Done processing tool_spray_can.h
+Done processing tool_stamp.h
+Total errors found: 0
+make[1]: Leaving directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/imagetools'
+cd src/mia; make check-style
+make[1]: Entering directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/mia'
+==== Checking style is correct ====
+/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/cpplint/cpplint.py --root=.. *.cc *.h
+Done processing command_line_processor.cc
+Done processing image_editor_commands.cc
+Done processing main.cc
+Done processing mia_app.cc
+Done processing command_line_processor.h
+Done processing image_editor_commands.h
+Done processing mia_app.h
+Total errors found: 0
+make[1]: Leaving directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/mia'
+cd src/tests; make check-style
+make[1]: Entering directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/tests'
+cd gtests; make check-style
+make[2]: Entering directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/tests/gtests'
+==== Checking style is correct ====
+/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/cpplint/cpplint.py --root=.. *.cc *.h
+command_line_processor_unittest.cc:32:  Consider using EXPECT_NE instead of EXPECT_TRUE(a != b)  [readability/check] [2]
+command_line_processor_unittest.cc:33:  Should have a space between // and comment  [whitespace/comments] [4]
+command_line_processor_unittest.cc:135:  Consider using EXPECT_EQ instead of EXPECT_TRUE(a == b)  [readability/check] [2]
+Skipping input '*.h': Can't open for reading
+Done processing command_line_processor_unittest.cc
+Done processing convolution_filter_edge_unittest.cc
+Done processing filter_channel_unittest.cc
+Done processing filters_regressiontest.cc
+Done processing flashphoto_app_test.cc
+Done processing tool_pen_unittest.cc
+Done processing tools_regressiontest.cc
+Total errors found: 3
+Makefile:179: recipe for target 'check-style' failed
+make[2]: *** [check-style] Error 1
+make[2]: Leaving directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/tests/gtests'
+Makefile:6: recipe for target 'check-style' failed
+make[1]: *** [check-style] Error 2
+make[1]: Leaving directory '/classes/grades/Fall-2018/csci3081/dtorban/grading-scripts/grading/PROJ_02_Automated_Assessment/repo-ongxx107/PROJ/src/tests'
+Makefile:7: recipe for target 'check-style' failed
+make: *** [check-style] Error 2
+</pre>
 
 
 
@@ -102,12 +207,7 @@ iter2_test.cc:95: Failure
 Value of: hasHelpMessage(getStdOutOrErr())
   Actual: false
 Expected: true
-./build/bin/mia src/tests/inst_tests/input.png edgedetect output.png should return the help message.
-iter2_test.cc:95: Failure
-Value of: hasHelpMessage(getStdOutOrErr())
-  Actual: false
-Expected: true
-./build/bin/mia src/tests/inst_tests/input.png -edgedetect 5 output.png should return the help message.</pre>
+./build/bin/mia src/tests/inst_tests/input.png edgedetect output.png should return the help message.</pre>
 
 
 
@@ -117,7 +217,7 @@ Expected: true
 + Pass: Check that file "./build/test/gtests" exists.
 
 + Pass: Get all google tests.
-    41 tests found.
+    42 tests found.
 
 
 
@@ -186,6 +286,11 @@ Expected: true
 
 + Pass: Check that a GoogleTest test passes.
     passes the test: CommandLineProcessorTest.test10.
+
+
+
++ Pass: Check that a GoogleTest test passes.
+    passes the test: CommandLineProcessorTest.test11.
 
 
 
@@ -374,5 +479,5 @@ Expected: true
 
 +  _3.13_ / _15_ : Fail: 16.67% of the tests passed, but the target is 80.0%.
 
-#### Total score: _71.13_ / _85_
+#### Total score: _70.13_ / _85_
 
