@@ -1,4 +1,4 @@
-all: imagetools flashphoto mia tests
+all: imagetools flashphoto mia tests doc
 
 doc:
 	doxygen docs/Doxyfile
@@ -29,6 +29,7 @@ tests:
 
 clean:
 	rm -rf build
+	rm -rf web/doxygen-html
 
 clobber: clean
 	cd src/external/MinGfx; make clobber
