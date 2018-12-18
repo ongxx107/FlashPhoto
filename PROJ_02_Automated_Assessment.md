@@ -1,6 +1,6 @@
 ### Assessment for Project Iteration 02 - Automated (Graded By: Dan Orban)
 
-#### Total score: _70.13_ / _85_
+#### Total score: _82_ / _85_
 
 Run on December 16, 23:53:42 PM.
 
@@ -442,31 +442,31 @@ Expected: true
 
 #### Testing Pen Tool for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
++ Pass: There is no test case for this mutant (since all tests pass). <strong>(Manually verified)</strong>
    - Reason - There is no regression test.
 
 
 #### Testing Eraser Tool for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
++ Pass: There is no test case for this mutant (since all tests pass).<strong>(Manually verified)</strong>
    - Reason - There is no regression test.
 
 
 #### Testing Stamp Tool for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
++ Pass: There is no test case for this mutant (since all tests pass).<strong>(Manually verified)</strong>
    - Reason - The stamp tool does not stamp, it slides.
 
 
 #### Testing Blur Filter for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
++ Pass: There is no test case for this mutant (since all tests pass).<strong>(Manually verified)</strong>
    - Reason - In Mutant: The radius is 2 less than it is supposed to be.
 
 
 #### Testing Edge Detector Filter for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
++ Pass: There is no test case for this mutant (since all tests pass).<strong>(Manually verified)</strong>
    - Reason - In Mutant: Edge detect is not implemented.
 
 
@@ -477,7 +477,7 @@ Expected: true
 
 #### Results
 
-+  _3.13_ / _15_ : Fail: 16.67% of the tests passed, but the target is 80.0%.
++  _15_ / _15_ : Fail: 80.0% of the tests passed, and the target is 80.0%.
 
-#### Total score: _70.13_ / _85_
+#### Total score: _82_ / _85_
 
