@@ -165,6 +165,35 @@ Pascal type - Every name that starts with first capital letter is followed with 
 ##Line length
 - In this project, the maximum number of characters for each line is 80.
 
+##Header format
+- Order of include files:
+    - The order of include files are arranged by:
+        - dir2/foo2.h.
+        - blank line
+        - C system files.
+        - C++ system files.
+        - A blank line
+        - Other libraries' .h files.
+        - Your project's .h files.
+    - For example, in image_editor_commands.h,
+
+            #include <string>
+
+            #include "imagetools/color_data.h"
+            #include "imagetools/convolution_filter_motion_blur.h"
+            #include "imagetools/image_editor.h"
+
+- Define guard:
+    - All header files should have #define guards to prevent multiple inclusion. The format of the symbol name should be <PROJECT>_<PATH>_<FILE>_H_.
+    - To guarantee uniqueness, they should be based on the full path in a project's source tree. For example, the file PROJ/src/imagetools/tool.h in project PROJ,
+
+            #ifndef IMAGETOOLS_FILTER_H_
+            #define IMAGETOOLS_FILTER_H_
+            ...
+            #endif  // IMAGETOOLS_FILTER_H_
+
+(*sourced from https://google.github.io/styleguide/cppguide.html#Header_Files*)
+
 \page page6 Common Tasks
 
 ##How to Add a New Filter: \n
