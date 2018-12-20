@@ -1,8 +1,8 @@
 ### Assessment for Project Iteration 03 - UserDoc (Graded By: Shruti Verma)
 
-#### Total score: _0_ / _30_
+#### Total score: _30_ / _30_
 
-Run on December 18, 21:09:25 PM.
+Run on December 19, 19:31:50 PM.
 
 + Pass: Setup grading environment.
 
@@ -21,23 +21,17 @@ Run on December 18, 21:09:25 PM.
 
 ### User Documentation
 
-+  _0_ / _10_ : Fail: User Docs structure
-
-<pre>Cannot find file.</pre>
++  _10_ / _10_ : Pass: User Docs structure
 
 
 
-+  _0_ / _10_ : Fail: Discussed tools, filters, load/save, and annotation of image
-
-<pre>Cannot find file.</pre>
++  _10_ / _10_ : Pass: Discussed tools, filters, load/save, and annotation of image
 
 
 
-+  _0_ / _10_ : Fail: User Doc intended for users
-
-<pre>Cannot find file.</pre>
++  _10_ / _10_ : Pass: User Doc intended for users
 
 
 
-#### Total score: _0_ / _30_
+#### Total score: _30_ / _30_
 
