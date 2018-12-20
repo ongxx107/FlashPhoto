@@ -1,22 +1,19 @@
 ### Assessment for Project Iteration 02 - Combined (Graded By: 3081 TAs)
 
-#### Total score: _70.13_ / _100_
+#### Total score: _96.0_ / _100_
 
-Run on December 17, 10:14:55 AM.
+Run on December 20, 04:01:42 AM.
 
 
 ### Combined Scores
 
-+  _70.13_ / _85_ : Pass: [Compile / Refactoring / Style / Tests](PROJ_02_Automated_Assessment.md) - (Graded By: Dan Orban)
++  _82.0_ / _85_ : Pass: [Compile / Refactoring / Style / Tests](PROJ_02_Automated_Assessment.md) - (Graded By: Dan Orban)
 
 
 
-+  _0_ / _15_ : Fail: [Manual Design Inspection](PROJ_02_OverallDesign_Assessment.md) - (Graded By: Libby Ferland)
-
-<pre>Not Graded
-</pre>
++  _14.0_ / _15_ : Pass: [Manual Design Inspection](PROJ_02_OverallDesign_Assessment.md) - (Graded By: Libby Ferland)
 
 
 
-#### Total score: _70.13_ / _100_
+#### Total score: _96.0_ / _100_
 
